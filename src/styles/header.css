@@ -1,0 +1,80 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 32px 20px 15px 20px;
+  min-height: 105px;
+}
+
+.header__wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1110px;
+  height: 40px;
+  position: relative;
+}
+
+.block-logo {
+  display: flex;
+  height: 40px;
+  width: 165px;
+  margin-right: 120px;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  color: #6e76f1;
+}
+
+.block-logo:hover {
+  color: #1322fb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.block-logo__title {
+  color: #363636;
+  transition: all 0.3s ease;
+}
+
+.block-logo:hover .block-logo__title {
+  color: #121010;
+  transition: all 0.3s ease;
+}
+
+.block-logo__icon {
+  width: 40px;
+  height: 40px;
+}
+
+.block-title {
+  margin-right: auto;
+}
+
+.block-title__page {
+  font-family: 'Montserrat-bold';
+  color: #363636;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.block-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.block-user__greetings {
+  font-family: 'Montserrat-semi';
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #363636;
+}
+
+.burger-menu {
+  display: none;
+}
