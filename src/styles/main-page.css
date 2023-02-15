@@ -8,6 +8,10 @@
   margin-bottom: 62px;
 }
 
+.main-hidden {
+  display: none;
+}
+
 .main__wrap {
   display: flex;
   width: 100%;

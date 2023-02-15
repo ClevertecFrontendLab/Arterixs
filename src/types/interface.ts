@@ -116,7 +116,11 @@ export interface IBurgerState {
 
 export interface IINititalState {
   listBooks: IListBooks[] | [],
-  categoryBooks: ICategoryBooks[] | []
+  categoryBooks: ICategoryBooks[] | [],
+  loadedList: boolean,
+  loadedCategory: boolean,
+  errorLoadList: boolean,
+  errorLoadCategory: boolean
 }
 
 export interface IListBooks {
@@ -164,6 +168,21 @@ interface IBooking {
 interface IHistories {
   id: number,
   userId: number
+}
+
+export interface IActionLoaded {
+  type: ActionLoad.LOADING,
+  data: boolean
+}
+
+export interface IErrorLoadList {
+  type: ActionLoad.ERROR_LOAD_LIST,
+  data: boolean
+}
+
+export interface IErrorLoadCategory {
+  type: ActionLoad.ERROR_LOAD_CATEGORY,
+  data: boolean
 }
 
 export interface IActionList {

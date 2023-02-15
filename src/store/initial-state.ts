@@ -1,4 +1,8 @@
 export const initialState = {
   listBooks: [],
-  categoryBooks: []
+  categoryBooks: [],
+  loadedList: false,
+  loadedCategory: false,
+  errorLoadList: false,
+  errorLoadCategory: false
 }
