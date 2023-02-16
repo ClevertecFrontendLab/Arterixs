@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IListBooks, IBooking, IDelivery } from '../../types/interface';
+import { IListBooks } from '../../types/interface';
 import { CLASSNAME_BUTTON_BOOK, CLASSNAME_BUTTON_BOOKED } from '../../utils/constants';
 import { getAuthorString, getContentButtonCardBooks } from '../../utils/helpers';
 import { EmptyCard } from './empty-card';
@@ -25,7 +25,8 @@ export const Card = (props: IListBooks) => {
         </section>
         <button
           className={booking ? (booking.order ? CLASSNAME_BUTTON_BOOKED : CLASSNAME_BUTTON_BOOK) : CLASSNAME_BUTTON_BOOK}
-          disabled={delivery ? (delivery.handed ? true : false) : false} type='button'>
+          disabled={delivery ? (delivery.handed ? true : false) : false}
+          type='button'>
           <span className='text'>{contentButton}</span>
         </button>
       </Link>

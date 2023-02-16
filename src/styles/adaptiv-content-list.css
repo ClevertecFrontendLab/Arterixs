@@ -31,6 +31,10 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .book__list_grade {

@@ -17,7 +17,7 @@ export const MainPage = () => {
   return (
     <main className={isError ? 'main-hidden' : (isLoaded ? 'main-content' : 'main-hidden')}>
         <Search {...{window: getWindowContent, list: getListContent, content}} />
-        {content ? <Content arrayList = {arrayListBooks} /> : <ContentList {...arrayListBooks}/>}
+        {content ? <Content arrayList = {arrayListBooks} /> : <ContentList arrayList = {arrayListBooks}/>}
     </main>
   )
 }

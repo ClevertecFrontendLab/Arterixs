@@ -15,12 +15,14 @@ export interface IContentToggle {
   content: boolean;
 }
 
+//TODO: delete
 interface IButtonObjectCard {
   content: string;
   disabled: boolean;
   className: string;
 }
 
+//TODO: delete
 export interface IObjecrCard {
   id: number;
   img: JSX.Element;
