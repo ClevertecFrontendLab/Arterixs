@@ -5,6 +5,7 @@ import { Aside } from '../../components/main-page/aside';
 import { fetchListBooks } from '../../store/async-action/fetch-list-books';
 import { fetchCategoryBooks } from '../../store/async-action/fetch-category';
 import { IINititalState } from '../../types/interface';
+import { ErrorLoad } from '../../components/loaded/error';
 
 
 export const LayoutMainPage = () => {
@@ -22,7 +23,7 @@ export const LayoutMainPage = () => {
 
   return (
     <section className='main'>
-      {isError ? <div>Errors!</div> : (!isLoaded ? <div className='blur-wrap'/> : null)}
+      {isError ? '': (!isLoaded ? <div className='blur-wrap'/> : null)}
       <div className='main__wrap'>
         <Aside />
         <Outlet />

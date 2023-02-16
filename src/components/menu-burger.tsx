@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { IBurgerState } from '../types/interface';
+import { IBurgerState, IINititalState } from '../types/interface';
 import { arrayGenres } from '../utils/data';
 import { ButtonArrow } from './main-page/button-arrow';
 import { Genres } from './main-page/genres';
 
 export const MenuBurger = (props: IBurgerState) => {
+  const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
   const { burgerState, toggleBurgerMenu } = props;
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
@@ -29,7 +31,7 @@ export const MenuBurger = (props: IBurgerState) => {
                         ? 'wrapper-title-aside wrapper-title-aside_active-link'
                         : 'wrapper-title-aside'
                     }
-                    onClick={toggleAccordeon}
+                    onClick={isError ? undefined : toggleAccordeon}
                     onKeyUp={() => {}}
                     role='button'
                     tabIndex={0}
@@ -46,11 +48,11 @@ export const MenuBurger = (props: IBurgerState) => {
                     >
                       Витрина книг
                     </h2>
-                    <ButtonArrow {...{ stateAccordeon, isActive }} key='1' />
+                    {isError ? null : <ButtonArrow {...{ stateAccordeon, isActive }} key='1' />}
                   </div>
                 )}
               </NavLink>
-              <section className={stateAccordeon ? 'genres-block' : 'genres-block_hidden'}>
+              <nav className={!isError ? (stateAccordeon ? 'genres-block' : 'genres-block_hidden') : 'genres-block_hidden'}>
                 <NavLink
                   to='/books/all'
                   data-test-id='burger-books'
@@ -67,7 +69,7 @@ export const MenuBurger = (props: IBurgerState) => {
                     <Genres func={toggleBurgerMenu} {...item} key={item.id} />
                   ))}
                 </ul>
-              </section>
+              </nav>
             </div>
             <NavLink
               className={({ isActive }) => (isActive ? 'active-link__aside' : 'menu-burger__docs-link')}

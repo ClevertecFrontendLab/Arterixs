@@ -39,10 +39,7 @@ export const Aside = () => {
                     ? 'wrapper-title-aside__title active-link__aside_title'
                     : 'wrapper-title-aside__title'
                 }
-              >
-                {' '}
-                Витрина книг
-              </h2>
+              > Витрина книг</h2>
               {isError ? null : <ButtonArrow {...{ stateAccordeon, isActive }} key='1' />}
             </div>
           )}

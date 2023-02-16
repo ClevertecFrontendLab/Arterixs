@@ -3,12 +3,14 @@ import { IBurgerState } from '../types/interface';
 import avatar from '../assets/image/webp/avatar.webp';
 import { Burger } from './burger';
 import { MenuBurger } from './menu-burger';
+import { ErrorLoad } from './loaded/error';
 
 export const Header = (props: IBurgerState) => {
   const { burgerState, toggleBurgerMenu } = props;
   return (
     <header className='header'>
       <div className='header__wrap'>
+        <ErrorLoad />
         <MenuBurger {...{ burgerState, toggleBurgerMenu }} />
         <Burger {...{ burgerState, toggleBurgerMenu }} />
         <section>

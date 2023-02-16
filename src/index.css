@@ -16,6 +16,7 @@
 @import './styles/books-page/adaptiv-book-page.css';
 @import './styles//docs-page//contract-adaptiv.css';
 @import './styles/adaptiv-burger.css';
+@import './styles/loading/media-error.css';
 
 body {
   height: 100vh;
