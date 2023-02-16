@@ -1,13 +1,5 @@
 import { ActionLoad } from './enum';
 
-export interface IGenres {
-  id: number;
-  genres: string;
-  count: string;
-  url: string;
-  func?: () => void;
-}
-
 export interface IButtonToggle {
   id: number;
   icon: string;
@@ -139,14 +131,15 @@ export interface IListBooks {
 export interface ICategoryBooks {
   name: string,
   path: string,
-  id: number
+  id: number,
+  func?: () => void;
 }
 
 interface IImage {
   url: string
 }
 
-interface IDelivery {
+export interface IDelivery {
   id: number,
   handed: boolean,
   dateHandedFrom: string,
@@ -156,7 +149,7 @@ interface IDelivery {
   recipientLastName: string
 }
 
-interface IBooking {
+export interface IBooking {
   id: number,
   order: boolean,
   dateOrder: string,
@@ -165,7 +158,7 @@ interface IBooking {
   customerLastName: string
 }
 
-interface IHistories {
+export interface IHistories {
   id: number,
   userId: number
 }

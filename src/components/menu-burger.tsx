@@ -8,6 +8,7 @@ import { Genres } from './main-page/genres';
 
 export const MenuBurger = (props: IBurgerState) => {
   const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
+  const genresState = useSelector((state: IINititalState) => state.categoryBooks)
   const { burgerState, toggleBurgerMenu } = props;
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
@@ -65,7 +66,7 @@ export const MenuBurger = (props: IBurgerState) => {
                   Все книги
                 </NavLink>
                 <ul className='genres-block__content'>
-                  {arrayGenres.map((item) => (
+                  {genresState.map((item) => (
                     <Genres func={toggleBurgerMenu} {...item} key={item.id} />
                   ))}
                 </ul>

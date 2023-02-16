@@ -9,6 +9,7 @@ import { IINititalState } from '../../types/interface';
 export const Aside = () => {
   const isLoaded = useSelector((state: IINititalState) => state.loadedCategory && state.loadedList)
   const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
+  const genresState = useSelector((state: IINititalState) => state.categoryBooks)
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);
@@ -44,7 +45,7 @@ export const Aside = () => {
             </div>
           )}
         </NavLink>
-        <nav className={isLoaded ? (stateAccordeon ? 'genres-block' : 'genres-block_hidden') : 'genres-block_hidden'}>
+        <nav className={isError ? 'genres-block_hidden' : (isLoaded ? (stateAccordeon ? 'genres-block' : 'genres-block_hidden') : 'genres-block_hidden')}>
           <NavLink
             to='/books/all'
             data-test-id='navigation-books'
@@ -57,7 +58,7 @@ export const Aside = () => {
             Все книги
           </NavLink>
           <ul className='genres-block__content'>
-            {arrayGenres.map((item) => (
+            {genresState.map((item) => (
               <Genres {...item} key={item.id} />
             ))}
           </ul>

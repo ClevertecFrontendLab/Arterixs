@@ -1,10 +1,13 @@
 import { Card } from './card';
-import { cardContentArray } from '../../utils/data';
+import { IListBooks } from '../../types/interface';
 
-export const Content = () => (
-  <section className='wrapper-content'>
-    {cardContentArray.map((item) => (
-      <Card {...item} key={item.id} />
-    ))}
-  </section>
-);
+export const Content = (props: {arrayList: IListBooks[]}) => {
+  const {arrayList} = props
+  return (
+    <section className='wrapper-content'>
+      {arrayList.map((item) => (
+        <Card {...item} key={item.id} />
+      ))}
+    </section>
+  )
+};

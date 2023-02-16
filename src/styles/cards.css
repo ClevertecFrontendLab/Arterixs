@@ -17,7 +17,7 @@
   border-radius: 10px;
 }
 
-.book {
+.book:hover {
   cursor: pointer;
 }
 
@@ -25,7 +25,8 @@
   width: 174px;
   height: 242px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
   margin-bottom: 16px;
   display: flex;
   justify-content: center;
@@ -58,6 +59,10 @@
   font-weight: 600;
   line-height: 18px;
   color: #363636;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .wrapper-author {
@@ -66,6 +71,7 @@
   justify-content: baseline;
   height: 36px;
   margin-bottom: 19px;
+  margin-top: auto;
 }
 
 .book__author {

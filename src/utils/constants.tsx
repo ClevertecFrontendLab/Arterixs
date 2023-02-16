@@ -5,3 +5,5 @@ export const AUTHOR_ONE = 'Адитья Бхаргава, 2019';
 export const AUTHOR_TWO = 'Адитья Бхаргава, Патрик Нимейер, 2019';
 export const UPGRADE_SEARCH_RESIZE = 680;
 export const ERROR_TEXT = 'Что-то пошло не так. Обновите страницу через некоторое время.'
+export const CLASSNAME_BUTTON_BOOKED = 'book__submit book__submit_closed'
+export const CLASSNAME_BUTTON_BOOK = 'book__submit'

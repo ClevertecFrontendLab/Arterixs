@@ -9,13 +9,15 @@ import { IINititalState } from '../../types/interface';
 
 export const MainPage = () => {
   const isLoaded = useSelector((state: IINititalState) => state.loadedCategory && state.loadedList)
+  const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
+  const arrayListBooks = useSelector((state: IINititalState) => state.listBooks)
   const [content, setContent] = useState(true)
   const getWindowContent = () => setContent(true)
   const getListContent = () => setContent(false)
   return (
-    <main className={isLoaded ? 'main-content' : 'main-hidden'}>
+    <main className={isError ? 'main-hidden' : (isLoaded ? 'main-content' : 'main-hidden')}>
         <Search {...{window: getWindowContent, list: getListContent, content}} />
-        {content ? <Content /> : <ContentList />}
+        {content ? <Content arrayList = {arrayListBooks} /> : <ContentList {...arrayListBooks}/>}
     </main>
   )
 }
