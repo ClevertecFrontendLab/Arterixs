@@ -7,7 +7,9 @@ export const ErrorLoad = () => {
   const isActiveLink = useParams()
   const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
   return (
-    <div className={isError ? ( isActiveLink.category ? 'error-wrap' : 'error-wrap error-wpap_hidden') : 'error-wrap error-wpap_hidden' }>
+    <div className={isError ? ( isActiveLink.category ? 'error-wrap' : 'error-wrap error-wpap_hidden') : 'error-wrap error-wpap_hidden' }
+        data-test-id='error'
+    >
       <div className='error-content-wrap'>
         <div className="error-content">
           <svg className='error__content-svg'>

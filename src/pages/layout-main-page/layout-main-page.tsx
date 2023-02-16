@@ -1,17 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { Aside } from '../../components/main-page/aside';
 import { fetchListBooks } from '../../store/async-action/fetch-list-books';
 import { fetchCategoryBooks } from '../../store/async-action/fetch-category';
-import { IINititalState } from '../../types/interface';
-import { ErrorLoad } from '../../components/loaded/error';
-
+import { Loader } from '../../components/loaded/loader';
 
 export const LayoutMainPage = () => {
   const dispatch = useDispatch()
-  const isLoaded = useSelector((state: IINititalState) => state.loadedCategory && state.loadedList)
-  const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
   useEffect(() => {
     let ignore = false
     if (!ignore) {
@@ -23,7 +19,7 @@ export const LayoutMainPage = () => {
 
   return (
     <section className='main'>
-      {isError ? '': (!isLoaded ? <div className='blur-wrap'/> : null)}
+      <Loader />
       <div className='main__wrap'>
         <Aside />
         <Outlet />
