@@ -26,7 +26,7 @@ export const MetaInfo = (props: propsMetaData) => {
         </div>
         <div className='content-two'>
           <ul className='content__list-one'>
-            <li className='content__list-item content__list-item_genre'>Жанр</li>
+            <li className='content__list-item'>Жанр</li>
             <li className='content__list-item'>Вес</li>
             <li className='content__list-item'>ISBN</li>
             <li className='content__list-item'>Изготовитель</li>

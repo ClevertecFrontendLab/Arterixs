@@ -266,16 +266,22 @@
   .content-one {
     height: auto;
     width: auto;
+    gap: 49px;
   }
 
   .content-two {
     max-width: 635px;
     width: 100%;
-    gap: 85px;
+    gap: 49px;
+    justify-content: flex-start;
   }
 
   .content__list-item_genre {
     height: 16px;
+  }
+
+  .content__list-one {
+    min-width: 120px;
   }
 
   .navigation-page {

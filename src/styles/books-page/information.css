@@ -15,8 +15,8 @@
 
 .content-one {
   display: flex;
-  justify-content: space-between;
-  width: 329px;
+  width: 100%;
+  max-width: 400px;
   height: 184px;
   gap: 33px;
 }
@@ -24,7 +24,8 @@
 .content-two {
   display: flex;
   justify-content: space-between;
-  width: 635px;
+  max-width: 635px;
+  width: 100%;
   gap: 33px;
 }
 
@@ -47,7 +48,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 139px;
+  width: 160px;
 }
 
 .content__list-item-two {
