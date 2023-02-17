@@ -11,7 +11,6 @@ export const fetchBookId = (dispatch: Dispatch<AnyAction>, id: number) =>
       throw new Error(`is not ok ${response.status}`);
     })
     .then((json) => dispatch(actionGetIdBook(json)))
-    .catch((error) => {
+    .catch(() => {
       dispatch(actionErrorIdBook(true));
-      console.log(error);
     });

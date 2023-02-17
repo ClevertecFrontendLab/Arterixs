@@ -11,7 +11,6 @@ export const fetchListBooks = (dispatch: Dispatch<AnyAction>) =>
       throw new Error(`is not ok ${response.status}`);
     })
     .then((json) => dispatch(actionListBook(json)))
-    .catch((error) => {
+    .catch(() => {
       dispatch(actionErrorLoadList(true));
-      console.log(error);
     });

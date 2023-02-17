@@ -120,6 +120,6 @@ export const convertUrlPathReverse = (path: string): string => {
     case 'other':
       return 'Другое';
     default:
-      return 'category';
+      return 'Все книги';
   }
 };

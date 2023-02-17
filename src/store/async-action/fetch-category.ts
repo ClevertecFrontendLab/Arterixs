@@ -11,7 +11,6 @@ export const fetchCategoryBooks = (dispatch: Dispatch<AnyAction>) =>
       throw new Error(`is not ok ${response.status}`);
     })
     .then((json) => dispatch(actionCategoryBook(json)))
-    .catch((error) => {
+    .catch(() => {
       dispatch(actionErrorLoadCategory(true));
-      console.log(error);
     });
