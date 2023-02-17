@@ -1,0 +1,11 @@
+export const TITLE_BOOK_ONE = 'Грокаем алгоритмы. Иллюстрированное пособие для програ...';
+export const TITLE_BOOK_TWO = 'Грокаем алгоритмы. Иллюстрированное';
+export const TITLE_BOOK_THREE = 'Грокаем алгоритмы.';
+export const AUTHOR_ONE = 'Адитья Бхаргава, 2019';
+export const AUTHOR_TWO = 'Адитья Бхаргава, Патрик Нимейер, 2019';
+export const UPGRADE_SEARCH_RESIZE = 680;
+export const ERROR_TEXT = 'Что-то пошло не так. Обновите страницу через некоторое время.';
+export const CLASSNAME_BUTTON_BOOKED = 'book__submit book__submit_closed';
+export const CLASSNAME_BUTTON_BOOK = 'book__submit';
+export const CLASSNAME_META_BUTTON_BOOKED = 'meta-info__button meta-info__button_closed';
+export const CLASSNAME_META_BUTTON_BOOK = 'meta-info__button';

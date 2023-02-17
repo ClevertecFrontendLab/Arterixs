@@ -1,0 +1,42 @@
+.slider-books-cover {
+  width: 65px;
+  height: 86px;
+  cursor: pointer;
+}
+
+.mySwiperDown {
+  margin-top: 16px;
+  padding-bottom: 14px;
+}
+
+.swiper-scrollbar-drag {
+  bottom: 0;
+  height: 6px;
+  cursor: pointer;
+}
+
+.swiper-slide-thumb-active {
+  border: 1px solid #ff5253;
+}
+
+.swiper-slide-visible {
+  border-radius: 3px;
+}
+
+.swiper-scrollbar-horizontal {
+  opacity: 0;
+}
+
+.swiper-scrollbar-horizontal_hover {
+  opacity: 1;
+}
+
+.swiper-scrollbar-drag:first-child {
+  display: none;
+}
+
+.scrollBar_hidden {
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
