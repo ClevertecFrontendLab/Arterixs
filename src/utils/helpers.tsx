@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { UPGRADE_SEARCH_RESIZE } from './constants';
-import { IBooking, IDelivery } from '../types/interface'
+import { IBooking, IDelivery, IImage } from '../types/interface'
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -42,4 +42,32 @@ export const getContentButtonCardBooks = (booking: IBooking | null, delivery: ID
 }
 
 export const getValidIdUrl = (value: string | undefined): number => (value ? Number(value.slice(1)) : 0);
+
+export const converterBooksCover = (images: IImage[]): string[] => {
+  const arrayImageURL = images.map((item) => `https://strapi.cleverland.by${item.url}`)
+  return arrayImageURL
+}
+
+export const convertedDate = (date: string): string => {
+  const arrayMonth = [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля' ,
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря'
+  ]
+  const createDate = new Date(date)
+  const day = createDate.getDay()
+  const month = createDate.getMonth()
+  const year = createDate.getFullYear()
+  const result = `${day} ${arrayMonth[month]} ${year}`
+  return result
+}
 

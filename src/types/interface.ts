@@ -15,70 +15,9 @@ export interface IContentToggle {
   content: boolean;
 }
 
-//TODO: delete
-interface IButtonObjectCard {
-  content: string;
-  disabled: boolean;
-  className: string;
-}
-
-//TODO: delete
-export interface IObjecrCard {
-  id: number;
-  img: JSX.Element;
-  grade: JSX.Element;
-  name: string;
-  author: string;
-  button: IButtonObjectCard;
-}
-
-interface IContent {
-  one: string;
-  two: string;
-}
-
-export interface IMeta {
-  izd: string;
-  year: string;
-  pages: string;
-  perepel: string;
-  format: string;
-  genres: string;
-  weight: string;
-  ISBN: string;
-  creater: string;
-}
-
-export interface IReview {
-  avatar: string;
-  name: string;
-  date: string;
-  comment: string;
-}
-
-export interface IReviewer {
-  one: IReview;
-  two: IReview;
-  three: IReview;
-}
-
-export interface IJsonData {
-  id: number;
-  img: boolean;
-  grade: boolean;
-  name: string;
-  author: string;
-  button: IButtonObjectCard;
-  content: IContent;
-  meta: IMeta;
-  review: IReviewer;
-  amountSlider: number;
-  coverArray: string[];
-}
-
 export interface ISwiperData {
-  amountSlider: number;
-  coverArray: string[];
+  amountSliderCovers: number
+  amountBooksCover: string[] | []
 }
 
 export interface IAccordeonState {
@@ -143,7 +82,7 @@ export interface ICategoryBooks {
   func?: () => void;
 }
 
-interface IImage {
+export interface IImage {
   url: string
 }
 
@@ -226,12 +165,27 @@ export interface IDataIdBook {
   ISBN: string,
   producer: string,
   authors: string[],
-  image: IImage | null,
+  images: IImage[] | null,
   categories: string[],
-  comments: string,
+  comments: ICommentsMeta[],
   booking: IBooking | null,
   delivery: IDelivery | null,
   histories: IHistories[] | null
+}
+
+export interface ICommentsMeta {
+  id: number,
+  rating: number,
+  text: string,
+  createdAt: string,
+  user: IUserMetaComments
+}
+
+export interface IUserMetaComments {
+  commentUserId: number,
+  firstName: string,
+  lastName: string,
+  avatarUrl: string
 }
 
 export interface IControlLoadedResponse {

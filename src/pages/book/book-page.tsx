@@ -7,18 +7,15 @@ import { ReviewView } from '../../components/book-page/review-view';
 import { Loader } from '../../components/loaded/loader';
 import { fetchBookId } from '../../store/async-action/fetch-book-id';
 import { useTypedSelector } from '../../store/hooks/use-typed-selector';
-import { arrDataPageBooks } from '../../utils/data-page-books';
 import { getValidIdUrl } from '../../utils/helpers';
 
 export const BookPage = () => {
   const isLoaded = useTypedSelector((state) => state.loadBookPage.loadedIdBook)
   const isError = useTypedSelector((state) => state.loadBookPage.errorIdBook)
   const dataBook = useTypedSelector((state) => state.loadBookPage.dataIdBook)
-
   const didLogRef = useRef(false);
   const params = useParams();
   const id = getValidIdUrl(params.id);
-  const data = arrDataPageBooks[id - 1];
   const dispatch = useDispatch()
   useEffect(() => {
     if (didLogRef.current === false) {
@@ -35,8 +32,8 @@ export const BookPage = () => {
       </div>
       <div className={isError ? 'main-wrap-book-page_hidden' : (isLoaded ? 'main-wrap-book-page' : 'main-wrap-book-page_hidden')}>
         <div className='wrapper-book-page'>
-          <BookView {...data} key={data.id + 1} />
-          <ReviewView {...data} key={data.id} />
+          {dataBook ? <BookView {...dataBook} key={id} /> : false}
+          {dataBook ? <ReviewView {...dataBook} key={id + 1} /> : false}
         </div>
       </div>
     </main>

@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { IReviewer } from '../../types/interface';
+import { ICommentsMeta } from '../../types/interface';
 import { ButtonRecall } from './button-recall';
 import { Comment } from './coment';
 
-export const Recall = (props: IReviewer) => {
-  const keys = Object.entries(props);
+export const Recall = (props: {coments: ICommentsMeta[]}) => {
+  const {coments} = props
   const [stateRecall, setRecall] = useState(false);
   const toggleStateRecall = () => setRecall(!stateRecall);
   return (
@@ -17,12 +17,12 @@ export const Recall = (props: IReviewer) => {
         }
       >
         <h3 className='ratio-block__ratio'>Отзывы</h3>
-        <p className='count-comments'>2</p>
+        <p className='count-comments'>{coments.length}</p>
         <ButtonRecall {...{ toggleStateRecall, stateRecall }} />
       </section>
       <section className={stateRecall ? 'comments' : 'comments comments_closed'}>
-        {keys.map((item) => (
-          <Comment {...item[1]} key={item[0]} />
+        {coments.map((item) => (
+          <Comment {...item} key={item.id} />
         ))}
       </section>
       <button

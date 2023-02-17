@@ -1,17 +1,18 @@
-import { IJsonData } from '../../types/interface';
+import { IDataIdBook } from '../../types/interface';
 import { Ratio } from './ratio';
 import { RatioEmpty } from './ratio-empty';
 import { MetaInfo } from './meta-info';
 import { Recall } from './recall';
 import { RecallEmpty } from './recall-empty';
 
-export const ReviewView = (props: IJsonData) => {
-  const recall = props.grade;
+export const ReviewView = (props: IDataIdBook) => {
+  const {rating, id, comments} = props
+  const {issueYear, publish, pages, cover, weight, format, ISBN, producer, categories} = props
   return (
     <section className='body-books-page'>
-      {props.grade ? <Ratio /> : <RatioEmpty />}
-      <MetaInfo {...props.meta} key={props.id} />
-      {recall ? <Recall {...props.review} key={props.id + 2} /> : <RecallEmpty />}
+      {rating ? <Ratio rating = {rating} /> : <RatioEmpty />}
+      <MetaInfo {...{issueYear, publish, pages, cover, weight, format, ISBN, producer, categories}} key={1} />
+      {rating ? <Recall coments = {comments} key={id} /> : <RecallEmpty />}
     </section>
   );
 };
