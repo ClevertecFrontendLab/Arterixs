@@ -12,6 +12,10 @@ export const MenuBurger = (props: IBurgerState) => {
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);
+  const clickDocs = () => {
+    toggleBurgerMenu()
+    closedAccordeon()
+  }
   return (
     <div
       className={burgerState ? 'burger-menu-wrapper burger-menu-wrapper_active' : 'burger-menu-wrapper'}
@@ -56,6 +60,7 @@ export const MenuBurger = (props: IBurgerState) => {
                 <NavLink
                   to='/books/all'
                   data-test-id='burger-books'
+                  onClick={toggleBurgerMenu}
                   className={({ isActive }) =>
                     isActive
                       ? 'wrapper-title-aside__subtitle wrapper-title-aside__subtitle_active-link '
@@ -74,7 +79,7 @@ export const MenuBurger = (props: IBurgerState) => {
             <NavLink
               className={({ isActive }) => (isActive ? 'active-link__aside' : 'menu-burger__docs-link')}
               to='/books/contract'
-              onClick={closedAccordeon}
+              onClick={clickDocs}
               data-test-id='burger-terms'
             >
               Правила пользования
@@ -82,7 +87,7 @@ export const MenuBurger = (props: IBurgerState) => {
             <NavLink
               className={({ isActive }) => (isActive ? 'active-link__aside' : 'menu-burger__docs-link')}
               to='/books/oferta'
-              onClick={closedAccordeon}
+              onClick={clickDocs}
               data-test-id='burger-contract'
             >
               Договор оферты

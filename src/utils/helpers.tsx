@@ -41,7 +41,7 @@ export const getContentButtonCardBooks = (booking: IBooking | null, delivery: ID
   return contentButton
 }
 
-export const getValidIdUrl = (value: string | undefined): number => (value ? Number(value.slice(1)) : 0);
+export const getValidIdUrl = (value: string | undefined): number => (value ? Number(value) : 0);
 
 export const converterBooksCover = (images: IImage[]): string[] => {
   const arrayImageURL = images.map((item) => `https://strapi.cleverland.by${item.url}`)
@@ -69,5 +69,59 @@ export const convertedDate = (date: string): string => {
   const year = createDate.getFullYear()
   const result = `${day} ${arrayMonth[month]} ${year}`
   return result
+}
+
+export const convertUrlPath = (path: string): string => {
+  switch (path) {
+    case 'Бизнес':
+      return 'business'
+    case 'Психология':
+        return 'psychology'
+    case 'Родителям':
+      return 'parents'
+    case 'Нон-фикшн':
+      return 'non-fiction'
+    case 'Художественная литература':
+      return 'fiction'
+    case 'Программирование':
+      return 'programming'
+    case 'Хобби':
+      return 'hobby'
+    case 'Дизайн':
+      return 'design'
+    case 'Детские':
+      return 'childish'
+    case 'Другое':
+      return 'other'
+    default:
+      return 'category'
+  }
+}
+
+export const convertUrlPathReverse = (path: string): string => {
+  switch (path) {
+    case 'business':
+      return 'Бизнес'
+    case 'psychology':
+        return 'Психология'
+    case 'parents':
+      return 'Родителям'
+    case 'non-fiction':
+      return 'Нон-фикшн'
+    case 'fiction':
+      return 'Художественная литература'
+    case 'programming':
+      return 'Программирование'
+    case 'hobby':
+      return 'Хобби'
+    case 'design':
+      return 'Дизайн'
+    case 'childish':
+      return 'Детские'
+    case 'other':
+      return 'Другое'
+    default:
+      return 'category'
+  }
 }
 
