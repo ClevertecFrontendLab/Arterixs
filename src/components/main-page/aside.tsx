@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { ButtonArrow } from './button-arrow';
-import { arrayGenres } from '../../utils/data';
 import { Genres } from './genres';
-import { IINititalState } from '../../types/interface';
+import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 
 export const Aside = () => {
-  const isLoaded = useSelector((state: IINititalState) => state.loadedCategory && state.loadedList)
-  const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
-  const genresState = useSelector((state: IINititalState) => state.categoryBooks)
+  const isLoaded = useTypedSelector((state) => state.loadMainPage.loadedCategory && state.loadMainPage.loadedList)
+  const isError = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList)
+  const genresState = useTypedSelector((state) => state.loadMainPage.categoryBooks)
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);

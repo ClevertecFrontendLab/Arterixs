@@ -1,4 +1,4 @@
-import { initialState } from '../initial-state';
+import { initialState } from '../state/initial-state';
 import { ActionLoad } from '../../types/enum';
 import { IINititalState } from '../../types/interface';
 import { actionsType } from '../../types/types';

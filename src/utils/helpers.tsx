@@ -4,7 +4,6 @@ import { IBooking, IDelivery } from '../types/interface'
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
-
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -14,7 +13,6 @@ export const useResize = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   return width <= UPGRADE_SEARCH_RESIZE;
 };
 
@@ -42,4 +40,6 @@ export const getContentButtonCardBooks = (booking: IBooking | null, delivery: ID
   }
   return contentButton
 }
+
+export const getValidIdUrl = (value: string | undefined): number => (value ? Number(value.slice(1)) : 0);
 

@@ -1,14 +1,14 @@
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { IINititalState } from '../../types/interface';
+import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 import { ERROR_TEXT } from '../../utils/constants';
 
 export const ErrorLoad = () => {
   const isActiveLink = useParams()
-  const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
+  const isError = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList || state.loadBookPage.errorIdBook)
+  const isErrorMain = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList)
   return (
-    <div className={isError ? ( isActiveLink.category ? 'error-wrap' : 'error-wrap error-wpap_hidden') : 'error-wrap error-wpap_hidden' }
-        data-test-id='error'
+    <div className={isError ? ( isActiveLink.category ? (isActiveLink.id ? 'error-wrap' : (isErrorMain ? 'error-wrap' : 'error-wpap_hidden')) : 'error-wrap error-wpap_hidden') : 'error-wrap error-wpap_hidden'}
+      data-test-id='error'
     >
       <div className='error-content-wrap'>
         <div className="error-content">

@@ -114,7 +114,13 @@ export interface IINititalState {
   loadedList: boolean,
   loadedCategory: boolean,
   errorLoadList: boolean,
-  errorLoadCategory: boolean
+  errorLoadCategory: boolean,
+}
+
+export interface IStateBookPage {
+  dataIdBook: null | IDataIdBook
+  loadedIdBook: boolean,
+  errorIdBook: boolean
 }
 
 export interface IListBooks {
@@ -167,17 +173,17 @@ export interface IHistories {
 
 export interface IActionLoaded {
   type: ActionLoad.LOADING,
-  data: boolean
+  data: true
 }
 
 export interface IErrorLoadList {
   type: ActionLoad.ERROR_LOAD_LIST,
-  data: boolean
+  data: true
 }
 
 export interface IErrorLoadCategory {
   type: ActionLoad.ERROR_LOAD_CATEGORY,
-  data: boolean
+  data: true
 }
 
 export interface IActionList {
@@ -189,3 +195,47 @@ export interface IActionCategory {
   type: ActionLoad.GET_CATEGORY_BOOKS
   data: ICategoryBooks[] | []
 }
+
+export interface IActionIdBooks {
+  type: ActionLoad.GET_ID_BOOK,
+  data: IDataIdBook
+}
+
+
+export interface IActionResetStateBooks {
+  type: ActionLoad.RESET_STATE_BOOKS,
+  data: false
+}
+
+export interface IActionErrorIdBook {
+  type: ActionLoad.ERROR_LOAD_ID_BOOK,
+  data: true
+}
+
+export interface IDataIdBook {
+  id: number,
+  title: string,
+  rating: number | null,
+  issueYear: string,
+  description: string,
+  publish: string,
+  pages: string,
+  cover: string,
+  weight: string,
+  format: string,
+  ISBN: string,
+  producer: string,
+  authors: string[],
+  image: IImage | null,
+  categories: string[],
+  comments: string,
+  booking: IBooking | null,
+  delivery: IDelivery | null,
+  histories: IHistories[] | null
+}
+
+export interface IControlLoadedResponse {
+  isLoaded: boolean,
+  isError: boolean,
+}
+

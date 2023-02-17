@@ -4,7 +4,12 @@ import { actionCategoryBook, actionErrorLoadCategory } from '../actions/action-c
 
 export const fetchCategoryBooks = (dispatch: Dispatch<AnyAction>) => (
   fetch('https://strapi.cleverland.by/api/categories')
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw new Error(`is not ok ${response.status}`)
+    })
     .then(json => dispatch(actionCategoryBook(json)))
     .catch(error => {
       dispatch(actionErrorLoadCategory(true))

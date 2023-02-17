@@ -254,6 +254,10 @@
 }
 
 @media (max-width: 680px) {
+  .main-book-page {
+    margin-top: 8px;
+  }
+
   .meta-info-content {
     flex-direction: column;
     gap: 16px;
@@ -273,12 +277,14 @@
   .content__list-item_genre {
     height: 16px;
   }
+
+  .navigation-page {
+    height: 56px;
+  }
+
 }
 
 @media (max-width: 600px) {
-  .navigation-page {
-    height: 92px;
-  }
 
   .descriprion__name {
     max-width: 313px;

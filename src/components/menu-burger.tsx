@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { IBurgerState, IINititalState } from '../types/interface';
-import { arrayGenres } from '../utils/data';
+import { useTypedSelector } from '../store/hooks/use-typed-selector';
+import { IBurgerState } from '../types/interface';
 import { ButtonArrow } from './main-page/button-arrow';
 import { Genres } from './main-page/genres';
 
 export const MenuBurger = (props: IBurgerState) => {
-  const isError = useSelector((state: IINititalState) => state.errorLoadCategory || state.errorLoadList)
-  const genresState = useSelector((state: IINititalState) => state.categoryBooks)
+  const isError = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList)
+  const genresState = useTypedSelector((state) => state.loadMainPage.categoryBooks)
   const { burgerState, toggleBurgerMenu } = props;
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);

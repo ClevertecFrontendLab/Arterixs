@@ -29,6 +29,7 @@
 
 @media (max-width: 480px) {
   .error-wrap {
+    top: 33px;
     padding: 16px 12px;
     min-height: 78px;
   }

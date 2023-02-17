@@ -4,7 +4,12 @@ import { actionErrorLoadList, actionListBook } from '../actions/action-creaters'
 
 export const fetchListBooks = (dispatch: Dispatch<AnyAction>) => (
   fetch('https://strapi.cleverland.by/api/books')
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json()
+      }
+      throw new Error(`is not ok ${response.status}`)
+    })
     .then(json => dispatch(actionListBook(json)))
     .catch(error => {
       dispatch(actionErrorLoadList(true))

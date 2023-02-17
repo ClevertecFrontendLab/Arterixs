@@ -4,5 +4,5 @@ export const initialState = {
   loadedList: false,
   loadedCategory: false,
   errorLoadList: false,
-  errorLoadCategory: false
+  errorLoadCategory: false,
 }
