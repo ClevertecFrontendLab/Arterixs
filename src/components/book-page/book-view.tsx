@@ -1,15 +1,15 @@
-import { IDataIdBook} from '../../types/interface';
+import { IDataIdBook } from '../../types/interface';
 import { CLASSNAME_META_BUTTON_BOOK, CLASSNAME_META_BUTTON_BOOKED } from '../../utils/constants';
 import { converterBooksCover, getAuthorString, getContentButtonCardBooks } from '../../utils/helpers';
 import { CoverBook } from './cover-book';
 import { CoverEmpty } from './cover-empty';
 
 export const BookView = (props: IDataIdBook) => {
-  const {title, authors, booking, delivery, description, images} = props
-  const authorString = getAuthorString(authors)
-  const contentButton = getContentButtonCardBooks(booking, delivery)
-  const amountBooksCover = images ?  converterBooksCover(images) : []
-  const amountSliderCovers = amountBooksCover.length
+  const { title, authors, booking, delivery, description, images } = props;
+  const authorString = getAuthorString(authors);
+  const contentButton = getContentButtonCardBooks(booking, delivery);
+  const amountBooksCover = images ? converterBooksCover(images) : [];
+  const amountSliderCovers = amountBooksCover.length;
   const conditionRenderCheck = images && amountSliderCovers > 1;
   return (
     <section className={conditionRenderCheck ? 'head-books-page' : 'head-books-page_single'}>
@@ -18,7 +18,13 @@ export const BookView = (props: IDataIdBook) => {
         <h2 className='meta-info__books'>{title}</h2>
         <h3 className='meta-info__author'>{authorString}</h3>
         <button
-          className={booking ? (booking.order ? CLASSNAME_META_BUTTON_BOOKED : CLASSNAME_META_BUTTON_BOOK) : CLASSNAME_META_BUTTON_BOOK}
+          className={
+            booking
+              ? booking.order
+                ? CLASSNAME_META_BUTTON_BOOKED
+                : CLASSNAME_META_BUTTON_BOOK
+              : CLASSNAME_META_BUTTON_BOOK
+          }
           disabled={delivery ? (delivery.handed ? true : false) : false}
           type='button'
         >

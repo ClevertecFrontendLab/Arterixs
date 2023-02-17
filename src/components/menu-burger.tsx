@@ -6,16 +6,16 @@ import { ButtonArrow } from './main-page/button-arrow';
 import { Genres } from './main-page/genres';
 
 export const MenuBurger = (props: IBurgerState) => {
-  const isError = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList)
-  const genresState = useTypedSelector((state) => state.loadMainPage.categoryBooks)
+  const isError = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList);
+  const genresState = useTypedSelector((state) => state.loadMainPage.categoryBooks);
   const { burgerState, toggleBurgerMenu } = props;
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);
   const clickDocs = () => {
-    toggleBurgerMenu()
-    closedAccordeon()
-  }
+    toggleBurgerMenu();
+    closedAccordeon();
+  };
   return (
     <div
       className={burgerState ? 'burger-menu-wrapper burger-menu-wrapper_active' : 'burger-menu-wrapper'}
@@ -56,7 +56,9 @@ export const MenuBurger = (props: IBurgerState) => {
                   </div>
                 )}
               </NavLink>
-              <nav className={!isError ? (stateAccordeon ? 'genres-block' : 'genres-block_hidden') : 'genres-block_hidden'}>
+              <nav
+                className={!isError ? (stateAccordeon ? 'genres-block' : 'genres-block_hidden') : 'genres-block_hidden'}
+              >
                 <NavLink
                   to='/books/all'
                   data-test-id='burger-books'

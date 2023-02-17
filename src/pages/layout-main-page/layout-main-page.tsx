@@ -9,26 +9,26 @@ import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 
 export const LayoutMainPage = () => {
   const didLogRef = useRef(false);
-  const didLogReferense = useRef(false)
-  const isLoaded = useTypedSelector((state) => state.loadMainPage.loadedList && state.loadMainPage.loadedCategory)
-  const dispatch = useDispatch()
+  const didLogReferense = useRef(false);
+  const isLoaded = useTypedSelector((state) => state.loadMainPage.loadedList && state.loadMainPage.loadedCategory);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (didLogReferense.current === false) {
-      dispatch(actionResetStateBooks(false))
+      dispatch(actionResetStateBooks(false));
       didLogReferense.current = true;
     }
-  }, [dispatch, isLoaded])
+  }, [dispatch, isLoaded]);
 
   useEffect(() => {
     if (isLoaded) {
-      return
+      return;
     }
     if (didLogRef.current === false) {
-      fetchListBooks(dispatch)
-      fetchCategoryBooks(dispatch)
+      fetchListBooks(dispatch);
+      fetchCategoryBooks(dispatch);
       didLogRef.current = true;
     }
-  }, [dispatch, isLoaded])
+  }, [dispatch, isLoaded]);
 
   return (
     <section className='main'>
@@ -38,4 +38,4 @@ export const LayoutMainPage = () => {
       </div>
     </section>
   );
-}
+};

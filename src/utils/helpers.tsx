@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { UPGRADE_SEARCH_RESIZE } from './constants';
-import { IBooking, IDelivery, IImage } from '../types/interface'
+import { IBooking, IDelivery, IImage } from '../types/interface';
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -16,37 +16,36 @@ export const useResize = () => {
   return width <= UPGRADE_SEARCH_RESIZE;
 };
 
-
 export const getAuthorString = (authors: string[]): string => {
-  let authorString = ''
+  let authorString = '';
   authors.forEach((item, indx, arr) => {
     if (indx + 1 === arr.length) {
-      authorString += `${item}`
+      authorString += `${item}`;
     } else {
-      authorString += `${item} `
+      authorString += `${item} `;
     }
-  })
-  return authorString
-}
+  });
+  return authorString;
+};
 
 export const getContentButtonCardBooks = (booking: IBooking | null, delivery: IDelivery | null): string => {
-  let contentButton = ''
+  let contentButton = '';
   if (booking?.dateOrder) {
-    contentButton = 'Забронирована'
+    contentButton = 'Забронирована';
   } else if (delivery?.handed) {
-    contentButton = `Занята до ${delivery.dateHandedTo}`
+    contentButton = `Занята до ${delivery.dateHandedTo}`;
   } else {
-    contentButton = 'Забронировать'
+    contentButton = 'Забронировать';
   }
-  return contentButton
-}
+  return contentButton;
+};
 
 export const getValidIdUrl = (value: string | undefined): number => (value ? Number(value) : 0);
 
 export const converterBooksCover = (images: IImage[]): string[] => {
-  const arrayImageURL = images.map((item) => `https://strapi.cleverland.by${item.url}`)
-  return arrayImageURL
-}
+  const arrayImageURL = images.map((item) => `https://strapi.cleverland.by${item.url}`);
+  return arrayImageURL;
+};
 
 export const convertedDate = (date: string): string => {
   const arrayMonth = [
@@ -56,72 +55,71 @@ export const convertedDate = (date: string): string => {
     'апреля',
     'мая',
     'июня',
-    'июля' ,
+    'июля',
     'августа',
     'сентября',
     'октября',
     'ноября',
-    'декабря'
-  ]
-  const createDate = new Date(date)
-  const day = createDate.getDay()
-  const month = createDate.getMonth()
-  const year = createDate.getFullYear()
-  const result = `${day} ${arrayMonth[month]} ${year}`
-  return result
-}
+    'декабря',
+  ];
+  const createDate = new Date(date);
+  const day = createDate.getDay();
+  const month = createDate.getMonth();
+  const year = createDate.getFullYear();
+  const result = `${day} ${arrayMonth[month]} ${year}`;
+  return result;
+};
 
 export const convertUrlPath = (path: string): string => {
   switch (path) {
     case 'Бизнес':
-      return 'business'
+      return 'business';
     case 'Психология':
-        return 'psychology'
+      return 'psychology';
     case 'Родителям':
-      return 'parents'
+      return 'parents';
     case 'Нон-фикшн':
-      return 'non-fiction'
+      return 'non-fiction';
     case 'Художественная литература':
-      return 'fiction'
+      return 'fiction';
     case 'Программирование':
-      return 'programming'
+      return 'programming';
     case 'Хобби':
-      return 'hobby'
+      return 'hobby';
     case 'Дизайн':
-      return 'design'
+      return 'design';
     case 'Детские':
-      return 'childish'
+      return 'childish';
     case 'Другое':
-      return 'other'
+      return 'other';
     default:
-      return 'category'
+      return 'category';
   }
-}
+};
 
 export const convertUrlPathReverse = (path: string): string => {
   switch (path) {
     case 'business':
-      return 'Бизнес'
+      return 'Бизнес';
     case 'psychology':
-        return 'Психология'
+      return 'Психология';
     case 'parents':
-      return 'Родителям'
+      return 'Родителям';
     case 'non-fiction':
-      return 'Нон-фикшн'
+      return 'Нон-фикшн';
     case 'fiction':
-      return 'Художественная литература'
+      return 'Художественная литература';
     case 'programming':
-      return 'Программирование'
+      return 'Программирование';
     case 'hobby':
-      return 'Хобби'
+      return 'Хобби';
     case 'design':
-      return 'Дизайн'
+      return 'Дизайн';
     case 'childish':
-      return 'Детские'
+      return 'Детские';
     case 'other':
-      return 'Другое'
+      return 'Другое';
     default:
-      return 'category'
+      return 'category';
   }
-}
-
+};

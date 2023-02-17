@@ -10,27 +10,31 @@ import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 import { getValidIdUrl } from '../../utils/helpers';
 
 export const BookPage = () => {
-  const isLoaded = useTypedSelector((state) => state.loadBookPage.loadedIdBook)
-  const isError = useTypedSelector((state) => state.loadBookPage.errorIdBook)
-  const dataBook = useTypedSelector((state) => state.loadBookPage.dataIdBook)
+  const isLoaded = useTypedSelector((state) => state.loadBookPage.loadedIdBook);
+  const isError = useTypedSelector((state) => state.loadBookPage.errorIdBook);
+  const dataBook = useTypedSelector((state) => state.loadBookPage.dataIdBook);
   const didLogRef = useRef(false);
   const params = useParams();
   const id = getValidIdUrl(params.id);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
     if (didLogRef.current === false) {
-      fetchBookId(dispatch, id)
+      fetchBookId(dispatch, id);
       didLogRef.current = true;
     }
-  }, [dispatch, id, params])
+  }, [dispatch, id, params]);
 
   return (
     <main className='main-book-page'>
-      <Loader {...{isLoaded, isError}} />
+      <Loader {...{ isLoaded, isError }} />
       <div className='main-navigation-books-page'>
-        <NavList {...{isLoaded, isError, dataBook}}/>
+        <NavList {...{ isLoaded, isError, dataBook }} />
       </div>
-      <div className={isError ? 'main-wrap-book-page_hidden' : (isLoaded ? 'main-wrap-book-page' : 'main-wrap-book-page_hidden')}>
+      <div
+        className={
+          isError ? 'main-wrap-book-page_hidden' : isLoaded ? 'main-wrap-book-page' : 'main-wrap-book-page_hidden'
+        }
+      >
         <div className='wrapper-book-page'>
           {dataBook ? <BookView {...dataBook} key={id} /> : false}
           {dataBook ? <ReviewView {...dataBook} key={id + 1} /> : false}

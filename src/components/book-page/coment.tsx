@@ -1,11 +1,11 @@
-import { ICommentsMeta} from '../../types/interface';
+import { ICommentsMeta } from '../../types/interface';
 import avaComment from '../../assets/image/webp/ava-rev.webp';
 import { StarsFull } from './stars-full';
 import { convertedDate } from '../../utils/helpers';
 
 export const Comment = (props: ICommentsMeta) => {
-  const {text, createdAt, user} = props
-  const date = convertedDate(createdAt)
+  const { text, createdAt, user } = props;
+  const date = convertedDate(createdAt);
   return (
     <article className='card-comment'>
       <section className='head-comment'>
@@ -19,4 +19,4 @@ export const Comment = (props: ICommentsMeta) => {
       {text ? <p className='content-comment'>{text}</p> : false}
     </article>
   );
-}
+};

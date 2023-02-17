@@ -5,4 +5,4 @@ export const initialState = {
   loadedCategory: false,
   errorLoadList: false,
   errorLoadCategory: false,
-}
+};

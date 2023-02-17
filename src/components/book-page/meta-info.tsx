@@ -1,7 +1,7 @@
 import { propsMetaData } from '../../types/types';
 
 export const MetaInfo = (props: propsMetaData) => {
-  const {issueYear, publish, pages, cover, weight, format, ISBN, producer, categories} = props
+  const { issueYear, publish, pages, cover, weight, format, ISBN, producer, categories } = props;
   return (
     <section className='body-meta-info'>
       <section className='meta-info-title-block'>
@@ -40,5 +40,5 @@ export const MetaInfo = (props: propsMetaData) => {
         </div>
       </section>
     </section>
-  )
+  );
 };

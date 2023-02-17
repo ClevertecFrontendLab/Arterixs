@@ -3,8 +3,8 @@ import { ICommentsMeta } from '../../types/interface';
 import { ButtonRecall } from './button-recall';
 import { Comment } from './coment';
 
-export const Recall = (props: {coments: ICommentsMeta[]}) => {
-  const {coments} = props
+export const Recall = (props: { coments: ICommentsMeta[] }) => {
+  const { coments } = props;
   const [stateRecall, setRecall] = useState(false);
   const toggleStateRecall = () => setRecall(!stateRecall);
   return (

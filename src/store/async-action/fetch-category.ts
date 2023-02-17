@@ -1,19 +1,17 @@
-import { Dispatch } from 'react'
-import { AnyAction } from 'redux'
-import { actionCategoryBook, actionErrorLoadCategory } from '../actions/action-creaters'
+import { Dispatch } from 'react';
+import { AnyAction } from 'redux';
+import { actionCategoryBook, actionErrorLoadCategory } from '../actions/action-creaters';
 
-export const fetchCategoryBooks = (dispatch: Dispatch<AnyAction>) => (
+export const fetchCategoryBooks = (dispatch: Dispatch<AnyAction>) =>
   fetch('https://strapi.cleverland.by/api/categories')
-    .then(response => {
+    .then((response) => {
       if (response.ok) {
-        return response.json()
+        return response.json();
       }
-      throw new Error(`is not ok ${response.status}`)
+      throw new Error(`is not ok ${response.status}`);
     })
-    .then(json => dispatch(actionCategoryBook(json)))
-    .catch(error => {
-      dispatch(actionErrorLoadCategory(true))
-      console.log(error)
-    })
-)
-
+    .then((json) => dispatch(actionCategoryBook(json)))
+    .catch((error) => {
+      dispatch(actionErrorLoadCategory(true));
+      console.log(error);
+    });

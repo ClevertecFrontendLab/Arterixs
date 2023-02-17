@@ -16,8 +16,8 @@ export interface IContentToggle {
 }
 
 export interface ISwiperData {
-  amountSliderCovers: number
-  amountBooksCover: string[] | []
+  amountSliderCovers: number;
+  amountBooksCover: string[] | [];
 }
 
 export interface IAccordeonState {
@@ -48,148 +48,146 @@ export interface IBurgerState {
 }
 
 export interface IINititalState {
-  listBooks: IListBooks[] | [],
-  categoryBooks: ICategoryBooks[] | [],
-  loadedList: boolean,
-  loadedCategory: boolean,
-  errorLoadList: boolean,
-  errorLoadCategory: boolean,
+  listBooks: IListBooks[] | [];
+  categoryBooks: ICategoryBooks[] | [];
+  loadedList: boolean;
+  loadedCategory: boolean;
+  errorLoadList: boolean;
+  errorLoadCategory: boolean;
 }
 
 export interface IStateBookPage {
-  dataIdBook: null | IDataIdBook
-  loadedIdBook: boolean,
-  errorIdBook: boolean
+  dataIdBook: null | IDataIdBook;
+  loadedIdBook: boolean;
+  errorIdBook: boolean;
 }
 
 export interface IListBooks {
-  issueYear: string,
-  rating: number | null,
-  title: string,
-  authors: string[],
-  image: IImage | null,
-  categories: string[],
-  id: number,
-  booking: IBooking | null,
-  delivery: IDelivery | null,
-  histories: IHistories[] | null
+  issueYear: string;
+  rating: number | null;
+  title: string;
+  authors: string[];
+  image: IImage | null;
+  categories: string[];
+  id: number;
+  booking: IBooking | null;
+  delivery: IDelivery | null;
+  histories: IHistories[] | null;
 }
 
 export interface ICategoryBooks {
-  name: string,
-  path: string,
-  id: number,
+  name: string;
+  path: string;
+  id: number;
   func?: () => void;
 }
 
 export interface IImage {
-  url: string
+  url: string;
 }
 
 export interface IDelivery {
-  id: number,
-  handed: boolean,
-  dateHandedFrom: string,
-  dateHandedTo: string,
-  recipientId: number,
-  recipientFirstName: string,
-  recipientLastName: string
+  id: number;
+  handed: boolean;
+  dateHandedFrom: string;
+  dateHandedTo: string;
+  recipientId: number;
+  recipientFirstName: string;
+  recipientLastName: string;
 }
 
 export interface IBooking {
-  id: number,
-  order: boolean,
-  dateOrder: string,
-  customerId: number,
-  customerFirstName: string,
-  customerLastName: string
+  id: number;
+  order: boolean;
+  dateOrder: string;
+  customerId: number;
+  customerFirstName: string;
+  customerLastName: string;
 }
 
 export interface IHistories {
-  id: number,
-  userId: number
+  id: number;
+  userId: number;
 }
 
 export interface IActionLoaded {
-  type: ActionLoad.LOADING,
-  data: true
+  type: ActionLoad.LOADING;
+  data: true;
 }
 
 export interface IErrorLoadList {
-  type: ActionLoad.ERROR_LOAD_LIST,
-  data: true
+  type: ActionLoad.ERROR_LOAD_LIST;
+  data: true;
 }
 
 export interface IErrorLoadCategory {
-  type: ActionLoad.ERROR_LOAD_CATEGORY,
-  data: true
+  type: ActionLoad.ERROR_LOAD_CATEGORY;
+  data: true;
 }
 
 export interface IActionList {
-  type: ActionLoad.GET_LIST_BOOKS
-  data: IListBooks[] | []
+  type: ActionLoad.GET_LIST_BOOKS;
+  data: IListBooks[] | [];
 }
 
 export interface IActionCategory {
-  type: ActionLoad.GET_CATEGORY_BOOKS
-  data: ICategoryBooks[] | []
+  type: ActionLoad.GET_CATEGORY_BOOKS;
+  data: ICategoryBooks[] | [];
 }
 
 export interface IActionIdBooks {
-  type: ActionLoad.GET_ID_BOOK,
-  data: IDataIdBook
+  type: ActionLoad.GET_ID_BOOK;
+  data: IDataIdBook;
 }
 
-
 export interface IActionResetStateBooks {
-  type: ActionLoad.RESET_STATE_BOOKS,
-  data: false
+  type: ActionLoad.RESET_STATE_BOOKS;
+  data: false;
 }
 
 export interface IActionErrorIdBook {
-  type: ActionLoad.ERROR_LOAD_ID_BOOK,
-  data: true
+  type: ActionLoad.ERROR_LOAD_ID_BOOK;
+  data: true;
 }
 
 export interface IDataIdBook {
-  id: number,
-  title: string,
-  rating: number | null,
-  issueYear: string,
-  description: string,
-  publish: string,
-  pages: string,
-  cover: string,
-  weight: string,
-  format: string,
-  ISBN: string,
-  producer: string,
-  authors: string[],
-  images: IImage[] | null,
-  categories: string[],
-  comments: ICommentsMeta[],
-  booking: IBooking | null,
-  delivery: IDelivery | null,
-  histories: IHistories[] | null
+  id: number;
+  title: string;
+  rating: number | null;
+  issueYear: string;
+  description: string;
+  publish: string;
+  pages: string;
+  cover: string;
+  weight: string;
+  format: string;
+  ISBN: string;
+  producer: string;
+  authors: string[];
+  images: IImage[] | null;
+  categories: string[];
+  comments: ICommentsMeta[];
+  booking: IBooking | null;
+  delivery: IDelivery | null;
+  histories: IHistories[] | null;
 }
 
 export interface ICommentsMeta {
-  id: number,
-  rating: number,
-  text: string,
-  createdAt: string,
-  user: IUserMetaComments
+  id: number;
+  rating: number;
+  text: string;
+  createdAt: string;
+  user: IUserMetaComments;
 }
 
 export interface IUserMetaComments {
-  commentUserId: number,
-  firstName: string,
-  lastName: string,
-  avatarUrl: string
+  commentUserId: number;
+  firstName: string;
+  lastName: string;
+  avatarUrl: string;
 }
 
 export interface IControlLoadedResponse {
-  isLoaded: boolean,
-  isError: boolean,
+  isLoaded: boolean;
+  isError: boolean;
 }
-

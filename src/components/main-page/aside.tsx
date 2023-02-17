@@ -5,9 +5,9 @@ import { Genres } from './genres';
 import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 
 export const Aside = () => {
-  const isLoaded = useTypedSelector((state) => state.loadMainPage.loadedCategory && state.loadMainPage.loadedList)
-  const isError = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList)
-  const genresState = useTypedSelector((state) => state.loadMainPage.categoryBooks)
+  const isLoaded = useTypedSelector((state) => state.loadMainPage.loadedCategory && state.loadMainPage.loadedList);
+  const isError = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList);
+  const genresState = useTypedSelector((state) => state.loadMainPage.categoryBooks);
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);
@@ -38,12 +38,25 @@ export const Aside = () => {
                     ? 'wrapper-title-aside__title active-link__aside_title'
                     : 'wrapper-title-aside__title'
                 }
-              > Витрина книг</h2>
+              >
+                {' '}
+                Витрина книг
+              </h2>
               {isError ? null : <ButtonArrow {...{ stateAccordeon, isActive }} key='1' />}
             </div>
           )}
         </NavLink>
-        <nav className={isError ? 'genres-block_hidden' : (isLoaded ? (stateAccordeon ? 'genres-block' : 'genres-block_hidden') : 'genres-block_hidden')}>
+        <nav
+          className={
+            isError
+              ? 'genres-block_hidden'
+              : isLoaded
+              ? stateAccordeon
+                ? 'genres-block'
+                : 'genres-block_hidden'
+              : 'genres-block_hidden'
+          }
+        >
           <NavLink
             to='/books/all'
             data-test-id='navigation-books'

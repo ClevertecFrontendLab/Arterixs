@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { ICategoryBooks } from '../../types/interface';
 
 export const Genres = (props: ICategoryBooks) => {
-  const {name, path} = props
+  const { name, path } = props;
   if (props.id === 5) {
     return (
       <li className='genres'>

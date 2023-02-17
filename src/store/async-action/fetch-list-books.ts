@@ -1,19 +1,17 @@
-import { Dispatch } from 'react'
-import { AnyAction } from 'redux'
-import { actionErrorLoadList, actionListBook } from '../actions/action-creaters'
+import { Dispatch } from 'react';
+import { AnyAction } from 'redux';
+import { actionErrorLoadList, actionListBook } from '../actions/action-creaters';
 
-export const fetchListBooks = (dispatch: Dispatch<AnyAction>) => (
+export const fetchListBooks = (dispatch: Dispatch<AnyAction>) =>
   fetch('https://strapi.cleverland.by/api/books')
-    .then(response => {
+    .then((response) => {
       if (response.ok) {
-        return response.json()
+        return response.json();
       }
-      throw new Error(`is not ok ${response.status}`)
+      throw new Error(`is not ok ${response.status}`);
     })
-    .then(json => dispatch(actionListBook(json)))
-    .catch(error => {
-      dispatch(actionErrorLoadList(true))
-      console.log(error)
-    })
-)
-
+    .then((json) => dispatch(actionListBook(json)))
+    .catch((error) => {
+      dispatch(actionErrorLoadList(true));
+      console.log(error);
+    });

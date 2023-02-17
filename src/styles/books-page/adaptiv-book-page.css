@@ -287,11 +287,9 @@
   .navigation-page {
     height: 56px;
   }
-
 }
 
 @media (max-width: 600px) {
-
   .descriprion__name {
     max-width: 313px;
     width: 100%;

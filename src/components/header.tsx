@@ -10,7 +10,7 @@ export const Header = (props: IBurgerState) => {
   return (
     <header className='header'>
       <div className='header__wrap'>
-        <ErrorLoad  />
+        <ErrorLoad />
         <MenuBurger {...{ burgerState, toggleBurgerMenu }} />
         <Burger {...{ burgerState, toggleBurgerMenu }} />
         <section>
