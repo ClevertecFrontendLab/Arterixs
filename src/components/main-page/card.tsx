@@ -1,21 +1,21 @@
 import { Link } from 'react-router-dom';
 import { IListBooks } from '../../types/interface';
+import { cardProps } from '../../types/types';
 import { CLASSNAME_BUTTON_BOOK, CLASSNAME_BUTTON_BOOKED } from '../../utils/constants';
-import { convertUrlPath, getAuthorString, getContentButtonCardBooks } from '../../utils/helpers';
+import { getAuthorString, getContentButtonCardBooks } from '../../utils/helpers';
 import { EmptyCard } from './empty-card';
 import { FullCard } from './full-card';
 import { Grades } from './grades';
 import { Stars } from './stars';
 
-export const Card = (props: IListBooks) => {
-  const { rating, title, id, authors, image, booking, delivery, categories} = props;
+export const Card = (props: cardProps) => {
+  const { rating, title, id, authors, image, booking, delivery, urlWay} = props;
   const author = getAuthorString(authors)
   const contentButton = getContentButtonCardBooks(booking, delivery)
-  const pathUrl = convertUrlPath(categories[0])
 
   return (
     <article data-test-id='card' className='card-books'>
-      <Link to={`/books/${pathUrl}/${id}`} className='book'>
+      <Link to={`/books/${urlWay}/${id}`} className='book'>
         {image ? <FullCard img = {`https://strapi.cleverland.by${image.url}`}/> : <EmptyCard />}
         <div className='book__grade'>{rating ? <Stars /> : <Grades />}</div>
         <section className='book__name'>

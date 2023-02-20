@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useTypedSelector } from '../store/hooks/use-typed-selector';
 import { IBurgerState } from '../types/interface';
-import { DEFAULT_PATH_BREAD } from '../utils/constants';
-import { setPathInStateNavigation } from '../utils/helpers';
 import { ButtonArrow } from './main-page/button-arrow';
 import { Genres } from './main-page/genres';
 
@@ -19,7 +17,6 @@ export const MenuBurger = (props: IBurgerState) => {
   const clickDocs = () => {
     toggleBurgerMenu();
     closedAccordeon();
-    setPathInStateNavigation(DEFAULT_PATH_BREAD, dispatch)
   };
   return (
     <div

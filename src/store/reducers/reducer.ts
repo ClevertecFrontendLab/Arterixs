@@ -9,6 +9,8 @@ export const reducerListBook = (state: IINititalState = initialState, action: ac
       return { ...state, list: [...state.list, ...action.data], loaded: true };
     case ActionLoad.ERROR_LOAD_LIST:
       return { ...state, error: action.data };
+    case ActionLoad.RESET_LOAD_LIST:
+      return { ...state, error: action.data, list: [], loaded: action.data };
     default:
       return state;
   }

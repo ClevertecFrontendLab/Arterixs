@@ -1,8 +1,15 @@
 import { AnyAction } from 'redux';
 import { useState, useEffect, Dispatch } from 'react';
-import { UPGRADE_SEARCH_RESIZE } from './constants';
-import { IBooking, IDelivery, IImage } from '../types/interface';
-import { actionSetNavigation } from '../store/actions/action-creaters';
+import { DEFAULT_PATH_BREAD, UPGRADE_SEARCH_RESIZE } from './constants';
+import { IBooking, ICategoryBooks, IDelivery, IImage } from '../types/interface';
+
+
+export const typeGuardArray = <T>(argument: T | undefined | null): T => {
+  if (argument === undefined || argument === null) {
+    throw new TypeError('This value was promised to be there.');
+  }
+  return argument;
+}
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -42,7 +49,7 @@ export const getContentButtonCardBooks = (booking: IBooking | null, delivery: ID
   return contentButton;
 };
 
-export const getValidIdUrl = (value: string | undefined): number => (value ? Number(value) : 0);
+export const getValidIdUrl = (value: string | undefined): number => value ? Number(value) : 0;
 
 export const converterBooksCover = (images: IImage[]): string[] => {
   const arrayImageURL = images.map((item) => `https://strapi.cleverland.by${item.url}`);
@@ -72,33 +79,17 @@ export const convertedDate = (date: string): string => {
   return result;
 };
 
-export const convertUrlPath = (path: string): string => {
-  switch (path) {
-    case 'Бизнес':
-      return 'business';
-    case 'Психология':
-      return 'psychology';
-    case 'Родителям':
-      return 'parents';
-    case 'Нон-фикшн':
-      return 'non-fiction';
-    case 'Художественная литература':
-      return 'fiction';
-    case 'Программирование':
-      return 'programming';
-    case 'Хобби':
-      return 'hobby';
-    case 'Дизайн':
-      return 'design';
-    case 'Детские':
-      return 'childish';
-    case 'Другое':
-      return 'other';
-    default:
-      return 'category';
-  }
-};
+export const getValidUrlCategory = (path: string | undefined): string => path ? path : 'all'
 
-export const setPathInStateNavigation = (path: string, dispatch: Dispatch<AnyAction>): void => {
-  dispatch(actionSetNavigation(path))
+export const searchCategoryBreadLink = (url: string, categoryState: ICategoryBooks[] | []) => {
+  if (url === 'all') {
+    return DEFAULT_PATH_BREAD
+  }
+  if (categoryState.length) {
+    const search = typeGuardArray(categoryState.find((item) => item.path === url))
+    const pathName= search.name
+    return pathName
+  }
+  return DEFAULT_PATH_BREAD
 }
+

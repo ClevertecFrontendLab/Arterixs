@@ -136,6 +136,11 @@ export interface IErrorLoadCategory {
   data: true;
 }
 
+export interface IActionResetList {
+  type: ActionLoad.RESET_LOAD_LIST;
+  data: false
+}
+
 export interface IActionList {
   type: ActionLoad.GET_LIST_BOOKS;
   data: IListBooks[] | [];

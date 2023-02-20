@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { ButtonArrow } from './button-arrow';
 import { Genres } from './genres';
 import { useTypedSelector } from '../../store/hooks/use-typed-selector';
-import { setPathInStateNavigation } from '../../utils/helpers';
 import { DEFAULT_PATH_BREAD } from '../../utils/constants';
 
 export const Aside = () => {
@@ -15,9 +14,7 @@ export const Aside = () => {
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);
-  const clickedLink = () => {
-    setPathInStateNavigation(DEFAULT_PATH_BREAD, dispatch)
-  }
+
   return (
     <aside className='aside'>
       <section className='aside__content'>
@@ -67,7 +64,7 @@ export const Aside = () => {
           <NavLink
             to='/books/all'
             data-test-id='navigation-books'
-            onClick={clickedLink}
+            onClick={() => {}}
             className={({ isActive }) =>
               isActive
                 ? 'wrapper-title-aside__subtitle wrapper-title-aside__subtitle_active-link '

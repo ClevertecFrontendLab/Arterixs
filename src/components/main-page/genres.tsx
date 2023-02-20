@@ -1,15 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { ICategoryBooks } from '../../types/interface';
-import { setPathInStateNavigation } from '../../utils/helpers';
 
 export const Genres = (props: ICategoryBooks) => {
   const { name, path } = props;
   const clickedLink = (): void => {
     if (props.func) {
       props.func()
-    }
-    if (props.disp) {
-      setPathInStateNavigation(name, props.disp)
     }
   }
   if (props.id === 5) {
