@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useTypedSelector } from '../store/hooks/use-typed-selector';
 import { IBurgerState } from '../types/interface';
+import { DEFAULT_PATH_BREAD } from '../utils/constants';
+import { setPathInStateNavigation } from '../utils/helpers';
 import { ButtonArrow } from './main-page/button-arrow';
 import { Genres } from './main-page/genres';
 
 export const MenuBurger = (props: IBurgerState) => {
-  const isError = useTypedSelector((state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList);
-  const genresState = useTypedSelector((state) => state.loadMainPage.categoryBooks);
+  const dispatch = useDispatch()
+  const isError = useTypedSelector((state) => state.categoryBooks.error || state.listBooks.error);
+  const genresState = useTypedSelector((state) => state.categoryBooks.category);
   const { burgerState, toggleBurgerMenu } = props;
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
@@ -15,6 +19,7 @@ export const MenuBurger = (props: IBurgerState) => {
   const clickDocs = () => {
     toggleBurgerMenu();
     closedAccordeon();
+    setPathInStateNavigation(DEFAULT_PATH_BREAD, dispatch)
   };
   return (
     <div
@@ -73,7 +78,7 @@ export const MenuBurger = (props: IBurgerState) => {
                 </NavLink>
                 <ul className='genres-block__content'>
                   {genresState.map((item) => (
-                    <Genres func={toggleBurgerMenu} {...item} key={item.id} />
+                    <Genres disp = {dispatch} func={toggleBurgerMenu} {...item} key={item.id} />
                   ))}
                 </ul>
               </nav>

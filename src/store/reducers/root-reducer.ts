@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import { reducer } from './reducer';
+import { reducerListBook } from './reducer';
+import { reducerCategory } from './reducer-category';
 import { reducerGetIdBook } from './reducer-id-book';
+import { reducerNavigation } from './reducer-nav';
 
 export const rootReducer = combineReducers({
-  loadMainPage: reducer,
-  loadBookPage: reducerGetIdBook,
+  listBooks: reducerListBook,
+  categoryBooks: reducerCategory,
+  bookPage: reducerGetIdBook,
+  navigation: reducerNavigation
 });

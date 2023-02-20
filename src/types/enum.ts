@@ -7,4 +7,5 @@ export const enum ActionLoad {
   ERROR_LOAD_ID_BOOK = 'ERROR_LOAD_ID_BOOK',
   GET_ID_BOOK = 'GET_ID_BOOK',
   RESET_STATE_BOOKS = 'RESET_STATE_BOOK',
+  SET_PATH = 'SET_PATH'
 }

@@ -6,10 +6,10 @@ export const ErrorLoad = () => {
   const isActiveLink = useParams();
   const isError = useTypedSelector(
     (state) =>
-      state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList || state.loadBookPage.errorIdBook
+      state.categoryBooks.error || state.listBooks.error || state.bookPage.error
   );
   const isErrorMain = useTypedSelector(
-    (state) => state.loadMainPage.errorLoadCategory || state.loadMainPage.errorLoadList
+    (state) => state.categoryBooks.error || state.listBooks.error
   );
   return (
     <div

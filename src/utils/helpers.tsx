@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { AnyAction } from 'redux';
+import { useState, useEffect, Dispatch } from 'react';
 import { UPGRADE_SEARCH_RESIZE } from './constants';
 import { IBooking, IDelivery, IImage } from '../types/interface';
+import { actionSetNavigation } from '../store/actions/action-creaters';
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -97,29 +99,6 @@ export const convertUrlPath = (path: string): string => {
   }
 };
 
-export const convertUrlPathReverse = (path: string): string => {
-  switch (path) {
-    case 'business':
-      return 'Бизнес';
-    case 'psychology':
-      return 'Психология';
-    case 'parents':
-      return 'Родителям';
-    case 'non-fiction':
-      return 'Нон-фикшн';
-    case 'fiction':
-      return 'Художественная литература';
-    case 'programming':
-      return 'Программирование';
-    case 'hobby':
-      return 'Хобби';
-    case 'design':
-      return 'Дизайн';
-    case 'childish':
-      return 'Детские';
-    case 'other':
-      return 'Другое';
-    default:
-      return 'Все книги';
-  }
-};
+export const setPathInStateNavigation = (path: string, dispatch: Dispatch<AnyAction>): void => {
+  dispatch(actionSetNavigation(path))
+}

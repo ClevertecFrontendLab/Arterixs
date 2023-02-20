@@ -9,3 +9,4 @@ export const actionErrorLoadList = (data: true) => ({ type: ActionLoad.ERROR_LOA
 export const actionErrorIdBook = (data: true) => ({ type: ActionLoad.ERROR_LOAD_ID_BOOK, data });
 export const actionGetIdBook = (data: IDataIdBook) => ({ type: ActionLoad.GET_ID_BOOK, data });
 export const actionResetStateBooks = (data: false) => ({ type: ActionLoad.RESET_STATE_BOOKS, data });
+export const actionSetNavigation = (data: string) => ({ type: ActionLoad.SET_PATH, data })

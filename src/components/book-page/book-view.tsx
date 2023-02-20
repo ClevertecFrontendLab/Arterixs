@@ -25,7 +25,7 @@ export const BookView = (props: IDataIdBook) => {
                 : CLASSNAME_META_BUTTON_BOOK
               : CLASSNAME_META_BUTTON_BOOK
           }
-          disabled={delivery ? (delivery.handed ? true : false) : false}
+          disabled={delivery?.handed}
           type='button'
         >
           <span className='button-content'>{contentButton}</span>

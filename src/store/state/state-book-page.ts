@@ -1,5 +1,5 @@
 export const stateBookPage = {
-  dataIdBook: null,
-  loadedIdBook: false,
-  errorIdBook: false,
+  book: null,
+  loaded: false,
+  error: false,
 };

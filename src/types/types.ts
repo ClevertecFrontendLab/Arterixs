@@ -10,9 +10,12 @@ import {
   IErrorLoadCategory,
   IErrorLoadList,
   IDataIdBook,
+  IActionNavigation,
 } from './interface';
 
-export type actionsType = IActionList | IActionCategory | IActionLoaded | IErrorLoadCategory | IErrorLoadList;
+export type actionsType = IActionList | IActionLoaded | IErrorLoadList;
+export type actionsNav = IActionNavigation
+export type actionsCategory = IActionCategory | IErrorLoadCategory
 export type actionsGetIdBook = IActionIdBooks | IActionErrorIdBook | IActionResetStateBooks;
 export type propsErrorState = Omit<IControlLoadedResponse, 'isLoaded'>;
 export type propsMetaData = Pick<

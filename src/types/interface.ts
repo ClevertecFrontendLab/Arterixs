@@ -1,3 +1,5 @@
+import { Dispatch } from 'react';
+import { AnyAction } from 'redux';
 import { ActionLoad } from './enum';
 
 export interface IButtonToggle {
@@ -48,18 +50,26 @@ export interface IBurgerState {
 }
 
 export interface IINititalState {
-  listBooks: IListBooks[] | [];
-  categoryBooks: ICategoryBooks[] | [];
-  loadedList: boolean;
-  loadedCategory: boolean;
-  errorLoadList: boolean;
-  errorLoadCategory: boolean;
+  list: IListBooks[] | [];
+  loaded: boolean;
+  error: boolean;
+}
+
+export interface IStateCategory {
+  category: ICategoryBooks[] | []
+  loaded: boolean;
+  error: boolean;
+
+}
+
+export interface IStateNavigation {
+  path: string
 }
 
 export interface IStateBookPage {
-  dataIdBook: null | IDataIdBook;
-  loadedIdBook: boolean;
-  errorIdBook: boolean;
+  book: null | IDataIdBook;
+  loaded: boolean;
+  error: boolean;
 }
 
 export interface IListBooks {
@@ -79,7 +89,8 @@ export interface ICategoryBooks {
   name: string;
   path: string;
   id: number;
-  func?: () => void;
+  disp?: Dispatch<AnyAction>
+  func?: () => void
 }
 
 export interface IImage {
@@ -128,6 +139,11 @@ export interface IErrorLoadCategory {
 export interface IActionList {
   type: ActionLoad.GET_LIST_BOOKS;
   data: IListBooks[] | [];
+}
+
+export interface IActionNavigation {
+  type: ActionLoad.SET_PATH
+  data: string
 }
 
 export interface IActionCategory {

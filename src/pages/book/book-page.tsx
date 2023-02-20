@@ -10,9 +10,9 @@ import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 import { getValidIdUrl } from '../../utils/helpers';
 
 export const BookPage = () => {
-  const isLoaded = useTypedSelector((state) => state.loadBookPage.loadedIdBook);
-  const isError = useTypedSelector((state) => state.loadBookPage.errorIdBook);
-  const dataBook = useTypedSelector((state) => state.loadBookPage.dataIdBook);
+  const isLoaded = useTypedSelector((state) => state.bookPage.loaded);
+  const isError = useTypedSelector((state) => state.bookPage.error);
+  const dataBook = useTypedSelector((state) => state.bookPage.book);
   const didLogRef = useRef(false);
   const params = useParams();
   const id = getValidIdUrl(params.id);
