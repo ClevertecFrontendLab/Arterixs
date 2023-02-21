@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useTypedSelector } from '../store/hooks/use-typed-selector';
-import { IBurgerState } from '../types/interface';
+import { IBurgerState, IListBooks } from '../types/interface';
 import { ButtonArrow } from './main-page/button-arrow';
 import { Genres } from './main-page/genres';
 
@@ -10,6 +10,7 @@ export const MenuBurger = (props: IBurgerState) => {
   const dispatch = useDispatch()
   const isError = useTypedSelector((state) => state.categoryBooks.error || state.listBooks.error);
   const genresState = useTypedSelector((state) => state.categoryBooks.category);
+  const listState = useTypedSelector((state) => state.listBooks.list);
   const { burgerState, toggleBurgerMenu } = props;
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
@@ -18,6 +19,7 @@ export const MenuBurger = (props: IBurgerState) => {
     toggleBurgerMenu();
     closedAccordeon();
   };
+
   return (
     <div
       className={burgerState ? 'burger-menu-wrapper burger-menu-wrapper_active' : 'burger-menu-wrapper'}

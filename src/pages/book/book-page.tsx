@@ -7,11 +7,13 @@ import { ReviewView } from '../../components/book-page/review-view';
 import { Loader } from '../../components/loaded/loader';
 import { actionResetListBooks } from '../../store/actions/action-creaters';
 import { fetchBookId } from '../../store/async-action/fetch-book-id';
+import { fetchCategoryBooks } from '../../store/async-action/fetch-category';
 import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 import { getValidIdUrl } from '../../utils/helpers';
 
 export const BookPage = () => {
   const dispatch = useDispatch();
+  const isCategory = useTypedSelector((state) => state.categoryBooks.category.length)
   const isLoaded = useTypedSelector((state) => state.bookPage.loaded);
   const isError = useTypedSelector((state) => state.bookPage.error);
   const dataBook = useTypedSelector((state) => state.bookPage.book);
@@ -21,10 +23,13 @@ export const BookPage = () => {
   useEffect(() => {
     if (didLogRef.current === false) {
       fetchBookId(dispatch, id);
+      if (!isCategory) {
+        fetchCategoryBooks(dispatch);
+      }
       dispatch(actionResetListBooks(false))
       didLogRef.current = true;
     }
-  }, [dispatch, id, params]);
+  }, [dispatch, id, params, isCategory]);
 
   return (
     <main className='main-book-page'>

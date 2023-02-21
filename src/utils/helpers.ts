@@ -1,7 +1,8 @@
 import { AnyAction } from 'redux';
 import { useState, useEffect, Dispatch } from 'react';
 import { DEFAULT_PATH_BREAD, UPGRADE_SEARCH_RESIZE } from './constants';
-import { IBooking, ICategoryBooks, IDelivery, IImage } from '../types/interface';
+import { IBooking, ICategoryBooks, IDelivery, IImage, IListBooks } from '../types/interface';
+import { actionSortBooks } from '../store/actions/action-creaters';
 
 
 export const typeGuardArray = <T>(argument: T | undefined | null): T => {
@@ -91,5 +92,17 @@ export const searchCategoryBreadLink = (url: string, categoryState: ICategoryBoo
     return pathName
   }
   return DEFAULT_PATH_BREAD
+}
+
+export const sortingBooksInCategory = (arrayBooks: IListBooks[], dispatch: Dispatch<AnyAction>, category: string = DEFAULT_PATH_BREAD) => {
+  if (category === DEFAULT_PATH_BREAD) {
+    dispatch(actionSortBooks(arrayBooks))
+    return
+  }
+  const arrayCategory = arrayBooks.filter((item) => {
+    const targetCategory = item.categories.find((item) => item === category)
+    return targetCategory === category
+  })
+  dispatch(actionSortBooks(arrayCategory))
 }
 

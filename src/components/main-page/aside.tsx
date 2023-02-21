@@ -4,16 +4,20 @@ import { NavLink } from 'react-router-dom';
 import { ButtonArrow } from './button-arrow';
 import { Genres } from './genres';
 import { useTypedSelector } from '../../store/hooks/use-typed-selector';
-import { DEFAULT_PATH_BREAD } from '../../utils/constants';
+import { sortingBooksInCategory } from '../../utils/helpers';
 
 export const Aside = () => {
   const dispatch = useDispatch()
   const isLoaded = useTypedSelector((state) => state.categoryBooks.loaded && state.listBooks.loaded);
   const isError = useTypedSelector((state) => state.categoryBooks.error || state.listBooks.error);
   const genresState = useTypedSelector((state) => state.categoryBooks.category);
+  const listState = useTypedSelector((state) => state.listBooks.list);
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);
+  const clickedInAllBooks = () => {
+    sortingBooksInCategory(listState, dispatch)
+  }
 
   return (
     <aside className='aside'>
@@ -64,7 +68,7 @@ export const Aside = () => {
           <NavLink
             to='/books/all'
             data-test-id='navigation-books'
-            onClick={() => {}}
+            onClick={clickedInAllBooks}
             className={({ isActive }) =>
               isActive
                 ? 'wrapper-title-aside__subtitle wrapper-title-aside__subtitle_active-link '
@@ -75,7 +79,7 @@ export const Aside = () => {
           </NavLink>
           <ul className='genres-block__content'>
             {genresState.map((item) => (
-              <Genres disp = {dispatch} {...item} key={item.id} />
+              <Genres {...item} key={item.id} />
             ))}
           </ul>
         </nav>

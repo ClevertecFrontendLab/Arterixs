@@ -13,10 +13,14 @@ import {
   IActionNavigation,
   IListBooks,
   IActionResetList,
+  ICategoryBooks,
+  IGenresProp,
+  IActionSortingBooks,
 } from './interface';
 
 export type actionsType = IActionList | IActionLoaded | IErrorLoadList | IActionResetList;
 export type actionsNav = IActionNavigation
+export type actionSortingBook = IActionSortingBooks
 export type actionsCategory = IActionCategory | IErrorLoadCategory
 export type actionsGetIdBook = IActionIdBooks | IActionErrorIdBook | IActionResetStateBooks;
 export type propsErrorState = Omit<IControlLoadedResponse, 'isLoaded'>;
@@ -33,3 +37,4 @@ export type propsMetaData = Pick<IDataIdBook,
 >;
 export type rootState = ReturnType<typeof rootReducer>;
 export type cardProps = IListBooks & {urlWay: string}
+export type genresProps = ICategoryBooks & IGenresProp

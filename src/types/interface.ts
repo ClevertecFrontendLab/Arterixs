@@ -72,6 +72,10 @@ export interface IStateBookPage {
   error: boolean;
 }
 
+export interface IStateSorting {
+  bookSortingList: IListBooks[] | []
+}
+
 export interface IListBooks {
   issueYear: string;
   rating: number | null;
@@ -91,6 +95,12 @@ export interface ICategoryBooks {
   id: number;
   disp?: Dispatch<AnyAction>
   func?: () => void
+}
+
+export interface IGenresProp {
+  disp?: Dispatch<AnyAction>
+  func?: () => void
+  arrayCat: string[][]
 }
 
 export interface IImage {
@@ -149,6 +159,11 @@ export interface IActionList {
 export interface IActionNavigation {
   type: ActionLoad.SET_PATH
   data: string
+}
+
+export interface IActionSortingBooks {
+  type: ActionLoad.SORTING_BOOKS
+  data: IListBooks[]
 }
 
 export interface IActionCategory {
