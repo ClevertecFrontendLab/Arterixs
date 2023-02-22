@@ -106,3 +106,8 @@ export const sortingBooksInCategory = (arrayBooks: IListBooks[], dispatch: Dispa
   dispatch(actionSortBooks(arrayCategory))
 }
 
+export const getAmountBooks = (genresState: IListBooks[] | [], name: string) => {
+  const arrBooksInCategory = genresState.map((item) => item.categories.filter((item) => item === name)).flat()
+  return arrBooksInCategory
+}
+

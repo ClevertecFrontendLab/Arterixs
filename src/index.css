@@ -1,5 +1,6 @@
 @import './styles/font-face.css';
 @import './styles/header.css';
+@import './styles/no-content.css';
 @import './styles/loading/loaded.css';
 @import './styles/loading/error-message.css';
 @import './styles/burger-menu.css';

@@ -6,11 +6,11 @@ import { actionsType } from '../../types/types';
 export const reducerListBook = (state: IINititalState = initialState, action: actionsType): IINititalState => {
   switch (action.type) {
     case ActionLoad.GET_LIST_BOOKS:
-      return { ...state, list: [...state.list, ...action.data], loaded: true };
+      return { ...state, list: [...action.data], loaded: true };
     case ActionLoad.ERROR_LOAD_LIST:
       return { ...state, error: action.data };
     case ActionLoad.RESET_LOAD_LIST:
-      return { ...state, error: action.data, list: [], loaded: action.data };
+      return { ...state, error: action.data, loaded: action.data };
     default:
       return state;
   }

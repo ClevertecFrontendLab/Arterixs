@@ -93,7 +93,6 @@ export interface ICategoryBooks {
   name: string;
   path: string;
   id: number;
-  disp?: Dispatch<AnyAction>
   func?: () => void
 }
 
