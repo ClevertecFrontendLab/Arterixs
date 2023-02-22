@@ -7,6 +7,7 @@ import { useResize } from '../../utils/helpers';
 import { SearchMobile } from './search-mobile';
 
 export const Search = (props: IContentToggle) => {
+  const {func, sort} = props
   const widthWindow = useResize();
   const [window, setClickWindow] = useState(true);
   const [list, setClickList] = useState(false);
@@ -32,7 +33,13 @@ export const Search = (props: IContentToggle) => {
       func: windowClick,
       state: window,
     },
-    { id: 2, icon: '#list', className: 'button-position', data: 'button-menu-view-list', func: listClick, state: list },
+    { id: 2,
+      icon: '#list',
+      className: 'button-position',
+      data: 'button-menu-view-list',
+      func: listClick,
+      state: list
+    },
   ];
 
   return (
@@ -40,13 +47,13 @@ export const Search = (props: IContentToggle) => {
       <form action='#' className='form-search'>
         {widthWindow ? (
           <>
-            <SearchMobile {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch }} />{' '}
-            <ButtonRatio {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch }} />
+            <SearchMobile {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch, stateSort: false }} />{' '}
+            <ButtonRatio {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch, stateSort: false }} />
           </>
         ) : (
           <InputSearch />
         )}
-        {stateSearch ? false : <ButtonRatio {...{ icon: '#sort', func: () => {}, state: false }} />}
+        {stateSearch ? false : <ButtonRatio {...{ icon: '#sort', func, state: false, stateSort: sort }} />}
       </form>
       <div className='wrapper-button-toggle'>
         {stateSearch ? false : arrIconButton.map((item) => <ButtonToggle {...item} key={item.id} />)}

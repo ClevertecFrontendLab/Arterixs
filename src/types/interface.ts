@@ -15,6 +15,8 @@ export interface IContentToggle {
   window: () => void;
   list: () => void;
   content: boolean;
+  func: () => void;
+  sort: boolean
 }
 
 export interface ISwiperData {
@@ -36,6 +38,7 @@ export interface ISearchBut {
   icon: string;
   func: () => void;
   state: boolean;
+  stateSort: boolean
 }
 
 export interface IButtonSearch {
@@ -162,6 +165,11 @@ export interface IActionNavigation {
 
 export interface IActionSortingBooks {
   type: ActionLoad.SORTING_BOOKS
+  data: IListBooks[]
+}
+
+export interface IActionSortingRating {
+  type: ActionLoad.SORTING_RATING
   data: IListBooks[]
 }
 

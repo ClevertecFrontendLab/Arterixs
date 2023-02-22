@@ -16,11 +16,12 @@ import {
   ICategoryBooks,
   IGenresProp,
   IActionSortingBooks,
+  IActionSortingRating,
 } from './interface';
 
 export type actionsType = IActionList | IActionLoaded | IErrorLoadList | IActionResetList;
 export type actionsNav = IActionNavigation
-export type actionSortingBook = IActionSortingBooks
+export type actionSortingBook = IActionSortingBooks | IActionSortingRating
 export type actionsCategory = IActionCategory | IErrorLoadCategory
 export type actionsGetIdBook = IActionIdBooks | IActionErrorIdBook | IActionResetStateBooks;
 export type propsErrorState = Omit<IControlLoadedResponse, 'isLoaded'>;

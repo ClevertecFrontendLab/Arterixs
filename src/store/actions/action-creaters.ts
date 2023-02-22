@@ -11,3 +11,4 @@ export const actionGetIdBook = (data: IDataIdBook) => ({ type: ActionLoad.GET_ID
 export const actionResetStateBooks = (data: false) => ({ type: ActionLoad.RESET_STATE_BOOKS, data });
 export const actionResetListBooks = (data: false) => ({ type: ActionLoad.RESET_LOAD_LIST, data });
 export const actionSortBooks = (data: IListBooks[]) => ({type: ActionLoad.SORTING_BOOKS, data})
+export const actionSortRatingBooks = (data: IListBooks[]) => ({type: ActionLoad.SORTING_RATING, data})

@@ -2,7 +2,7 @@ import { AnyAction } from 'redux';
 import { useState, useEffect, Dispatch } from 'react';
 import { DEFAULT_PATH_BREAD, UPGRADE_SEARCH_RESIZE } from './constants';
 import { IBooking, ICategoryBooks, IDelivery, IImage, IListBooks } from '../types/interface';
-import { actionSortBooks } from '../store/actions/action-creaters';
+import { actionSortBooks, actionSortRatingBooks } from '../store/actions/action-creaters';
 
 
 export const typeGuardArray = <T>(argument: T | undefined | null): T => {
@@ -110,4 +110,23 @@ export const getAmountBooks = (genresState: IListBooks[] | [], name: string) => 
   const arrBooksInCategory = genresState.map((item) => item.categories.filter((item) => item === name)).flat()
   return arrBooksInCategory
 }
+
+const convertNull = (value: number | null) => {
+  if (value === null) {
+    return 0
+  }
+  return value
+}
+
+export const sortingBooksInRating = (genresState: IListBooks[] | [], dispatch: Dispatch<AnyAction>, flag: boolean) => {
+  const copyArray = genresState.slice()
+  console.log(copyArray)
+  if (flag) {
+    copyArray.sort((a,b) => convertNull(a.rating) - convertNull(b.rating))
+  } else {
+    copyArray.sort((a,b) => convertNull(b.rating) - convertNull(a.rating))
+  }
+  dispatch(actionSortRatingBooks(copyArray))
+}
+
 

@@ -73,6 +73,12 @@
 .search-rating {
   width: 16px;
   height: 16px;
+  transition: all 0.3s ease;
+}
+
+.search-rating_active {
+  transform: rotate(180deg);
+  transition: all 0.3s ease;
 }
 
 .wrapper-button-toggle {
