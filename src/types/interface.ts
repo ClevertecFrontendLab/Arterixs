@@ -1,4 +1,4 @@
-import { Dispatch } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { AnyAction } from 'redux';
 import { ActionLoad } from './enum';
 
@@ -17,6 +17,7 @@ export interface IContentToggle {
   content: boolean;
   func: () => void;
   sort: boolean
+  setInput: React.Dispatch<React.SetStateAction<string>>
 }
 
 export interface ISwiperData {
@@ -73,11 +74,6 @@ export interface IStateBookPage {
   book: null | IDataIdBook;
   loaded: boolean;
   error: boolean;
-}
-
-export interface IStateSorting {
-  bookSortingList: IListBooks[] | [],
-  bookSortingRating: IListBooks[] | [],
 }
 
 export interface IListBooks {
@@ -162,16 +158,6 @@ export interface IActionList {
 export interface IActionNavigation {
   type: ActionLoad.SET_PATH
   data: string
-}
-
-export interface IActionSortingBooks {
-  type: ActionLoad.SORTING_BOOKS
-  data: IListBooks[]
-}
-
-export interface IActionSortingRating {
-  type: ActionLoad.SORTING_RATING
-  data: IListBooks[]
 }
 
 export interface IActionCategory {

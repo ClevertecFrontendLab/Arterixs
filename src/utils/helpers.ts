@@ -1,9 +1,7 @@
-import { AnyAction } from 'redux';
-import { useState, useEffect, Dispatch } from 'react';
+import { useState, useEffect } from 'react';
 import { DEFAULT_PATH_BREAD, UPGRADE_SEARCH_RESIZE } from './constants';
 import { IBooking, ICategoryBooks, IDelivery, IImage, IListBooks } from '../types/interface';
-import { actionSortBooks, actionSortRatingBooks } from '../store/actions/action-creaters';
-import { useTypedSelector } from '../store/hooks/use-typed-selector';
+
 
 
 export const typeGuardArray = <T>(argument: T | undefined | null): T => {
@@ -95,16 +93,15 @@ export const searchCategoryBreadLink = (url: string, categoryState: ICategoryBoo
   return DEFAULT_PATH_BREAD
 }
 
-export const sortingBooksInCategory = (arrayBooks: IListBooks[], dispatch: Dispatch<AnyAction>, category: string = DEFAULT_PATH_BREAD) => {
+export const sortingBooksInCategory = (arrayBooks: IListBooks[], category: string = DEFAULT_PATH_BREAD) => {
   if (category === DEFAULT_PATH_BREAD) {
-    dispatch(actionSortBooks(arrayBooks))
-    return
+    return arrayBooks
   }
   const arrayCategory = arrayBooks.filter((item) => {
     const targetCategory = item.categories.find((item) => item === category)
     return targetCategory === category
   })
-  dispatch(actionSortBooks(arrayCategory))
+  return arrayCategory
 }
 
 export const getAmountBooks = (genresState: IListBooks[] | [], name: string) => {
@@ -119,14 +116,14 @@ export const convertNull = (value: number | null) => {
   return value
 }
 
-export const sortingBooksInRating = (genresState: IListBooks[] | [], dispatch: Dispatch<AnyAction>, flag: boolean) => {
+export const sortingBooksInRating = (genresState: IListBooks[] | [], flag: boolean) => {
   const copyArray = genresState.slice()
   if (flag) {
     copyArray.sort((a,b) => convertNull(a.rating) - convertNull(b.rating))
   } else {
     copyArray.sort((a,b) => convertNull(b.rating) - convertNull(a.rating))
   }
-  dispatch(actionSortRatingBooks(copyArray))
+  return copyArray
 }
 
 

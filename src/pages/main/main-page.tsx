@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import { Search } from '../../components/main-page/search';
@@ -11,39 +10,38 @@ import { getValidUrlCategory, searchCategoryBreadLink, sortingBooksInCategory, s
 
 
 export const MainPage = () => {
-  const dispatch = useDispatch();
   const params = useParams()
   const categoryState = useTypedSelector((state) => state.categoryBooks.category)
   const isLoaded = useTypedSelector((state) => state.categoryBooks.loaded && state.listBooks.loaded);
   const isError = useTypedSelector((state) => state.categoryBooks.error || state.listBooks.error);
-  const sortingBooks = useTypedSelector((state) => state.sortingBooks.bookSortingList)
   const arrayListBooks = useTypedSelector((state) => state.listBooks.list);
-  const sortRatingBooks = useTypedSelector((state) => state.sortingBooks.bookSortingRating);
   const categoryUrl = getValidUrlCategory(params.category)
   const path = searchCategoryBreadLink(categoryUrl, categoryState)
   const [sort, setSorting] = useState(false)
   const [content, setContent] = useState(true);
+  const [value, setValue] = useState('')
+  const [categories, setCategory] = useState(arrayListBooks)
   const getWindowContent = () => setContent(true);
   const getListContent = () => setContent(false);
   const toggleSortingButton = () => setSorting(!sort)
 
-  useEffect(() => {
-      sortingBooksInRating(sortingBooks, dispatch, sort)
-  }, [sort, sortingBooks, dispatch])
+  const sortInRating = sortingBooksInRating(categories, sort)
+  const searchArrayBookTitle = sortInRating.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()))
 
   useEffect(() => {
-   if (arrayListBooks.length) {
-     sortingBooksInCategory(arrayListBooks, dispatch, path)
-   }
-  },[arrayListBooks, dispatch, path])
+    if (arrayListBooks.length) {
+      const category = sortingBooksInCategory(arrayListBooks, path)
+      setCategory([...category])
+    }
+   },[arrayListBooks, path])
 
 
   return (
     <main style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
       <Loader {...{ isLoaded, isError }} />
       <section className={isError ? 'main-hidden' : isLoaded ? 'main-content' : 'main-hidden'}>
-        <Search {...{ window: getWindowContent, list: getListContent, content, func: toggleSortingButton, sort }} />
-        {content ? <Content arrayList={sortRatingBooks} /> : <ContentList arrayList={sortRatingBooks} />}
+        <Search {...{ window: getWindowContent, list: getListContent, content, func: toggleSortingButton, sort, setInput: setValue }} />
+        {content ? <Content arrayList={searchArrayBookTitle} /> : <ContentList arrayList={searchArrayBookTitle} />}
       </section>
     </main>
   );
