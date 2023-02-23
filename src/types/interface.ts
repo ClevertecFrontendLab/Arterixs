@@ -76,7 +76,8 @@ export interface IStateBookPage {
 }
 
 export interface IStateSorting {
-  bookSortingList: IListBooks[] | []
+  bookSortingList: IListBooks[] | [],
+  bookSortingRating: IListBooks[] | [],
 }
 
 export interface IListBooks {

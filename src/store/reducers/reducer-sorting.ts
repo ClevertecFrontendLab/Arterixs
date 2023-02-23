@@ -8,7 +8,7 @@ export const reducerSortingBooks = (state: IStateSorting = sortingState, action:
     case ActionLoad.SORTING_BOOKS:
       return { ...state, bookSortingList: action.data};
     case ActionLoad.SORTING_RATING:
-      return {...state, bookSortingList: action.data}
+      return {...state, bookSortingRating: action.data}
     default:
       return state;
   }

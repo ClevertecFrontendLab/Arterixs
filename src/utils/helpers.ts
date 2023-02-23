@@ -3,6 +3,7 @@ import { useState, useEffect, Dispatch } from 'react';
 import { DEFAULT_PATH_BREAD, UPGRADE_SEARCH_RESIZE } from './constants';
 import { IBooking, ICategoryBooks, IDelivery, IImage, IListBooks } from '../types/interface';
 import { actionSortBooks, actionSortRatingBooks } from '../store/actions/action-creaters';
+import { useTypedSelector } from '../store/hooks/use-typed-selector';
 
 
 export const typeGuardArray = <T>(argument: T | undefined | null): T => {
@@ -111,7 +112,7 @@ export const getAmountBooks = (genresState: IListBooks[] | [], name: string) => 
   return arrBooksInCategory
 }
 
-const convertNull = (value: number | null) => {
+export const convertNull = (value: number | null) => {
   if (value === null) {
     return 0
   }
@@ -120,7 +121,6 @@ const convertNull = (value: number | null) => {
 
 export const sortingBooksInRating = (genresState: IListBooks[] | [], dispatch: Dispatch<AnyAction>, flag: boolean) => {
   const copyArray = genresState.slice()
-  console.log(copyArray)
   if (flag) {
     copyArray.sort((a,b) => convertNull(a.rating) - convertNull(b.rating))
   } else {

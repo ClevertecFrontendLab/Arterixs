@@ -1,3 +1,4 @@
 export const sortingState = {
-  bookSortingList: []
+  bookSortingList: [],
+  bookSortingRating: []
 };
