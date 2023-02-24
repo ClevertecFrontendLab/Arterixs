@@ -41,7 +41,7 @@ export const MainPage = () => {
       <Loader {...{ isLoaded, isError }} />
       <section className={isError ? 'main-hidden' : isLoaded ? 'main-content' : 'main-hidden'}>
         <Search {...{ window: getWindowContent, list: getListContent, content, func: toggleSortingButton, sort, setInput: setValue }} />
-        {content ? <Content arrayList={searchArrayBookTitle} /> : <ContentList arrayList={searchArrayBookTitle} />}
+        {content ? <Content arrayList={searchArrayBookTitle} search={value} /> : <ContentList arrayList={searchArrayBookTitle} search={value} />}
       </section>
     </main>
   );

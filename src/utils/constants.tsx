@@ -10,3 +10,5 @@ export const CLASSNAME_BUTTON_BOOK = 'book__submit';
 export const CLASSNAME_META_BUTTON_BOOKED = 'meta-info__button meta-info__button_closed';
 export const CLASSNAME_META_BUTTON_BOOK = 'meta-info__button';
 export const DEFAULT_PATH_BREAD = 'Все книги'
+export const NO_BOOKS_IN_CATEGORY = 'В этой категории книг ещё нет'
+export const NO_BOOKS_IN_SEARCH = 'По запросу ничего не найдено'

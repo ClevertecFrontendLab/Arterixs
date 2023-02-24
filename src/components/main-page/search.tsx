@@ -47,7 +47,7 @@ export const Search = (props: IContentToggle) => {
       <form action='#' className='form-search'>
         {widthWindow ? (
           <>
-            <SearchMobile {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch, stateSort: false }} />{' '}
+            <SearchMobile {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch, stateSort: false, setInput }} />
             <ButtonRatio {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch, stateSort: false }} />
           </>
         ) : (

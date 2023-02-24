@@ -16,6 +16,7 @@ import {
   ICategoryBooks,
   IGenresProp,
   IContentToggle,
+  ISearchBut,
 } from './interface';
 
 export type actionsType = IActionList | IActionLoaded | IErrorLoadList | IActionResetList;
@@ -24,6 +25,7 @@ export type actionsCategory = IActionCategory | IErrorLoadCategory
 export type actionsGetIdBook = IActionIdBooks | IActionErrorIdBook | IActionResetStateBooks;
 export type propsErrorState = Omit<IControlLoadedResponse, 'isLoaded'>;
 export type propsInputSearch = Pick<IContentToggle, 'setInput'>
+export type propsInputMoblieSearch = ISearchBut & propsInputSearch
 export type propsMetaData = Pick<IDataIdBook,
   'issueYear' |
   'publish' |
@@ -36,5 +38,5 @@ export type propsMetaData = Pick<IDataIdBook,
   'categories'
 >;
 export type rootState = ReturnType<typeof rootReducer>;
-export type cardProps = IListBooks & {urlWay: string}
+export type cardProps = IListBooks & {urlWay: string, search: string}
 export type genresProps = ICategoryBooks & IGenresProp

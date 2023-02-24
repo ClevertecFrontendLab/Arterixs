@@ -221,3 +221,8 @@ export interface IControlLoadedResponse {
   isLoaded: boolean;
   isError: boolean;
 }
+
+export interface IBackLightProps {
+  valueInput: string,
+  valueTitle: string
+}
