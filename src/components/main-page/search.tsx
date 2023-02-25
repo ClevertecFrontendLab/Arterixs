@@ -7,6 +7,7 @@ import { useResize } from '../../utils/helpers';
 import { SearchMobile } from './search-mobile';
 
 export const Search = (props: IContentToggle) => {
+  const { func, sort, setInput, search } = props;
   const widthWindow = useResize();
   const [window, setClickWindow] = useState(true);
   const [list, setClickList] = useState(false);
@@ -40,13 +41,15 @@ export const Search = (props: IContentToggle) => {
       <form action='#' className='form-search'>
         {widthWindow ? (
           <>
-            <SearchMobile {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch }} />{' '}
-            <ButtonRatio {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch }} />
+            <SearchMobile
+              {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch, stateSort: false, setInput }}
+            />
+            <ButtonRatio {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch, stateSort: false }} />
           </>
         ) : (
-          <InputSearch />
+          <InputSearch {...{ setInput, search }} />
         )}
-        {stateSearch ? false : <ButtonRatio {...{ icon: '#sort', func: () => {}, state: false }} />}
+        {stateSearch ? false : <ButtonRatio {...{ icon: '#sort', func, state: false, stateSort: sort }} />}
       </form>
       <div className='wrapper-button-toggle'>
         {stateSearch ? false : arrIconButton.map((item) => <ButtonToggle {...item} key={item.id} />)}

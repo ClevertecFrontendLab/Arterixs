@@ -15,7 +15,9 @@ export const BookView = (props: IDataIdBook) => {
     <section className={conditionRenderCheck ? 'head-books-page' : 'head-books-page_single'}>
       {images ? <CoverBook {...{ amountSliderCovers, amountBooksCover }} /> : <CoverEmpty />}
       <section className='meta-info'>
-        <h2 className='meta-info__books'>{title}</h2>
+        <h2 data-test-id='book-title' className='meta-info__books'>
+          {title}
+        </h2>
         <h3 className='meta-info__author'>{authorString}</h3>
         <button
           className={
@@ -25,7 +27,7 @@ export const BookView = (props: IDataIdBook) => {
                 : CLASSNAME_META_BUTTON_BOOK
               : CLASSNAME_META_BUTTON_BOOK
           }
-          disabled={delivery ? (delivery.handed ? true : false) : false}
+          disabled={delivery?.handed}
           type='button'
         >
           <span className='button-content'>{contentButton}</span>

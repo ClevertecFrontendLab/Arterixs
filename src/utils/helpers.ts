@@ -1,6 +1,13 @@
 import { useState, useEffect } from 'react';
-import { UPGRADE_SEARCH_RESIZE } from './constants';
-import { IBooking, IDelivery, IImage } from '../types/interface';
+import { DEFAULT_PATH_BREAD, UPGRADE_SEARCH_RESIZE } from './constants';
+import { IBooking, ICategoryBooks, IDelivery, IImage, IListBooks } from '../types/interface';
+
+export const typeGuardArray = <T>(argument: T | undefined | null): T => {
+  if (argument === undefined || argument === null) {
+    throw new TypeError('This value was promised to be there.');
+  }
+  return argument;
+};
 
 export const useResize = () => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -70,56 +77,49 @@ export const convertedDate = (date: string): string => {
   return result;
 };
 
-export const convertUrlPath = (path: string): string => {
-  switch (path) {
-    case 'Бизнес':
-      return 'business';
-    case 'Психология':
-      return 'psychology';
-    case 'Родителям':
-      return 'parents';
-    case 'Нон-фикшн':
-      return 'non-fiction';
-    case 'Художественная литература':
-      return 'fiction';
-    case 'Программирование':
-      return 'programming';
-    case 'Хобби':
-      return 'hobby';
-    case 'Дизайн':
-      return 'design';
-    case 'Детские':
-      return 'childish';
-    case 'Другое':
-      return 'other';
-    default:
-      return 'category';
+export const getValidUrlCategory = (path: string | undefined): string => (path ? path : 'all');
+
+export const searchCategoryBreadLink = (url: string, categoryState: ICategoryBooks[] | []) => {
+  if (url === 'all') {
+    return DEFAULT_PATH_BREAD;
   }
+  if (categoryState.length) {
+    const search = typeGuardArray(categoryState.find((item) => item.path === url));
+    const pathName = search.name;
+    return pathName;
+  }
+  return DEFAULT_PATH_BREAD;
 };
 
-export const convertUrlPathReverse = (path: string): string => {
-  switch (path) {
-    case 'business':
-      return 'Бизнес';
-    case 'psychology':
-      return 'Психология';
-    case 'parents':
-      return 'Родителям';
-    case 'non-fiction':
-      return 'Нон-фикшн';
-    case 'fiction':
-      return 'Художественная литература';
-    case 'programming':
-      return 'Программирование';
-    case 'hobby':
-      return 'Хобби';
-    case 'design':
-      return 'Дизайн';
-    case 'childish':
-      return 'Детские';
-    case 'other':
-      return 'Другое';
-    default:
-      return 'Все книги';
+export const sortingBooksInCategory = (arrayBooks: IListBooks[], category: string = DEFAULT_PATH_BREAD) => {
+  if (category === DEFAULT_PATH_BREAD) {
+    return arrayBooks;
   }
+  const arrayCategory = arrayBooks.filter((item) => {
+    const targetCategory = item.categories.find((item) => item === category);
+    return targetCategory === category;
+  });
+  return arrayCategory;
+};
+
+export const getAmountBooks = (genresState: IListBooks[] | [], name: string) => {
+  const arrBooksInCategory = genresState.map((item) => item.categories.filter((item) => item === name)).flat();
+  return arrBooksInCategory;
+};
+
+export const convertNull = (value: number | null) => {
+  if (value === null) {
+    return 0;
+  }
+  return value;
+};
+
+export const sortingBooksInRating = (genresState: IListBooks[] | [], flag: boolean) => {
+  const copyArray = genresState.slice();
+  if (flag) {
+    copyArray.sort((a, b) => convertNull(a.rating) - convertNull(b.rating));
+  } else {
+    copyArray.sort((a, b) => convertNull(b.rating) - convertNull(a.rating));
+  }
+  return copyArray;
 };

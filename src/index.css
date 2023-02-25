@@ -1,6 +1,8 @@
 @import './styles/font-face.css';
 @import './styles/header.css';
-@import './styles/loaded.css';
+@import './styles/no-content.css';
+@import './styles/loading/loaded.css';
+@import './styles/loading/error-message.css';
 @import './styles/burger-menu.css';
 @import './styles/main-page.css';
 @import './styles/search.css';
@@ -14,7 +16,7 @@
 @import './styles/adaptiv-main-page.css';
 @import './styles/adaptiv-content-list.css';
 @import './styles/books-page/adaptiv-book-page.css';
-@import './styles//docs-page//contract-adaptiv.css';
+@import './styles/docs-page/contract-adaptiv.css';
 @import './styles/adaptiv-burger.css';
 @import './styles/loading/media-error.css';
 

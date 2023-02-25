@@ -72,16 +72,6 @@
   }
 }
 
-@media (min-width: 680px) {
-  ._hidden {
-    display: none;
-  }
-
-  ._open {
-    display: block;
-  }
-}
-
 @media (max-width: 680px) {
   .header {
     min-height: 76px;
@@ -178,11 +168,6 @@
   .book__submit {
     max-width: 256px;
     width: 100%;
-  }
-
-  .wrapper-content {
-    height: 2458px;
-    row-gap: 16px;
   }
 
   .author {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { Aside } from '../../components/main-page/aside';
@@ -10,25 +10,22 @@ import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 export const LayoutMainPage = () => {
   const didLogRef = useRef(false);
   const didLogReferense = useRef(false);
-  const isLoaded = useTypedSelector((state) => state.loadMainPage.loadedList && state.loadMainPage.loadedCategory);
+  const isCategory = useTypedSelector((state) => state.categoryBooks.category.length);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (didLogReferense.current === false) {
       dispatch(actionResetStateBooks(false));
       didLogReferense.current = true;
     }
-  }, [dispatch, isLoaded]);
-
-  useEffect(() => {
-    if (isLoaded) {
-      return;
-    }
     if (didLogRef.current === false) {
       fetchListBooks(dispatch);
-      fetchCategoryBooks(dispatch);
+      if (!isCategory) {
+        fetchCategoryBooks(dispatch);
+      }
       didLogRef.current = true;
     }
-  }, [dispatch, isLoaded]);
+  }, [dispatch, isCategory]);
 
   return (
     <section className='main'>

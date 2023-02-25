@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+import { AnyAction } from 'redux';
 import { ActionLoad } from './enum';
 
 export interface IButtonToggle {
@@ -13,6 +15,10 @@ export interface IContentToggle {
   window: () => void;
   list: () => void;
   content: boolean;
+  func: () => void;
+  sort: boolean;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  search: string;
 }
 
 export interface ISwiperData {
@@ -34,6 +40,7 @@ export interface ISearchBut {
   icon: string;
   func: () => void;
   state: boolean;
+  stateSort: boolean;
 }
 
 export interface IButtonSearch {
@@ -48,18 +55,25 @@ export interface IBurgerState {
 }
 
 export interface IINititalState {
-  listBooks: IListBooks[] | [];
-  categoryBooks: ICategoryBooks[] | [];
-  loadedList: boolean;
-  loadedCategory: boolean;
-  errorLoadList: boolean;
-  errorLoadCategory: boolean;
+  list: IListBooks[] | [];
+  loaded: boolean;
+  error: boolean;
+}
+
+export interface IStateCategory {
+  category: ICategoryBooks[] | [];
+  loaded: boolean;
+  error: boolean;
+}
+
+export interface IStateNavigation {
+  path: string;
 }
 
 export interface IStateBookPage {
-  dataIdBook: null | IDataIdBook;
-  loadedIdBook: boolean;
-  errorIdBook: boolean;
+  book: null | IDataIdBook;
+  loaded: boolean;
+  error: boolean;
 }
 
 export interface IListBooks {
@@ -80,6 +94,13 @@ export interface ICategoryBooks {
   path: string;
   id: number;
   func?: () => void;
+  data: string;
+}
+
+export interface IGenresProp {
+  disp?: Dispatch<AnyAction>;
+  func?: () => void;
+  arrayCat: string[][];
 }
 
 export interface IImage {
@@ -125,9 +146,19 @@ export interface IErrorLoadCategory {
   data: true;
 }
 
+export interface IActionResetList {
+  type: ActionLoad.RESET_LOAD_LIST;
+  data: false;
+}
+
 export interface IActionList {
   type: ActionLoad.GET_LIST_BOOKS;
   data: IListBooks[] | [];
+}
+
+export interface IActionNavigation {
+  type: ActionLoad.SET_PATH;
+  data: string;
 }
 
 export interface IActionCategory {
@@ -190,4 +221,9 @@ export interface IUserMetaComments {
 export interface IControlLoadedResponse {
   isLoaded: boolean;
   isError: boolean;
+}
+
+export interface IBackLightProps {
+  valueInput: string;
+  valueTitle: string;
 }

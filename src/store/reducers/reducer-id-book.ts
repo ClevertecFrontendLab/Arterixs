@@ -6,11 +6,11 @@ import { actionsGetIdBook } from '../../types/types';
 export const reducerGetIdBook = (state: IStateBookPage = stateBookPage, action: actionsGetIdBook): IStateBookPage => {
   switch (action.type) {
     case ActionLoad.GET_ID_BOOK:
-      return { ...state, dataIdBook: action.data, loadedIdBook: true };
+      return { ...state, book: action.data, loaded: true };
     case ActionLoad.ERROR_LOAD_ID_BOOK:
-      return { ...state, errorIdBook: action.data };
+      return { ...state, error: action.data };
     case ActionLoad.RESET_STATE_BOOKS:
-      return { ...state, loadedIdBook: action.data, errorIdBook: action.data };
+      return { ...state, book: null, loaded: action.data, error: action.data };
     default:
       return state;
   }
