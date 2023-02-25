@@ -7,7 +7,15 @@ export const Loader = (props: IControlLoadedResponse) => {
       className={isError ? 'blur-wrap blur-wrap_hidden' : isLoaded ? 'blur-wrap blur-wrap_hidden' : 'blur-wrap'}
       data-test-id='loader'
     >
-      <div className={isError ? 'preloader__circle preloader__circle_stop' : isLoaded ? 'preloader__circle preloader__circle_stop' : 'preloader__circle'} />
+      <div
+        className={
+          isError
+            ? 'preloader__circle preloader__circle_stop'
+            : isLoaded
+            ? 'preloader__circle preloader__circle_stop'
+            : 'preloader__circle'
+        }
+      />
     </div>
   );
 };

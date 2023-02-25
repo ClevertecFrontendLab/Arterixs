@@ -1,7 +1,7 @@
 import { ISearchBut } from '../../types/interface';
 
 export const ButtonRatio = (props: ISearchBut) => {
-  const {state, icon, func, stateSort} = props
+  const { state, icon, func, stateSort } = props;
   return (
     <button
       className={!state ? 'form-search__button' : 'search-hidden'}
@@ -16,5 +16,5 @@ export const ButtonRatio = (props: ISearchBut) => {
         <span className='block-button_span'>По рейтингу</span>
       </div>
     </button>
-  )
+  );
 };

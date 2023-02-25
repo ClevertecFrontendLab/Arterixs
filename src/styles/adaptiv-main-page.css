@@ -72,8 +72,7 @@
   }
 }
 
-  @media (max-width: 680px) {
-
+@media (max-width: 680px) {
   .header {
     min-height: 76px;
     padding: 24px 16px 15px 16px;

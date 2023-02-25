@@ -5,12 +5,9 @@ import { ERROR_TEXT } from '../../utils/constants';
 export const ErrorLoad = () => {
   const isActiveLink = useParams();
   const isError = useTypedSelector(
-    (state) =>
-      state.categoryBooks.error || state.listBooks.error || state.bookPage.error
+    (state) => state.categoryBooks.error || state.listBooks.error || state.bookPage.error
   );
-  const isErrorMain = useTypedSelector(
-    (state) => state.categoryBooks.error || state.listBooks.error
-  );
+  const isErrorMain = useTypedSelector((state) => state.categoryBooks.error || state.listBooks.error);
   return (
     <div
       className={

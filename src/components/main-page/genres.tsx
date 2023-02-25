@@ -6,7 +6,7 @@ import { getAmountBooks } from '../../utils/helpers';
 export const Genres = (props: ICategoryBooks) => {
   const { name, path, data } = props;
   const arrayListBooks = useTypedSelector((state) => state.listBooks.list);
-  const amountBooksArr = getAmountBooks(arrayListBooks, name)
+  const amountBooksArr = getAmountBooks(arrayListBooks, name);
 
   if (props.id === 5) {
     return (
@@ -23,7 +23,16 @@ export const Genres = (props: ICategoryBooks) => {
         >
           {name}
         </NavLink>
-        <span data-test-id={`${data}-book-count-for-${path}`} className={arrayListBooks.length ? 'genres__count genres__count_position genres__count_position_active' : 'genres___count_hidden'}>{amountBooksArr.length}</span>
+        <span
+          data-test-id={`${data}-book-count-for-${path}`}
+          className={
+            arrayListBooks.length
+              ? 'genres__count genres__count_position genres__count_position_active'
+              : 'genres___count_hidden'
+          }
+        >
+          {amountBooksArr.length}
+        </span>
       </li>
     );
   }
@@ -39,7 +48,12 @@ export const Genres = (props: ICategoryBooks) => {
       >
         {name}
       </NavLink>
-      <span data-test-id={`${data}-book-count-for-${path}`} className={arrayListBooks.length ? 'genres__count' : 'genres___count_hidden'}>{amountBooksArr.length}</span>
+      <span
+        data-test-id={`${data}-book-count-for-${path}`}
+        className={arrayListBooks.length ? 'genres__count' : 'genres___count_hidden'}
+      >
+        {amountBooksArr.length}
+      </span>
     </li>
   );
 };

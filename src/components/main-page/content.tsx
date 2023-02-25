@@ -4,9 +4,9 @@ import { IListBooks } from '../../types/interface';
 import { getValidUrlCategory } from '../../utils/helpers';
 import { NoContent } from './no-content';
 
-export const Content = (props: { arrayList: IListBooks[], search: string }) => {
-  const params = useParams()
-  const pathUrl = getValidUrlCategory(params.category)
+export const Content = (props: { arrayList: IListBooks[]; search: string }) => {
+  const params = useParams();
+  const pathUrl = getValidUrlCategory(params.category);
   const { arrayList, search } = props;
   return (
     <section className='wrapper-content'>

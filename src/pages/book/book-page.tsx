@@ -13,7 +13,7 @@ import { getValidIdUrl } from '../../utils/helpers';
 
 export const BookPage = () => {
   const dispatch = useDispatch();
-  const isCategory = useTypedSelector((state) => state.categoryBooks.category.length)
+  const isCategory = useTypedSelector((state) => state.categoryBooks.category.length);
   const isLoaded = useTypedSelector((state) => state.bookPage.loaded);
   const isError = useTypedSelector((state) => state.bookPage.error);
   const dataBook = useTypedSelector((state) => state.bookPage.book);
@@ -26,7 +26,7 @@ export const BookPage = () => {
       if (!isCategory) {
         fetchCategoryBooks(dispatch);
       }
-      dispatch(actionResetListBooks(false))
+      dispatch(actionResetListBooks(false));
       didLogRef.current = true;
     }
   }, [dispatch, id, params, isCategory]);

@@ -10,7 +10,7 @@ import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 export const LayoutMainPage = () => {
   const didLogRef = useRef(false);
   const didLogReferense = useRef(false);
-  const isCategory = useTypedSelector((state) => state.categoryBooks.category.length)
+  const isCategory = useTypedSelector((state) => state.categoryBooks.category.length);
   const dispatch = useDispatch();
 
   useEffect(() => {

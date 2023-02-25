@@ -13,9 +13,10 @@ export const CardList = (props: cardProps) => {
   const { rating, title, id, authors, image, booking, delivery, urlWay, search } = props;
   const author = getAuthorString(authors);
   const contentButton = getContentButtonCardBooks(booking, delivery);
-  const backLight = useCallback((str: string) => (
-    <BackLight valueInput={search} valueTitle={str} key={id}/>
- ), [search, id])
+  const backLight = useCallback(
+    (str: string) => <BackLight valueInput={search} valueTitle={str} key={id} />,
+    [search, id]
+  );
   return (
     <article data-test-id='card'>
       <Link to={`/books/${urlWay}/${id}`} className='book__list'>

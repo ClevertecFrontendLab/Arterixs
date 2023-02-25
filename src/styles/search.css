@@ -22,8 +22,6 @@
   outline: none;
 }
 
-
-
 .search-icon {
   width: 16px;
   height: 16px;
@@ -47,7 +45,7 @@
 .form-search__search:focus:-ms-input-placeholder {
   opacity: 1;
   transition: opacity 0.3s ease;
-  color: transparent
+  color: transparent;
 }
 
 .form-search__search:focus {

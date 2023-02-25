@@ -10,16 +10,17 @@ import { Grades } from './grades';
 import { Stars } from './stars';
 
 export const Card = (props: cardProps) => {
-  const { rating, title, id, authors, image, booking, delivery, urlWay, search} = props;
-  const author = getAuthorString(authors)
-  const contentButton = getContentButtonCardBooks(booking, delivery)
-  const backLight = useCallback((str: string) => (
-     <BackLight valueInput={search} valueTitle={str} key={id} />
-  ), [search, id])
+  const { rating, title, id, authors, image, booking, delivery, urlWay, search } = props;
+  const author = getAuthorString(authors);
+  const contentButton = getContentButtonCardBooks(booking, delivery);
+  const backLight = useCallback(
+    (str: string) => <BackLight valueInput={search} valueTitle={str} key={id} />,
+    [search, id]
+  );
   return (
     <article data-test-id='card' className='card-books'>
       <Link to={`/books/${urlWay}/${id}`} className='book'>
-        {image ? <FullCard img = {`https://strapi.cleverland.by${image.url}`}/> : <EmptyCard />}
+        {image ? <FullCard img={`https://strapi.cleverland.by${image.url}`} /> : <EmptyCard />}
         <div className='book__grade'>{rating ? <Stars /> : <Grades />}</div>
         <section className='book__name'>
           <h2 className='book__title'>{backLight(title)}</h2>
@@ -28,9 +29,12 @@ export const Card = (props: cardProps) => {
           <h3 className='book__author'>{author}</h3>
         </section>
         <button
-          className={booking ? (booking.order ? CLASSNAME_BUTTON_BOOKED : CLASSNAME_BUTTON_BOOK) : CLASSNAME_BUTTON_BOOK}
+          className={
+            booking ? (booking.order ? CLASSNAME_BUTTON_BOOKED : CLASSNAME_BUTTON_BOOK) : CLASSNAME_BUTTON_BOOK
+          }
           disabled={delivery ? (delivery.handed ? true : false) : false}
-          type='button'>
+          type='button'
+        >
           <span className='text'>{contentButton}</span>
         </button>
       </Link>

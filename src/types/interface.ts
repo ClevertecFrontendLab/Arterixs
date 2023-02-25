@@ -16,9 +16,9 @@ export interface IContentToggle {
   list: () => void;
   content: boolean;
   func: () => void;
-  sort: boolean
-  setInput: React.Dispatch<React.SetStateAction<string>>,
-  search: string
+  sort: boolean;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  search: string;
 }
 
 export interface ISwiperData {
@@ -40,7 +40,7 @@ export interface ISearchBut {
   icon: string;
   func: () => void;
   state: boolean;
-  stateSort: boolean
+  stateSort: boolean;
 }
 
 export interface IButtonSearch {
@@ -61,14 +61,13 @@ export interface IINititalState {
 }
 
 export interface IStateCategory {
-  category: ICategoryBooks[] | []
+  category: ICategoryBooks[] | [];
   loaded: boolean;
   error: boolean;
-
 }
 
 export interface IStateNavigation {
-  path: string
+  path: string;
 }
 
 export interface IStateBookPage {
@@ -95,13 +94,13 @@ export interface ICategoryBooks {
   path: string;
   id: number;
   func?: () => void;
-  data: string
+  data: string;
 }
 
 export interface IGenresProp {
-  disp?: Dispatch<AnyAction>
-  func?: () => void
-  arrayCat: string[][]
+  disp?: Dispatch<AnyAction>;
+  func?: () => void;
+  arrayCat: string[][];
 }
 
 export interface IImage {
@@ -149,7 +148,7 @@ export interface IErrorLoadCategory {
 
 export interface IActionResetList {
   type: ActionLoad.RESET_LOAD_LIST;
-  data: false
+  data: false;
 }
 
 export interface IActionList {
@@ -158,8 +157,8 @@ export interface IActionList {
 }
 
 export interface IActionNavigation {
-  type: ActionLoad.SET_PATH
-  data: string
+  type: ActionLoad.SET_PATH;
+  data: string;
 }
 
 export interface IActionCategory {
@@ -225,6 +224,6 @@ export interface IControlLoadedResponse {
 }
 
 export interface IBackLightProps {
-  valueInput: string,
-  valueTitle: string
+  valueInput: string;
+  valueTitle: string;
 }
