@@ -14,7 +14,7 @@ export const SearchMobile = (props: propsInputMoblieSearch) => {
       <input
         type='text'
         className='form-mobile-input__search'
-        placeholder='Поиск книги или автора...'
+        placeholder='Поиск книги или автора…'
         data-test-id='input-search'
         onInput={setInputValue}
       />

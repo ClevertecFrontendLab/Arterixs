@@ -13,7 +13,7 @@ export const InputSearch = (props: propsInputSearch) => {
       <input
         type='text'
         className='form-search__search'
-        placeholder='Поиск книги или автора...'
+        placeholder='Поиск книги или автора…'
         data-test-id='input-search'
         onInput={setInputValue}
       />
