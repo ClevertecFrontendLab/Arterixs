@@ -1,6 +1,5 @@
 import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { IListBooks } from '../../types/interface';
 import { cardProps } from '../../types/types';
 import { CLASSNAME_BUTTON_BOOK, CLASSNAME_BUTTON_BOOKED } from '../../utils/constants';
 import { getAuthorString, getContentButtonCardBooks } from '../../utils/helpers';
@@ -15,8 +14,8 @@ export const CardList = (props: cardProps) => {
   const author = getAuthorString(authors);
   const contentButton = getContentButtonCardBooks(booking, delivery);
   const backLight = useCallback((str: string) => (
-    <BackLight valueInput={search} valueTitle={str} />
- ), [search])
+    <BackLight valueInput={search} valueTitle={str} key={id}/>
+ ), [search, id])
   return (
     <article data-test-id='card'>
       <Link to={`/books/${urlWay}/${id}`} className='book__list'>

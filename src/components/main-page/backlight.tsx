@@ -13,7 +13,7 @@ export const BackLight = (props: IBackLightProps) => {
         return (
           <>
             {item}
-            <span className='backLight'>{symbols}</span>
+            <span data-test-id='highlight-matches' className='backLight'>{symbols}</span>
           </>
         )}
       return <span>{item}</span>

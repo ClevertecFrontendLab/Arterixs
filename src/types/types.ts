@@ -24,8 +24,9 @@ export type actionsNav = IActionNavigation
 export type actionsCategory = IActionCategory | IErrorLoadCategory
 export type actionsGetIdBook = IActionIdBooks | IActionErrorIdBook | IActionResetStateBooks;
 export type propsErrorState = Omit<IControlLoadedResponse, 'isLoaded'>;
-export type propsInputSearch = Pick<IContentToggle, 'setInput'>
-export type propsInputMoblieSearch = ISearchBut & propsInputSearch
+export type propsInputSearch = Pick<IContentToggle, 'setInput' | 'search'>
+export type propsMobileInput = Pick<IContentToggle, 'setInput'>
+export type propsInputMoblieSearch = ISearchBut & propsMobileInput
 export type propsMetaData = Pick<IDataIdBook,
   'issueYear' |
   'publish' |

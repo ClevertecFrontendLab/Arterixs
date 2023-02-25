@@ -74,7 +74,7 @@ export const MenuBurger = (props: IBurgerState) => {
                 </NavLink>
                 <ul className='genres-block__content'>
                   {genresState.map((item) => (
-                    <Genres func={toggleBurgerMenu} {...item} key={item.id} />
+                    <Genres func={toggleBurgerMenu} {...item} data='burger' key={item.id} />
                   ))}
                 </ul>
               </nav>

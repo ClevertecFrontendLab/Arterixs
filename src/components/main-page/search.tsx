@@ -7,7 +7,7 @@ import { useResize } from '../../utils/helpers';
 import { SearchMobile } from './search-mobile';
 
 export const Search = (props: IContentToggle) => {
-  const {func, sort, setInput} = props
+  const {func, sort, setInput, search} = props
   const widthWindow = useResize();
   const [window, setClickWindow] = useState(true);
   const [list, setClickList] = useState(false);
@@ -51,7 +51,7 @@ export const Search = (props: IContentToggle) => {
             <ButtonRatio {...{ icon: '#loop', func: toggleButtonSearch, state: stateSearch, stateSort: false }} />
           </>
         ) : (
-          <InputSearch {...{setInput}}/>
+          <InputSearch {...{setInput, search}}/>
         )}
         {stateSearch ? false : <ButtonRatio {...{ icon: '#sort', func, state: false, stateSort: sort }} />}
       </form>

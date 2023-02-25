@@ -6,7 +6,7 @@ export const ButtonRatio = (props: ISearchBut) => {
     <button
       className={!state ? 'form-search__button' : 'search-hidden'}
       type='button'
-      data-test-id={icon === '#loop' ? 'button-search-open' : ''}
+      data-test-id={icon === '#loop' ? 'button-search-open' : 'sort-rating-button'}
       onClick={func}
     >
       <div className='block-button__search'>

@@ -2,7 +2,7 @@ import { FormEvent } from 'react';
 import { propsInputSearch } from '../../types/types';
 
 export const InputSearch = (props: propsInputSearch) => {
-  const {setInput} = props
+  const {setInput, search} = props
   const setInputValue = (event: FormEvent) => {
     if (event.target instanceof HTMLInputElement) {
       setInput(event.target.value)
@@ -10,9 +10,6 @@ export const InputSearch = (props: propsInputSearch) => {
   }
   return (
     <div className='wrappper-search _open'>
-      <svg className='search-icon'>
-        <use href='#loop' />
-      </svg>
       <input
         type='text'
         className='form-search__search'
@@ -20,6 +17,9 @@ export const InputSearch = (props: propsInputSearch) => {
         data-test-id='input-search'
         onInput={setInputValue}
       />
+      <svg className={search ? 'search-icon search-icon_focus' :'search-icon'}>
+        <use href='#loop' />
+      </svg>
     </div>
   );
 }

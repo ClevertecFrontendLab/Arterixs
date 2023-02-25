@@ -19,7 +19,10 @@
   border-radius: 599px;
   border: none;
   padding: 10px 10px 10px 40px;
+  outline: none;
 }
+
+
 
 .search-icon {
   width: 16px;
@@ -35,6 +38,28 @@
   font-size: 14px;
   line-height: 18px;
   color: #a7a7a7;
+}
+
+.form-search__search::placeholder,
+.form-search__search:focus::-webkit-input-placeholder,
+.form-search__search:focus::-moz-placeholder,
+.form-search__search:focus:-moz-placeholder,
+.form-search__search:focus:-ms-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  color: transparent
+}
+
+.form-search__search:focus {
+  caret-color: orange;
+}
+
+.form-search__search:focus + .search-icon {
+  color: orange;
+}
+
+.search-icon_focus {
+  color: orange;
 }
 
 .form-search__button {

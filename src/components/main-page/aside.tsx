@@ -72,7 +72,7 @@ export const Aside = () => {
           </NavLink>
           <ul className='genres-block__content'>
             {genresState.map((item) => (
-              <Genres {...item} key={item.id} />
+              <Genres {...item} data='navigation' key={item.id} />
             ))}
           </ul>
         </nav>

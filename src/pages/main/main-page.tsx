@@ -40,7 +40,7 @@ export const MainPage = () => {
     <main style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
       <Loader {...{ isLoaded, isError }} />
       <section className={isError ? 'main-hidden' : isLoaded ? 'main-content' : 'main-hidden'}>
-        <Search {...{ window: getWindowContent, list: getListContent, content, func: toggleSortingButton, sort, setInput: setValue }} />
+        <Search {...{ window: getWindowContent, list: getListContent, content, func: toggleSortingButton, sort, setInput: setValue, search: value }} />
         {content ? <Content arrayList={searchArrayBookTitle} search={value} /> : <ContentList arrayList={searchArrayBookTitle} search={value} />}
       </section>
     </main>

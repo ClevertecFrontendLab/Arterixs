@@ -17,7 +17,8 @@ export interface IContentToggle {
   content: boolean;
   func: () => void;
   sort: boolean
-  setInput: React.Dispatch<React.SetStateAction<string>>
+  setInput: React.Dispatch<React.SetStateAction<string>>,
+  search: string
 }
 
 export interface ISwiperData {
@@ -93,7 +94,8 @@ export interface ICategoryBooks {
   name: string;
   path: string;
   id: number;
-  func?: () => void
+  func?: () => void;
+  data: string
 }
 
 export interface IGenresProp {
