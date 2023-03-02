@@ -1,6 +1,7 @@
 @import './styles/font-face.css';
 @import './styles/header.css';
 @import './styles/no-content.css';
+@import './styles/auth-page/auth.css';
 @import './styles/loading/loaded.css';
 @import './styles/loading/error-message.css';
 @import './styles/burger-menu.css';
@@ -19,6 +20,7 @@
 @import './styles/docs-page/contract-adaptiv.css';
 @import './styles/adaptiv-burger.css';
 @import './styles/loading/media-error.css';
+@import './styles/auth-page/media-auth-form.css';
 
 body {
   height: 100vh;

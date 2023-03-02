@@ -1,0 +1,38 @@
+@media (max-width: 768px) {
+  .auth-container {
+    gap: 113px;
+  }
+}
+
+@media (max-width: 590px) {
+  .auth-container {
+    padding: 16px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  .auth-form {
+    padding: 24px 16px;
+    height: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .button-auth {
+    height: 40px;
+  }
+
+  .wrapper-link-auth {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .link-recover {
+    padding-left: 0;
+  }
+
+  .input-wrapper_margin {
+    margin-bottom: 12px;
+  }
+}
