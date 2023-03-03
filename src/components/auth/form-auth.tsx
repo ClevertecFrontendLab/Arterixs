@@ -21,7 +21,7 @@ export const AuthForm = () => {
         <div className='wrapper-link-auth'>
           <p className='text-questions'>Нет учётной записи?</p>
           <div className='registr-block'>
-            <Link to="#" className='register-link'>Регистрация</Link>
+            <Link to="/registration" className='register-link'>Регистрация</Link>
             <svg className="arrow-auth">
               <use href='#arrow-auth'/>
             </svg>

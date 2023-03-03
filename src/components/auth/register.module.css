@@ -1,0 +1,75 @@
+.wrapper-title {
+  color: #363636;
+}
+
+.title {
+  font-family: 'Montserrat-bold';
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-family: 'Montserrat-semi';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.wrapper-input {
+  position: relative;
+  font-family: 'Montserrat-reg';
+  font-weight: 400;
+  height: 76px;
+  margin-bottom: 16px;
+}
+
+.input {
+  max-width: 416px;
+  width: 100%;
+  height: 56px;
+  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid #BFC4C9;
+  background-color: #F9F9FA;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 18px;
+  color: #363636;
+  margin-bottom: 2px;
+}
+
+.input[type='password'] {
+  font: small-caption;
+  font-size: 16px;
+}
+
+
+.helps {
+  font-size: 12px;
+  line-height: 16px;
+  color: #A7A7A7;
+  margin-left: 12px;
+}
+
+.hidden {
+  display: none
+}
+
+.button-eye {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.eye {
+  width: 24px;
+  height: 24px;
+  fill: none;
+}

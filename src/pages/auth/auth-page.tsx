@@ -1,4 +1,4 @@
-import { AuthForm } from '../../components/auth/form-auth'
+import { Outlet } from 'react-router-dom'
 import { SpriteAuth } from '../../components/sprite-auth'
 
 export const AuthPage = () => {
@@ -9,7 +9,7 @@ export const AuthPage = () => {
       <div className="auth-wrapper-two">
         <div className="auth-container">
           <h1 className="auth-title">Cleverland</h1>
-          <AuthForm />
+          <Outlet />
         </div>
       </div>
     </div>

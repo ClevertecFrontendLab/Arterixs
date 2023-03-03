@@ -11,9 +11,11 @@ import { ContractPage } from './components/contract-page/contract-page';
 import { OfertaPage } from './components/oferta-page/oferta-page';
 import { PrivateRoute } from './pages/private-route/private-route';
 import { AuthPage } from './pages/auth/auth-page';
+import { AuthForm } from './components/auth/form-auth';
 import { store } from './store/store';
 
 import './index.css';
+import { RegisterForm } from './components/auth/form-register';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -21,21 +23,22 @@ root.render(
     <Provider store={store}>
       <HashRouter>
         <Routes>
-          <Route path='/auth' element={<AuthPage />}/>
-          <Route
-            path='/'
-            element={
-              <PrivateRoute>
+          <Route path='/' element={
+            <PrivateRoute>
                 <Layout />
               </PrivateRoute>
             }>
-              <Route element={<LayoutMainPage />}>
-                <Route path='/' element={<Navigate to='/books/all' />} />
-                <Route path='/books/:category' element={<MainPage />} />
-                <Route path='/books/oferta' element={<OfertaPage />} />
-                <Route path='/books/contract' element={<ContractPage />} />
-              </Route>
+            <Route element={<LayoutMainPage />}>
+              <Route path='/' element={<Navigate to='/books/all' />} />
+              <Route path='/books/:category' element={<MainPage />} />
+              <Route path='/books/oferta' element={<OfertaPage />} />
+              <Route path='/books/contract' element={<ContractPage />} />
+            </Route>
               <Route path='/books/:category/:id' element={<BookPage />} />
+          </Route>
+          <Route element={<AuthPage />}>
+            <Route path='/auth' element={<AuthForm />} />
+            <Route path='/registration' element={<RegisterForm />} />
           </Route>
         </Routes>
       </HashRouter>
