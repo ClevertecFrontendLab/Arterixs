@@ -229,11 +229,11 @@ export interface IBackLightProps {
 }
 
 export interface IRegisterLink {
-  func: () => void,
-  textButton: string,
-  path: string,
-  question: string,
-  textLink: string
+  func: () => void;
+  textButton: string;
+  path: string;
+  question: string;
+  textLink: string;
 }
 
 export interface IInputForm {

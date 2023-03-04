@@ -135,8 +135,8 @@ export const switchStep = (step: number) => {
         placeholderInputDown: 'Пароль',
         helpsInputDown: 'Пароль не менее 8 символов, с заглавной буквой и цифрой',
         textButton: 'следующий шаг',
-        typeButton: 'button'
-      }
+        typeButton: 'button',
+      };
     case 2:
       return {
         typeInputUp: 'text',
@@ -146,8 +146,8 @@ export const switchStep = (step: number) => {
         placeholderInputDown: 'Фамилия',
         helpsInputDown: '',
         textButton: 'последний шаг',
-        typeButton: 'button'
-      }
+        typeButton: 'button',
+      };
     case 3:
       return {
         typeInputUp: 'tel',
@@ -157,8 +157,8 @@ export const switchStep = (step: number) => {
         placeholderInputDown: 'E-mail',
         helpsInputDown: '',
         textButton: 'зарегистрироваться',
-        typeButton: 'submit'
-      }
+        typeButton: 'submit',
+      };
     default:
       return {
         typeInputUp: '',
@@ -168,7 +168,7 @@ export const switchStep = (step: number) => {
         placeholderInputDown: '',
         helpsInputDown: '',
         textButton: '',
-        typeButton: 'button'
-    }
+        typeButton: 'button',
+      };
   }
-}
+};

@@ -1,4 +1,4 @@
 export const useAuth = () => {
-  const auth = false
-  return auth
-}
+  const auth = false;
+  return auth;
+};

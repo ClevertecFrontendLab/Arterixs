@@ -1,17 +1,18 @@
-import { Outlet } from 'react-router-dom'
-import { SpriteAuth } from '../../components/sprite-auth'
+import { Outlet } from 'react-router-dom';
+import { SpriteAuth } from '../../components/sprite-auth';
+import styles from './auth.module.css';
 
 export const AuthPage = () => {
-  console.log('dwdwwd')
+  console.log('dwdwwd');
   return (
-    <div className="auth-wrapper">
+    <div className={styles.wrapper}>
       <SpriteAuth />
-      <div className="auth-wrapper-two">
-        <div className="auth-container">
-          <h1 className="auth-title">Cleverland</h1>
+      <div className={styles['wrapper-two']}>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Cleverland</h1>
           <Outlet />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,14 +1,12 @@
-@import './auth-form.css';
-
-.auth-wrapper {
+.wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
   min-height: 100%;
-  background: linear-gradient(231.58deg, #F83600 -53.35%, #F9D423 297.76%);
+  background: linear-gradient(231.58deg, #f83600 -53.35%, #f9d423 297.76%);
 }
 
-.auth-wrapper-two {
+.wrapper-two {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +15,7 @@
   padding: 16px;
 }
 
-.auth-container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,10 +24,28 @@
   width: 100%;
 }
 
-.auth-title {
-  color: #FFFFFF;
+.title {
+  color: #ffffff;
   font-size: 32px;
   line-height: 40px;
   font-family: 'Montserrat-bold';
-  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .container {
+    gap: 113px;
+  }
+}
+
+@media (max-width: 590px) {
+  .container {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .title {
+    font-size: 18px;
+    line-height: 28px;
+  }
 }
