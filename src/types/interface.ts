@@ -227,3 +227,16 @@ export interface IBackLightProps {
   valueInput: string;
   valueTitle: string;
 }
+
+export interface IRegisterLink {
+  func: () => void,
+  textButton: string,
+  path: string,
+  question: string,
+  textLink: string
+}
+
+export interface IInputForm {
+  type: string;
+  placeholder: string;
+}

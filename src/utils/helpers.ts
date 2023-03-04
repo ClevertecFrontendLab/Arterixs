@@ -123,3 +123,52 @@ export const sortingBooksInRating = (genresState: IListBooks[] | [], flag: boole
   }
   return copyArray;
 };
+
+export const switchStep = (step: number) => {
+  switch (step) {
+    case 1:
+      return {
+        typeInputUp: 'text',
+        placeholderInputUp: 'Придумайте логин для входа',
+        helpsInputUp: 'Используйте для логина латинский алфавит и цифры',
+        typeInputDown: 'password',
+        placeholderInputDown: 'Пароль',
+        helpsInputDown: 'Пароль не менее 8 символов, с заглавной буквой и цифрой',
+        textButton: 'следующий шаг',
+        typeButton: 'button'
+      }
+    case 2:
+      return {
+        typeInputUp: 'text',
+        placeholderInputUp: 'Имя',
+        helpsInputUp: '',
+        typeInputDown: 'text',
+        placeholderInputDown: 'Фамилия',
+        helpsInputDown: '',
+        textButton: 'последний шаг',
+        typeButton: 'button'
+      }
+    case 3:
+      return {
+        typeInputUp: 'tel',
+        placeholderInputUp: 'Номер телефона',
+        helpsInputUp: 'В формате +375 (xx) xxx-xx-xx ',
+        typeInputDown: 'email',
+        placeholderInputDown: 'E-mail',
+        helpsInputDown: '',
+        textButton: 'зарегистрироваться',
+        typeButton: 'submit'
+      }
+    default:
+      return {
+        typeInputUp: '',
+        placeholderInputUp: '',
+        helpsInputUp: '',
+        typeInputDown: '',
+        placeholderInputDown: '',
+        helpsInputDown: '',
+        textButton: '',
+        typeButton: 'button'
+    }
+  }
+}

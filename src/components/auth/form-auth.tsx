@@ -1,33 +1,36 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { BUTTON_AUTH, LINK_QUESTION_AUTH, LINK_RECOVER_AUTH, LINK_REGISTRATION_AUTH, PLACEHOLDER_LOGIN, PLACEHOLDER_PASSWORD, TITLE_AUTH } from '../../utils/constants'
+import { Eye } from './eye/eye'
+import { InputForm } from './input/input-form'
+import { RegisterLink } from './register-link/register-link'
+import styles from './register.module.css'
 
 export const AuthForm = () => {
-  console.log('de')
+  const func = () => console.log('ale')
+  const [flag, setFlag] = useState(false)
+  const toggleEye = () => setFlag(!flag)
+  const getType = (flag: boolean) => flag ? 'text' : 'password'
   return (
-    <form action='' className="auth-form">
-      <h2 className='auth-form-title'>Вход в личный кабинет</h2>
-      <div className="auth-form__block-input">
-        <div className="input-wrapper input-wrapper_margin">
-          <input className="input-wrapper__input" type="text" placeholder='Логин' />
+    <form action='' className={styles.form}>
+      <h2 className={styles.title}>{TITLE_AUTH}</h2>
+      <div className={styles['input-group-auth']}>
+        <div className={`${styles['wrapper-input']} ${styles['wrapper-input-auth']} ${styles.margin}`}>
+          <InputForm type='text' placeholder={PLACEHOLDER_LOGIN}/>
         </div>
-        <div className="input-wrapper">
-          <input className="input-wrapper__input" type="text" placeholder='Пароль'/>
+        <div className={`${styles['wrapper-input']} ${styles['wrapper-input-auth']}`}>
+          <InputForm type={getType(flag)} placeholder={PLACEHOLDER_PASSWORD}/>
+          <Eye func={toggleEye} flag={flag}/>
         </div>
-        <Link to="#" className="link-recover">Забыли логин или пароль?</Link>
+        <Link to="#" className={styles['link-recover']}>{LINK_RECOVER_AUTH}</Link>
       </div>
-      <div className="auth-form__block-button">
-        <button className="button-auth" type='submit'>
-          <span>Вход</span>
-        </button>
-        <div className='wrapper-link-auth'>
-          <p className='text-questions'>Нет учётной записи?</p>
-          <div className='registr-block'>
-            <Link to="/registration" className='register-link'>Регистрация</Link>
-            <svg className="arrow-auth">
-              <use href='#arrow-auth'/>
-            </svg>
-          </div>
-        </div>
-      </div>
+      <RegisterLink
+        func = {func}
+        textButton ={BUTTON_AUTH}
+        path = '/registration'
+        question ={LINK_QUESTION_AUTH}
+        textLink ={LINK_REGISTRATION_AUTH}
+      />
     </form>
   )
 }

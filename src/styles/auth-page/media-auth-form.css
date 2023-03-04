@@ -1,12 +1,12 @@
 @media (max-width: 768px) {
   .auth-container {
     gap: 113px;
+    /* padding: 16px; */
   }
 }
 
 @media (max-width: 590px) {
   .auth-container {
-    padding: 16px;
     gap: 12px;
   }
 }

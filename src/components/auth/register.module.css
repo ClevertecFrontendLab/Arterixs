@@ -1,4 +1,18 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  height: 466px;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 48px 56px;
+}
+
 .wrapper-title {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   color: #363636;
 }
 
@@ -7,7 +21,7 @@
   font-size: 24px;
   line-height: 30px;
   font-weight: 700px;
-  margin-bottom: 8px;
+  color: #363636;
 }
 
 .subtitle {
@@ -22,29 +36,7 @@
   font-family: 'Montserrat-reg';
   font-weight: 400;
   height: 76px;
-  margin-bottom: 16px;
 }
-
-.input {
-  max-width: 416px;
-  width: 100%;
-  height: 56px;
-  border-radius: 4px;
-  border: none;
-  border-bottom: 1px solid #BFC4C9;
-  background-color: #F9F9FA;
-  padding: 12px;
-  font-size: 14px;
-  line-height: 18px;
-  color: #363636;
-  margin-bottom: 2px;
-}
-
-.input[type='password'] {
-  font: small-caption;
-  font-size: 16px;
-}
-
 
 .helps {
   font-size: 12px;
@@ -53,23 +45,51 @@
   margin-left: 12px;
 }
 
-.hidden {
-  display: none
+.input-group-reg {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.button-eye {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  width: 24px;
-  height: 24px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+.input-group-auth {
+  display: flex;
+  flex-direction: column;
+
 }
 
-.eye {
-  width: 24px;
-  height: 24px;
-  fill: none;
+.link-recover {
+  font-family: 'Montserat-reg';
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-left: 12px;
+  color: #A7A7A7;
+}
+
+.margin {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 500px) {
+  .form {
+    padding: 24px 16px;
+    height: auto;
+  }
+
+  .wrapper-input {
+    max-width: 416px;
+    height: 90px;
+  }
+
+  .wrapper-input-auth {
+    height: 76px;
+  }
+
+  .input-group-reg {
+    gap: 10px;
+  }
+
+  .link-recover {
+    margin-left: 0;
+  }
 }
