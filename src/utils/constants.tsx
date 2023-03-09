@@ -26,3 +26,41 @@ export const BUTTON_RECOVER = 'ВОССТАНОВИТЬ';
 export const PLACEHOLDER_RECOVER_MAIL = 'На этот email будет отправлено письмо с инструкциями по восстановлению пароля';
 export const TITLE_RECOVER = 'Восстановление пароля';
 export const TITLE_RECOVER_HEADER = 'ВХОД В ЛИЧНЫЙ КАБИНЕТ';
+export const TITLE_RESPONSE_FALSE = 'Данные не сохранились';
+export const TEXT_RESPONSE_FALSE = 'Что-то пошло не так и ваша регистрация не завершилась. Попробуйте ещё раз';
+export const TEXT_BUTTON_RESPONSE_FALSE = 'ПОВТОРИТЬ';
+export const TITLE_RESPONSE_FALSE_TWO = 'Данные не сохранились';
+export const TEXT_RESPONSE_FALSE_TWO =
+  'Такой логин или e-mail уже записан в системе. Попробуйте зарегистрироваться по другому логину или e-mail';
+export const TEXT_BUTTON_RESPONSE_FALSE_TWO = 'НАЗАД К РЕГИСТРАЦИИ';
+export const TEXT_RESPONSE_SUCCES =
+  'Регистрация прошла успешно. Зайдите в личный кабинет, используя свои логин и пароль';
+export const TITLE_RESPONSE_SUCCES = 'Регистрация успешна';
+export const TEXT_BUTTON_RESPONSE_SUCCES = 'ВХОД';
+export const REG_SUCCESS = 0;
+export const REG_ERROR_400 = 2;
+export const REG_ERROR = 1;
+export const PATH_AUTH = '/auth';
+export const PATH_REG = '/registration';
+export const PATH_FORGOT = '/forgot-pass';
+
+export const dataResetForms = [
+  {
+    title: TITLE_RESPONSE_SUCCES,
+    text: TEXT_RESPONSE_SUCCES,
+    textButton: TEXT_BUTTON_RESPONSE_SUCCES,
+    path: PATH_AUTH,
+  },
+  {
+    title: TITLE_RESPONSE_FALSE,
+    text: TEXT_RESPONSE_FALSE,
+    textButton: TEXT_BUTTON_RESPONSE_FALSE,
+    path: PATH_REG,
+  },
+  {
+    title: TITLE_RESPONSE_FALSE_TWO,
+    text: TEXT_RESPONSE_FALSE_TWO,
+    textButton: TEXT_BUTTON_RESPONSE_FALSE_TWO,
+    path: PATH_REG,
+  },
+];

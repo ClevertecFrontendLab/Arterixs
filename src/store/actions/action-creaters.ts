@@ -10,3 +10,4 @@ export const actionErrorIdBook = (data: true) => ({ type: ActionLoad.ERROR_LOAD_
 export const actionGetIdBook = (data: IDataIdBook) => ({ type: ActionLoad.GET_ID_BOOK, data });
 export const actionResetStateBooks = (data: false) => ({ type: ActionLoad.RESET_STATE_BOOKS, data });
 export const actionResetListBooks = (data: false) => ({ type: ActionLoad.RESET_LOAD_LIST, data });
+export const actionResponse = (data: boolean) => ({ type: ActionLoad.RESPONSE, data });

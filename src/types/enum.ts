@@ -9,4 +9,5 @@ export const enum ActionLoad {
   RESET_STATE_BOOKS = 'RESET_STATE_BOOK',
   SET_PATH = 'SET_PATH',
   RESET_LOAD_LIST = 'RESET_LOAD_LIST',
+  RESPONSE = 'RESPONSE',
 }

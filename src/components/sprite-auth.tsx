@@ -63,6 +63,15 @@ export const SpriteAuth = () => (
           strokeLinejoin='round'
         />
       </symbol>
+      <symbol viewBox='0 0 24 12' id='check-mark'>
+        <path
+          d='M10.5 1.5L4 8.5L1 5.5'
+          stroke='#00CA71'
+          strokeWidth='1.5'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+      </symbol>
     </svg>
   </div>
 );

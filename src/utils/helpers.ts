@@ -135,7 +135,23 @@ export const switchStep = (step: number) => {
         placeholderInputDown: 'Пароль',
         helpsInputDown: 'Пароль не менее 8 символов, с заглавной буквой и цифрой',
         textButton: 'следующий шаг',
-        typeButton: 'button',
+        requaredNameUp: 'username',
+        requaredNameDown: 'password',
+        rulesUp: {
+          required: true,
+          validate: {
+            isNumber: (value: string) => /[0-9]+/gi.test(value),
+            isLetter: (value: string) => /^[0-9A-Za-z]+$/g.test(value),
+          },
+        },
+        rulesDown: {
+          required: true,
+          minLength: 8,
+          validate: {
+            isNumber: (value: string) => /[0-9]+/gi.test(value),
+            isLetter: (value: string) => /[A-ZА-ЯЁ]+/g.test(value),
+          },
+        },
       };
     case 2:
       return {
@@ -146,7 +162,20 @@ export const switchStep = (step: number) => {
         placeholderInputDown: 'Фамилия',
         helpsInputDown: '',
         textButton: 'последний шаг',
-        typeButton: 'button',
+        requaredNameUp: 'firstName',
+        requaredNameDown: 'lastName',
+        rulesUp: {
+          required: {
+            value: true,
+            message: 'Поле не может быть пустым',
+          },
+        },
+        rulesDown: {
+          required: {
+            value: true,
+            message: 'Поле не может быть пустым',
+          },
+        },
       };
     case 3:
       return {
@@ -157,7 +186,22 @@ export const switchStep = (step: number) => {
         placeholderInputDown: 'E-mail',
         helpsInputDown: '',
         textButton: 'зарегистрироваться',
-        typeButton: 'submit',
+        requaredNameUp: 'phone',
+        requaredNameDown: 'email',
+        rulesUp: {
+          required: true,
+          pattern: /^\+375\s\((25|29|33|44)\)\s\d{3}(-\d{2}){2}$/,
+        },
+        rulesDown: {
+          required: {
+            value: true,
+            message: 'Поле не может быть пустым',
+          },
+          pattern: {
+            value: /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/,
+            message: 'Введите корректный e-mail',
+          },
+        },
       };
     default:
       return {
@@ -168,7 +212,38 @@ export const switchStep = (step: number) => {
         placeholderInputDown: '',
         helpsInputDown: '',
         textButton: '',
-        typeButton: 'button',
+        requaredNameUp: 'phone',
+        requaredNameDown: 'email',
+        rulesUp: {
+          required: true,
+          pattern: /^[a-zA-Z](?=.*\d)[a-zA-Z0-9-_.]+$/,
+        },
+        rulesDown: {
+          required: true,
+          minLength: 8,
+          pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/,
+        },
       };
+  }
+};
+
+export const getTypeInput = (eye: boolean) => (eye ? 'text' : 'password');
+
+export const getNameFormReg = (name: string) => {
+  switch (name) {
+    case 'email':
+      return name;
+    case 'password':
+      return name;
+    case 'username':
+      return name;
+    case 'firstName':
+      return name;
+    case 'lastName':
+      return name;
+    case 'phone':
+      return name;
+    default:
+      return 'email';
   }
 };

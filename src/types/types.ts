@@ -17,6 +17,11 @@ import {
   IGenresProp,
   IContentToggle,
   ISearchBut,
+  IFormRegSubmit,
+  IInputForm,
+  IAuthSubmit,
+  IResponse,
+  IRegisterLink,
 } from './interface';
 
 export type actionsType = IActionList | IActionLoaded | IErrorLoadList | IActionResetList;
@@ -34,3 +39,7 @@ export type propsMetaData = Pick<
 export type rootState = ReturnType<typeof rootReducer>;
 export type cardProps = IListBooks & { urlWay: string; search: string };
 export type genresProps = ICategoryBooks & IGenresProp;
+export type authSubmit = Pick<IFormRegSubmit, 'username' | 'password'>;
+export type formSubmit = IInputForm | IAuthSubmit;
+export type actionResponse = IResponse;
+export type AuthRegisterLink = Omit<IRegisterLink, 'func' | 'valid'>;

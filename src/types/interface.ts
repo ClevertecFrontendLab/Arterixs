@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
+import { Control, FieldErrors, UseFormRegister } from 'react-hook-form';
 import { AnyAction } from 'redux';
 import { ActionLoad } from './enum';
+import { authSubmit } from './types';
 
 export interface IButtonToggle {
   id: number;
@@ -58,6 +60,10 @@ export interface IINititalState {
   list: IListBooks[] | [];
   loaded: boolean;
   error: boolean;
+}
+
+export interface IResponseState {
+  isLoaded: boolean;
 }
 
 export interface IStateCategory {
@@ -171,6 +177,11 @@ export interface IActionIdBooks {
   data: IDataIdBook;
 }
 
+export interface IResponse {
+  type: ActionLoad.RESPONSE;
+  data: boolean;
+}
+
 export interface IActionResetStateBooks {
   type: ActionLoad.RESET_STATE_BOOKS;
   data: false;
@@ -234,9 +245,36 @@ export interface IRegisterLink {
   path: string;
   question: string;
   textLink: string;
+  valid: boolean;
+}
+
+export interface IFormRegSubmit {
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+}
+
+export interface IFormAuthSubmit {
+  identifier: string;
+  password: string;
+}
+
+export interface IAuthSubmit {
+  type: string;
+  placeholder: string;
+  reg: UseFormRegister<authSubmit>;
 }
 
 export interface IInputForm {
   type: string;
   placeholder: string;
+  name: string;
+  rules: any;
+  reg: UseFormRegister<IFormRegSubmit>;
+  error: FieldErrors<IFormRegSubmit>;
+  toggleFocus?: () => void;
+  control?: Control<IFormRegSubmit, any>;
 }
