@@ -76,6 +76,7 @@ export const RegisterForm = () => {
     rulesDown,
   } = metaForm;
   const typeInput = step === 1 ? getTypeInput(eye) : typeInputDown;
+
   const {
     register,
     handleSubmit,

@@ -19,6 +19,7 @@ export const LINK_RECOVER_AUTH = 'Забыли логин или пароль?';
 export const TITLE_AUTH = 'Вход в личный кабинет';
 export const PLACEHOLDER_PASSWORD = 'Пароль';
 export const PLACEHOLDER_LOGIN = 'Логин';
+export const LINK_RECOVER_FORGOT_PASS = 'Восстановить?'
 export const LINK_AUTH = 'ВОЙТИ';
 export const LINK_QUESTION_REG = 'Есть учётная запись?';
 export const TITLE_REGISTRATION = 'Регистрация';
@@ -37,6 +38,9 @@ export const TEXT_RESPONSE_SUCCES =
   'Регистрация прошла успешно. Зайдите в личный кабинет, используя свои логин и пароль';
 export const TITLE_RESPONSE_SUCCES = 'Регистрация успешна';
 export const TEXT_BUTTON_RESPONSE_SUCCES = 'ВХОД';
+export const TITLE_AUTH_RESPONSE = 'Вход не выполнен'
+export const TEXT_AUTH_RESPONSE = 'Что-то пошло не так. Попробуйте ещё раз'
+export const TEXT_ERROR_LOGIN = 'Неверный логин или пароль!'
 export const REG_SUCCESS = 0;
 export const REG_ERROR_400 = 2;
 export const REG_ERROR = 1;

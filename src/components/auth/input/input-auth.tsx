@@ -1,4 +1,4 @@
-import { UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { IFormAuthSubmit } from '../../../types/interface';
 import styles from './input-form.module.css';
 
@@ -9,14 +9,16 @@ interface IInputAuth {
   placeholder: string;
   name: AuthInput;
   reg: UseFormRegister<IFormAuthSubmit>;
+  error: FieldErrors<IFormAuthSubmit>,
+  state: boolean
 }
 
 export const InputAuth = (props: IInputAuth) => {
-  const { placeholder, name, reg, type } = props;
-
+  const { placeholder, name, reg, type, error, state } = props;
+  const isError = Object.keys(error).includes(name);
   return (
     <>
-      <input className={styles.input} type={type} placeholder=' ' {...reg(name)} autoComplete='off' />
+      <input className={isError || !state ? `${styles.input} ${styles.error}` : styles.input} type={type} placeholder=' ' {...reg(name, {required: {value: true, message: 'Поле не может быть пустым'}})} autoComplete='off' />
       <label className={styles.placeholder}>{placeholder}</label>
     </>
   );

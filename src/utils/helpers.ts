@@ -35,12 +35,32 @@ export const getAuthorString = (authors: string[]): string => {
   return authorString;
 };
 
+const convertDateDelivery = (date: string) => {
+  const createDate = new Date(date);
+  let resultDay=''
+  let resultMonth = ''
+  const day = createDate.getDay();
+  const month = createDate.getMonth();
+  if (day < 10) {
+    resultDay=`0${day}`
+  } else {
+    resultDay=`${day}`
+  }
+  if (month < 10) {
+    resultMonth=`0${month}`
+  } else {
+    resultMonth=`${month}`
+  }
+  const result = `${resultDay}.${resultMonth}`
+  return result
+}
+
 export const getContentButtonCardBooks = (booking: IBooking | null, delivery: IDelivery | null): string => {
   let contentButton = '';
   if (booking?.dateOrder) {
     contentButton = 'Забронирована';
   } else if (delivery?.handed) {
-    contentButton = `Занята до ${delivery.dateHandedTo}`;
+    contentButton = `Занята до ${convertDateDelivery(delivery.dateHandedTo)}`;
   } else {
     contentButton = 'Забронировать';
   }
@@ -53,6 +73,7 @@ export const converterBooksCover = (images: IImage[]): string[] => {
   const arrayImageURL = images.map((item) => `https://strapi.cleverland.by${item.url}`);
   return arrayImageURL;
 };
+
 
 export const convertedDate = (date: string): string => {
   const arrayMonth = [

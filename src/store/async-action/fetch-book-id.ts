@@ -1,16 +1,12 @@
 import { Dispatch } from 'react';
 import { AnyAction } from 'redux';
 import { actionErrorIdBook, actionGetIdBook } from '../actions/action-creaters';
+import { $api } from '../axios/interception';
 
 export const fetchBookId = (dispatch: Dispatch<AnyAction>, id: number) =>
-  fetch(`https://strapi.cleverland.by/api/books/${id}`)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error(`is not ok ${response.status}`);
-    })
-    .then((json) => dispatch(actionGetIdBook(json)))
+  $api.get(`/books/${id}`)
+    .then((response) => response.data)
+    .then((data) => dispatch(actionGetIdBook(data)))
     .catch(() => {
       dispatch(actionErrorIdBook(true));
     });

@@ -62,8 +62,24 @@ export interface IINititalState {
   error: boolean;
 }
 
+export interface IBodyAuthResponse {
+  blocked: boolean;
+  confirmed: boolean;
+  createdAt: string;
+  email: string;
+  firstName: string;
+  id: number;
+  lastName: string;
+  phone: string;
+  provider: string;
+  updateAt: string;
+  username: string;
+}
+
 export interface IResponseState {
   isLoaded: boolean;
+  auth: boolean;
+  body: IBodyAuthResponse | null;
 }
 
 export interface IStateCategory {
@@ -180,6 +196,16 @@ export interface IActionIdBooks {
 export interface IResponse {
   type: ActionLoad.RESPONSE;
   data: boolean;
+}
+
+export interface IResponseAuth {
+  type: ActionLoad.AUTH;
+  data: boolean;
+}
+
+export interface IResponseBodyAuth {
+  type: ActionLoad.BODY_AUTH;
+  data: IBodyAuthResponse | null;
 }
 
 export interface IActionResetStateBooks {

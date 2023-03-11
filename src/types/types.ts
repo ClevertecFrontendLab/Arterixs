@@ -22,6 +22,8 @@ import {
   IAuthSubmit,
   IResponse,
   IRegisterLink,
+  IResponseBodyAuth,
+  IResponseAuth,
 } from './interface';
 
 export type actionsType = IActionList | IActionLoaded | IErrorLoadList | IActionResetList;
@@ -41,5 +43,5 @@ export type cardProps = IListBooks & { urlWay: string; search: string };
 export type genresProps = ICategoryBooks & IGenresProp;
 export type authSubmit = Pick<IFormRegSubmit, 'username' | 'password'>;
 export type formSubmit = IInputForm | IAuthSubmit;
-export type actionResponse = IResponse;
+export type actionResponse = IResponse | IResponseAuth | IResponseBodyAuth;
 export type AuthRegisterLink = Omit<IRegisterLink, 'func' | 'valid'>;

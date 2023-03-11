@@ -45,10 +45,6 @@
   margin-left: 12px;
 }
 
-.helps-error {
-  color: #f42c4f;
-}
-
 .input-group-reg {
   display: flex;
   flex-direction: column;
@@ -61,12 +57,19 @@
 }
 
 .link-recover {
-  font-family: 'Montserat-reg';
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
   margin-left: 12px;
   color: #a7a7a7;
+}
+
+.color {
+  color: #363636;
+}
+
+.helps-error {
+  color: #f42c4f;
 }
 
 .margin {

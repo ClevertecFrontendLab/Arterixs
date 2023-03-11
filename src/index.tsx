@@ -18,6 +18,7 @@ import { store } from './store/store';
 
 import './index.css';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
@@ -41,9 +42,9 @@ root.render(
             <Route path='/books/:category/:id' element={<BookPage />} />
           </Route>
           <Route element={<AuthPage />}>
-            <Route path='/auth' element={<AuthForm />} />
-            <Route path='/registration' element={<RegisterForm />} />
-            <Route path='/forgot-pass' element={<PassForm />} />
+            <Route path='auth' element={<AuthForm />} />
+            <Route path='registration' element={<RegisterForm />} />
+            <Route path='forgot-pass' element={<PassForm />} />
           </Route>
         </Routes>
       </HashRouter>

@@ -10,4 +10,6 @@ export const enum ActionLoad {
   SET_PATH = 'SET_PATH',
   RESET_LOAD_LIST = 'RESET_LOAD_LIST',
   RESPONSE = 'RESPONSE',
+  AUTH = 'AUTH',
+  BODY_AUTH = 'BODY_AUTH'
 }
