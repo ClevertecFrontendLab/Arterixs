@@ -5,7 +5,7 @@ import { actionResponse } from '../../store/actions/action-creaters';
 import { fetchReg } from '../../store/async-action/fetch-reg';
 import { IFormRegSubmit } from '../../types/interface';
 import { dataResetForms, LINK_AUTH, LINK_QUESTION_REG, PATH_AUTH, TITLE_REGISTRATION } from '../../utils/constants';
-import { getTypeInput, switchStep } from '../../utils/helpers';
+import { getTypeInput, getValidObj, switchStep } from '../../utils/helpers';
 import { Check } from './check-mark/check';
 import { Eye } from './eye/eye';
 import { FormResponse } from './form-response/form-response';
@@ -13,19 +13,17 @@ import { InputForm } from './input/input-form';
 import { RegisterLink } from './register-link/register-link';
 import styles from './register.module.css';
 
-const getValidObj = (value: MultipleFieldErrors | undefined) => (value ? value : {});
-
-const validPassword = (errors: MultipleFieldErrors | undefined, focus: boolean) => {
+export const validPassword = (errors: MultipleFieldErrors | undefined, focus: boolean) => {
   const obj = Object.keys(getValidObj(errors)).length;
   if (obj && focus) {
     return (
-      <p className={`${styles.helps} ${styles['helps-error']}`}>
+      <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
         Пароль не менее 8 символов, с заглавной буквой и цифрой
       </p>
     );
   }
   return (
-    <p className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
+    <p data-test-id='hint' className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
       Пароль
       <span className={errors?.minLength && styles['helps-error']}> не менее 8 символов</span>, с
       <span className={errors?.isLetter && styles['helps-error']}> заглавной буквой </span>и
@@ -38,11 +36,13 @@ const validUserName = (errors: MultipleFieldErrors | undefined, focus: boolean) 
   const obj = Object.keys(getValidObj(errors)).length;
   if (obj && focus) {
     return (
-      <p className={`${styles.helps} ${styles['helps-error']}`}>Используйте для логина латинский алфавит и цифры</p>
+      <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+        Используйте для логина латинский алфавит и цифры
+      </p>
     );
   }
   return (
-    <p className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
+    <p data-test-id='hint' className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
       Используйте для логина
       <span className={errors?.isLetter && styles['helps-error']}> латинский алфавит </span>и
       <span className={errors?.isNumber && styles['helps-error']}> цифры </span>
@@ -75,6 +75,7 @@ export const RegisterForm = () => {
     rulesUp,
     rulesDown,
   } = metaForm;
+
   const typeInput = step === 1 ? getTypeInput(eye) : typeInputDown;
 
   const {
@@ -124,7 +125,7 @@ export const RegisterForm = () => {
           func={countData === 1 ? handleSubmit(onSubmit) : clickButtonResponse}
         />
       ) : (
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <form data-test-id='register-form' className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles['wrapper-title']}>
             <h2 className={styles.title}>{TITLE_REGISTRATION}</h2>
             <p className={styles.subtitle}>{step} шаг из 3</p>
@@ -142,7 +143,11 @@ export const RegisterForm = () => {
                 control={control}
               />
               {step === 1 && validUserName(errors.username?.types, focusLogin)}
-              {step === 2 && <p className={`${styles.helps} ${styles['helps-error']}`}>{errors.firstName?.message}</p>}
+              {step === 2 && (
+                <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+                  {errors.firstName?.message}
+                </p>
+              )}
               {step === 3 && (
                 <p className={errors.phone ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
                   {helpsInputUp}
@@ -162,8 +167,16 @@ export const RegisterForm = () => {
               {step === 1 && <Eye func={toggleEye} flag={eye} />}
               {step === 1 && <Check watch={dirtyFields.password} error={errors.password} />}
               {step === 1 && validPassword(errors.password?.types, focusPassword)}
-              {step === 2 && <p className={`${styles.helps} ${styles['helps-error']}`}>{errors.lastName?.message}</p>}
-              {step === 3 && <p className={`${styles.helps} ${styles['helps-error']}`}>{errors.email?.message}</p>}
+              {step === 2 && (
+                <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+                  {errors.lastName?.message}
+                </p>
+              )}
+              {step === 3 && (
+                <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+                  {errors.email?.message}
+                </p>
+              )}
             </div>
           </div>
           <RegisterLink

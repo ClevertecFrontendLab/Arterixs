@@ -5,13 +5,13 @@ import { actionAuth } from '../../store/actions/action-creaters';
 import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 
 export const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    const isToken = localStorage.getItem('token')
+    const isToken = localStorage.getItem('token');
     if (isToken) {
-      dispatch(actionAuth(true))
+      dispatch(actionAuth(true));
     }
-  },[dispatch])
-  const auth = useTypedSelector((state) => state.response.auth)
+  }, [dispatch]);
+  const auth = useTypedSelector((state) => state.response.auth);
   return auth ? children : <Navigate to='/auth' />;
 };

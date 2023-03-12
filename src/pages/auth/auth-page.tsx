@@ -8,27 +8,28 @@ import { useTypedSelector } from '../../store/hooks/use-typed-selector';
 import styles from './auth.module.css';
 
 export const AuthPage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    const isToken = localStorage.getItem('token')
+    const isToken = localStorage.getItem('token');
     if (isToken) {
-      dispatch(actionAuth(true))
+      dispatch(actionAuth(true));
     }
-  },[dispatch])
+  }, [dispatch]);
   const isLoaded = useTypedSelector((state) => state.response.isLoaded);
-  const auth = useTypedSelector((state) => state.response.auth)
+  const auth = useTypedSelector((state) => state.response.auth);
 
-  return auth ? <Navigate to='/books/all' /> : (
-        <div className={styles.wrapper}>
-          <Loader isError={false} isLoaded={isLoaded} />
-          <SpriteAuth />
-          <div className={styles['wrapper-two']}>
-            <div className={styles.container}>
-              <h1 className={styles.title}>Cleverland</h1>
-              <Outlet />
-            </div>
-          </div>
+  return auth ? (
+    <Navigate to='/books/all' />
+  ) : (
+    <div data-test-id='auth' className={styles.wrapper}>
+      <Loader isError={false} isLoaded={isLoaded} />
+      <SpriteAuth />
+      <div className={styles['wrapper-two']}>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Cleverland</h1>
+          <Outlet />
         </div>
-    )
-    ;
+      </div>
+    </div>
+  );
 };

@@ -9,7 +9,7 @@ interface ICheck {
 export const Check = (props: ICheck) => {
   const { watch, error } = props;
   return (
-    <svg className={watch && !error ? styles.check : `${styles.check} ${styles.hidden}`}>
+    <svg className={watch && !error ? styles.check : `${styles.check} ${styles.hidden}`} data-test-id='checkmark'>
       <use href='#check-mark' />
     </svg>
   );

@@ -1,10 +1,11 @@
 import { Dispatch } from 'react';
 import { AnyAction } from 'redux';
 import { actionErrorIdBook, actionGetIdBook } from '../actions/action-creaters';
-import { $api } from '../axios/interception';
+import { $api } from '../../http/interception';
 
 export const fetchBookId = (dispatch: Dispatch<AnyAction>, id: number) =>
-  $api.get(`/books/${id}`)
+  $api
+    .get(`/books/${id}`)
     .then((response) => response.data)
     .then((data) => dispatch(actionGetIdBook(data)))
     .catch(() => {

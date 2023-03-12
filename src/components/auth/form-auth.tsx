@@ -30,11 +30,16 @@ import styles from './register.module.css';
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
-  const [stateResponse, setStateFalseResponse] = useState(true)
+  const [stateResponse, setStateFalseResponse] = useState(true);
   const [isResponse, setDrawModalResponse] = useState(false);
   const [eye, setEye] = useState(false);
   const toggleEye = () => setEye(!eye);
-  const { register, reset, handleSubmit, formState: {errors} } = useForm({
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     mode: 'all',
     defaultValues: {
       identifier: '',
@@ -43,32 +48,32 @@ export const AuthForm = () => {
   });
 
   const getWayResponse = (response: number) => {
-    switch(response) {
+    switch (response) {
       case 0:
-        reset()
-      break
+        reset();
+        break;
       case 1:
-        setDrawModalResponse(true)
-        setStateFalseResponse(true)
-        break
+        setDrawModalResponse(true);
+        setStateFalseResponse(true);
+        break;
       case 2:
-        setStateFalseResponse(false)
-        setDrawModalResponse(false)
-        break
+        setStateFalseResponse(false);
+        setDrawModalResponse(false);
+        break;
       default:
-        setStateFalseResponse(false)
-        setDrawModalResponse(false)
-        break
+        setStateFalseResponse(false);
+        setDrawModalResponse(false);
+        break;
     }
-  }
+  };
 
   const onSubmit = async (data: { identifier: string; password: string }) => {
     dispatch(actionResponse(false));
-    const getResponse = await fetchAuth(dispatch, data)
-    getWayResponse(getResponse)
+    const getResponse = await fetchAuth(dispatch, data);
+    getWayResponse(getResponse);
     dispatch(actionResponse(true));
     if (!getResponse) {
-      <Navigate to='/books/all' />
+      <Navigate to='/books/all' />;
     }
   };
 
@@ -83,20 +88,49 @@ export const AuthForm = () => {
           func={handleSubmit(onSubmit)}
         />
       ) : (
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <form data-test-id='auth-form' className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h2 className={styles.title}>{TITLE_AUTH}</h2>
           <div className={styles['input-group-auth']}>
             <div className={`${styles['wrapper-input']} ${styles['wrapper-input-auth']} ${styles.margin}`}>
-              <InputAuth type='text' placeholder={PLACEHOLDER_LOGIN} reg={register} name='identifier' error={errors} state={stateResponse} />
-              {errors.identifier && <p className={`${styles.helps} ${styles['helps-error']}`}>{errors.identifier?.message}</p>}
+              <InputAuth
+                type='text'
+                placeholder={PLACEHOLDER_LOGIN}
+                reg={register}
+                name='identifier'
+                error={errors}
+                state={stateResponse}
+              />
+              {errors.identifier && (
+                <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+                  {errors.identifier?.message}
+                </p>
+              )}
             </div>
             <div className={`${styles['wrapper-input']} ${styles['wrapper-input-auth']}`}>
-              <InputAuth type={getTypeInput(eye)} placeholder={PLACEHOLDER_PASSWORD} reg={register} name='password' error={errors} state={stateResponse} />
+              <InputAuth
+                type={getTypeInput(eye)}
+                placeholder={PLACEHOLDER_PASSWORD}
+                reg={register}
+                name='password'
+                error={errors}
+                state={stateResponse}
+              />
               <Eye func={toggleEye} flag={eye} />
-              {errors.password && <p className={`${styles.helps} ${styles['helps-error']}`}>{errors.password?.message}</p>}
+              {errors.password && (
+                <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+                  {errors.password?.message}
+                </p>
+              )}
             </div>
-            {!stateResponse && <span className={`${styles['link-recover']} ${styles['helps-error']}`}>{TEXT_ERROR_LOGIN}</span>}
-            <Link to={PATH_FORGOT} className={stateResponse ? styles['link-recover'] : `${styles['link-recover']} ${styles.color}`}>
+            {!stateResponse && (
+              <span data-test-id='hint' className={`${styles['link-recover']} ${styles['helps-error']}`}>
+                {TEXT_ERROR_LOGIN}
+              </span>
+            )}
+            <Link
+              to={PATH_FORGOT}
+              className={stateResponse ? styles['link-recover'] : `${styles['link-recover']} ${styles.color}`}
+            >
               {stateResponse ? LINK_RECOVER_AUTH : LINK_RECOVER_FORGOT_PASS}
             </Link>
           </div>

@@ -11,5 +11,5 @@ export const enum ActionLoad {
   RESET_LOAD_LIST = 'RESET_LOAD_LIST',
   RESPONSE = 'RESPONSE',
   AUTH = 'AUTH',
-  BODY_AUTH = 'BODY_AUTH'
+  BODY_AUTH = 'BODY_AUTH',
 }

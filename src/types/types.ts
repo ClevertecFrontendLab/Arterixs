@@ -24,6 +24,7 @@ import {
   IRegisterLink,
   IResponseBodyAuth,
   IResponseAuth,
+  IPropsResponseForm,
 } from './interface';
 
 export type actionsType = IActionList | IActionLoaded | IErrorLoadList | IActionResetList;
@@ -45,3 +46,4 @@ export type authSubmit = Pick<IFormRegSubmit, 'username' | 'password'>;
 export type formSubmit = IInputForm | IAuthSubmit;
 export type actionResponse = IResponse | IResponseAuth | IResponseBodyAuth;
 export type AuthRegisterLink = Omit<IRegisterLink, 'func' | 'valid'>;
+export type requestRestoreProps = Pick<IPropsResponseForm, 'text' | 'title'>;

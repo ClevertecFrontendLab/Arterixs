@@ -9,14 +9,14 @@ import { ErrorLoad } from './loaded/error';
 import { actionAuth } from '../store/actions/action-creaters';
 
 export const Header = (props: IBurgerState) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { burgerState, toggleBurgerMenu } = props;
-  const [stateContextMenu, setStateContextMenu] = useState(false)
-  const toggleContextMenu = () => setStateContextMenu(!stateContextMenu)
+  const [stateContextMenu, setStateContextMenu] = useState(false);
+  const toggleContextMenu = () => setStateContextMenu(!stateContextMenu);
   const clickLogOut = () => {
-    localStorage.removeItem('token')
-    dispatch(actionAuth(false))
-  }
+    localStorage.removeItem('token');
+    dispatch(actionAuth(false));
+  };
   return (
     <header className='header'>
       <div className='header__wrap'>
@@ -34,23 +34,20 @@ export const Header = (props: IBurgerState) => {
         <section className='block-title'>
           <h1 className='block-title__page'>Библиотека</h1>
         </section>
-        <section
-          className='block-user'
-          onClick={toggleContextMenu}
-          onKeyUp={() => {}}
-          role='button'
-          tabIndex={0}>
-            <h3 className='block-user__greetings'>Привет, Иван!</h3>
-            <img
-              src={`${avatar}`}
-              style={{ width: '58px', height: '58px' }}
-              className='block-user__avatar'
-              alt='avatar'
-            />
-            <div className={stateContextMenu ? 'context-menu' : 'context-menu context-menu_hidden'}>
-              <a href="#">Профиль</a>
-              <NavLink to='/auth' onClick={clickLogOut}>Выход</NavLink>
-            </div>
+        <section className='block-user' onClick={toggleContextMenu} onKeyUp={() => {}} role='button' tabIndex={0}>
+          <h3 className='block-user__greetings'>Привет, Иван!</h3>
+          <img
+            src={`${avatar}`}
+            style={{ width: '58px', height: '58px' }}
+            className='block-user__avatar'
+            alt='avatar'
+          />
+          <div className={stateContextMenu ? 'context-menu' : 'context-menu context-menu_hidden'}>
+            <a href='#'>Профиль</a>
+            <NavLink to='/auth' onClick={clickLogOut}>
+              Выход
+            </NavLink>
+          </div>
         </section>
       </div>
     </header>

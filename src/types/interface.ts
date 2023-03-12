@@ -283,9 +283,25 @@ export interface IFormRegSubmit {
   email: string;
 }
 
+export interface IFormForgotMail {
+  email: string;
+}
+
+export interface IFormForgotPass {
+  password: string;
+  passwordConfirmation: string;
+  code: string;
+}
+
 export interface IFormAuthSubmit {
   identifier: string;
   password: string;
+}
+
+export interface IFormRestoreSubmit {
+  password: string;
+  passwordConfirmation: string;
+  code: string;
 }
 
 export interface IAuthSubmit {
@@ -303,4 +319,18 @@ export interface IInputForm {
   error: FieldErrors<IFormRegSubmit>;
   toggleFocus?: () => void;
   control?: Control<IFormRegSubmit, any>;
+}
+
+export interface IPropsResponseForm {
+  title: string;
+  text: string;
+  textButton: string;
+  path: string;
+  func: () => void;
+}
+
+export interface IRegisterRestore {
+  textButton: string;
+  question: string;
+  disabled: boolean;
 }

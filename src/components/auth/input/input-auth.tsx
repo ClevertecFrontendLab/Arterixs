@@ -9,8 +9,8 @@ interface IInputAuth {
   placeholder: string;
   name: AuthInput;
   reg: UseFormRegister<IFormAuthSubmit>;
-  error: FieldErrors<IFormAuthSubmit>,
-  state: boolean
+  error: FieldErrors<IFormAuthSubmit>;
+  state: boolean;
 }
 
 export const InputAuth = (props: IInputAuth) => {
@@ -18,7 +18,13 @@ export const InputAuth = (props: IInputAuth) => {
   const isError = Object.keys(error).includes(name);
   return (
     <>
-      <input className={isError || !state ? `${styles.input} ${styles.error}` : styles.input} type={type} placeholder=' ' {...reg(name, {required: {value: true, message: 'Поле не может быть пустым'}})} autoComplete='off' />
+      <input
+        className={isError || !state ? `${styles.input} ${styles.error}` : styles.input}
+        type={type}
+        placeholder=' '
+        {...reg(name, { required: { value: true, message: 'Поле не может быть пустым' } })}
+        autoComplete='off'
+      />
       <label className={styles.placeholder}>{placeholder}</label>
     </>
   );

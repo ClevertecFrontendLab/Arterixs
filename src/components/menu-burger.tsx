@@ -8,7 +8,7 @@ import { ButtonArrow } from './main-page/button-arrow';
 import { Genres } from './main-page/genres';
 
 export const MenuBurger = (props: IBurgerState) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const isError = useTypedSelector((state) => state.categoryBooks.error || state.listBooks.error);
   const genresState = useTypedSelector((state) => state.categoryBooks.category);
   const { burgerState, toggleBurgerMenu } = props;
@@ -16,9 +16,9 @@ export const MenuBurger = (props: IBurgerState) => {
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);
   const clickLogOut = () => {
-    localStorage.removeItem('token')
-    dispatch(actionAuth(false))
-  }
+    localStorage.removeItem('token');
+    dispatch(actionAuth(false));
+  };
   const clickDocs = () => {
     toggleBurgerMenu();
     closedAccordeon();
@@ -107,7 +107,9 @@ export const MenuBurger = (props: IBurgerState) => {
         <div className='burger-menu__control'>
           <section className='burger-menu-nav'>
             <a href='#'>Профиль</a>
-            <NavLink to='/auth' onClick={clickLogOut}>Выход</NavLink>
+            <NavLink to='/auth' onClick={clickLogOut} data-test-id='exit-button'>
+              Выход
+            </NavLink>
           </section>
         </div>
       </div>

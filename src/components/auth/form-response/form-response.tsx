@@ -1,19 +1,12 @@
 import { Link } from 'react-router-dom';
+import { IPropsResponseForm } from '../../../types/interface';
 import styles from './form-response.module.css';
-
-interface IPropsResponseForm {
-  title: string;
-  text: string;
-  textButton: string;
-  path: string;
-  func: () => void;
-}
 
 export const FormResponse = (props: IPropsResponseForm) => {
   const { title, text, textButton, path, func } = props;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-test-id='status-block'>
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.text}>{text}</p>
       <Link to={path}>
