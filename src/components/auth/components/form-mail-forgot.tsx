@@ -54,8 +54,8 @@ export const FormMailForgot = () => {
             <h2 className={styles.title}>{TITLE_RECOVER}</h2>
             <div className={styles['wrapper-input']}>
               <InputForgotMail reg={register} error={errors} />
-              {errors.email && <p className={`${styles.helps} ${styles['helps-error']}`}>{errors.email.message}</p>}
-              {stateRequest === REG_ERROR && <p className={`${styles.helps} ${styles['helps-error']}`}>Error</p>}
+              {errors.email && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>{errors.email.message}</p>}
+              {stateRequest === REG_ERROR && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>error</p>}
               <p className={styles.helps}>{PLACEHOLDER_RECOVER_MAIL}</p>
             </div>
             <RegisterAuth

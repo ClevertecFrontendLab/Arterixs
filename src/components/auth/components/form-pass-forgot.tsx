@@ -87,7 +87,7 @@ export const FormPassForgot = (props: { code: string }) => {
                 stateType={eyeUp}
               />
               <Eye func={toggleEyeUp} flag={eyeUp} />
-              <Check watch={dirtyFields.password} error={errors.password} />
+              {dirtyFields.password && !errors.password ? <Check /> : null}
               {validPassword(errors.password?.types, focusPassword)}
             </div>
             <div className={styles['wrapper-input']}>

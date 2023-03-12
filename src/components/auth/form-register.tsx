@@ -22,6 +22,7 @@ export const validPassword = (errors: MultipleFieldErrors | undefined, focus: bo
       </p>
     );
   }
+
   return (
     <p data-test-id='hint' className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
       Пароль
@@ -142,6 +143,7 @@ export const RegisterForm = () => {
                 toggleFocus={toggleFocusLogin}
                 control={control}
               />
+              {step === 1 && errors.username?.types?.required && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>Поле не может быть пустым</p>}
               {step === 1 && validUserName(errors.username?.types, focusLogin)}
               {step === 2 && (
                 <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
@@ -149,8 +151,8 @@ export const RegisterForm = () => {
                 </p>
               )}
               {step === 3 && (
-                <p className={errors.phone ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
-                  {helpsInputUp}
+                <p data-test-id='hint' className={errors.phone ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
+                  {errors.phone?.message ? errors.phone?.message : helpsInputUp}
                 </p>
               )}
             </div>
@@ -164,8 +166,9 @@ export const RegisterForm = () => {
                 error={errors}
                 toggleFocus={toggleFocusPassword}
               />
-              {step === 1 && <Eye func={toggleEye} flag={eye} />}
-              {step === 1 && <Check watch={dirtyFields.password} error={errors.password} />}
+              {step === 1 && dirtyFields.password ? <Eye func={toggleEye} flag={eye} /> : null}
+              {step === 1 && dirtyFields.password && !errors.password ? <Check /> : null}
+              {step === 1 && errors.password?.types?.required && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>Поле не может быть пустым</p>}
               {step === 1 && validPassword(errors.password?.types, focusPassword)}
               {step === 2 && (
                 <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>

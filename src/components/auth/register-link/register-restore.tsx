@@ -5,7 +5,7 @@ export const RegisterRestore = (props: IRegisterRestore) => {
   const { textButton, question, disabled } = props;
   return (
     <div className={styles.wrapper}>
-      <input type='submit' className={styles.button} value={textButton} disabled={disabled} />
+      <button type='submit' className={styles.button} disabled={disabled}>{textButton}</button>
       <div className={styles.container}>
         <p className={styles.content}>{question}</p>
       </div>

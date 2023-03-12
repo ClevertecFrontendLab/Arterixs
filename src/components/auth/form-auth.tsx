@@ -38,7 +38,7 @@ export const AuthForm = () => {
     register,
     reset,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, dirtyFields },
   } = useForm({
     mode: 'all',
     defaultValues: {
@@ -115,7 +115,7 @@ export const AuthForm = () => {
                 error={errors}
                 state={stateResponse}
               />
-              <Eye func={toggleEye} flag={eye} />
+              {dirtyFields.password ? <Eye func={toggleEye} flag={eye} /> : false}
               {errors.password && (
                 <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
                   {errors.password?.message}

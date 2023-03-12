@@ -210,8 +210,14 @@ export const switchStep = (step: number) => {
         requaredNameUp: 'phone',
         requaredNameDown: 'email',
         rulesUp: {
-          required: true,
-          pattern: /^\+375\s\((25|29|33|44)\)\s\d{3}(-\d{2}){2}$/,
+          required: {
+            value: true,
+            message: 'Поле не может быть пустым',
+          },
+          pattern: {
+            value: /^\+375\s\((25|29|33|44)\)\s\d{3}(-\d{2}){2}$/,
+            message: 'В формате +375 (xx) xxx-xx-xx'
+          }
         },
         rulesDown: {
           required: {

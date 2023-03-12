@@ -7,13 +7,9 @@ export const RegisterLink = (props: IRegisterLink) => {
   const isSubmit = textButton === 'ЗАРЕГИСТРИРОВАТЬСЯ';
   return (
     <div className={styles.wrapper}>
-      {isSubmit ? (
-        <input type='submit' className={styles.button} value={textButton} disabled={!valid} />
-      ) : (
-        <button className={styles.button} type='button' onClick={func} disabled={!valid}>
-          <span>{textButton}</span>
-        </button>
-      )}
+      <button className={styles.button} type={isSubmit ? 'submit' : 'button'} onClick={func} disabled={!valid}>
+        <span>{textButton}</span>
+      </button>
       <div className={styles.container}>
         <p className={styles.content}>{question}</p>
         <div className={styles['wrapper-link']}>

@@ -6,7 +6,7 @@ export const RegisterAuth = (props: AuthRegisterLink) => {
   const { textButton, path, question, textLink } = props;
   return (
     <div className={styles.wrapper}>
-      <input type='submit' className={styles.button} value={textButton} />
+      <button type='submit' className={styles.button} >{textButton}</button>
       <div className={styles.container}>
         <p className={styles.content}>{question}</p>
         <div className={styles['wrapper-link']}>

@@ -20,6 +20,7 @@ export const InputForm = (props: IInputForm) => {
             <MaskedInput
               className={isError ? `${styles.input} ${styles.error}` : styles.input}
               type={type}
+              name={named}
               placeholder=' '
               onFocus={props.toggleFocus}
               onBlur={onBlur}
