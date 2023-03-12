@@ -17,7 +17,7 @@ export const validPassword = (errors: MultipleFieldErrors | undefined, focus: bo
   const obj = Object.keys(getValidObj(errors)).length;
   if (obj && focus) {
     return (
-      <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+      <p data-test-id='hint' className={`${styles.helps}`}>
         Пароль <span>не менее 8 символов</span>, с <span>заглавной буквой</span> и <span>цифрой</span>
       </p>
     );
@@ -36,7 +36,7 @@ const validUserName = (errors: MultipleFieldErrors | undefined, focus: boolean) 
   const obj = Object.keys(getValidObj(errors)).length;
   if (obj && focus) {
     return (
-      <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+      <p data-test-id='hint' className={`${styles.helps}`}>
         Используйте для логина <span>латинский алфавит</span> и <span>цифры</span>
       </p>
     );
