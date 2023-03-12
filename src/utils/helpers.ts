@@ -159,10 +159,13 @@ export const switchStep = (step: number) => {
         requaredNameUp: 'username',
         requaredNameDown: 'password',
         rulesUp: {
-          required: true,
+          required: {
+            value: true,
+            message: 'Поле не может быть пустым'
+          },
           validate: {
             isNumber: (value: string) => /[0-9]+/gi.test(value),
-            isLetter: (value: string) => /^[0-9A-Za-z]+$/g.test(value),
+            isLetter: (value: string) => /[A-Za-z]+$/g.test(value),
           },
         },
         rulesDown: {

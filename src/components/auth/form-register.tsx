@@ -25,9 +25,9 @@ export const validPassword = (errors: MultipleFieldErrors | undefined, focus: bo
   return (
     <p data-test-id='hint' className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
       Пароль
-      <span className={errors?.minLength ? ` ${styles['helps-error']}` : styles.helps}> не менее 8 символов</span>, с
-      <span className={errors?.isLetter ? ` ${styles['helps-error']}` : styles.helps}> заглавной буквой </span>и
-      <span className={errors?.isNumber ? ` ${styles['helps-error']}` : styles.helps}> цифрой</span>
+      <span className={errors?.minLength && styles['helps-error']}> не менее 8 символов</span>, с
+      <span className={errors?.isLetter && styles['helps-error']}> заглавной буквой </span>и
+      <span className={errors?.isNumber && styles['helps-error']}> цифрой</span>
     </p>
   );
 };
@@ -35,6 +35,7 @@ export const validPassword = (errors: MultipleFieldErrors | undefined, focus: bo
 const validUserName = (errors: MultipleFieldErrors | undefined, focus: boolean) => {
   const obj = Object.keys(getValidObj(errors)).length;
   if (obj && focus) {
+    console.log('fefe')
     return (
       <p data-test-id='hint' className={errors?.required ? styles.helps : `${styles.helps} ${styles['helps-error']}`}>
         Используйте для логина <span>латинский алфавит</span> и <span>цифры</span>
@@ -116,7 +117,7 @@ export const RegisterForm = () => {
 
   const clickButton = () => updateStep();
   const clickButtonResponse = () => resetStateForm();
-
+  console.log(errors)
   return (
     <div style={{ width: '100%' }}>
       {isResponse ? (
@@ -142,7 +143,7 @@ export const RegisterForm = () => {
                 toggleFocus={toggleFocusLogin}
                 control={control}
               />
-              {step === 1 && errors.username?.types?.required && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>Поле не может быть пустым</p>}
+              {step === 1 && errors.username?.types?.required && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>{errors.username.message}</p>}
               {step === 1 && validUserName(errors.username?.types, focusLogin)}
               {step === 2 && (
                 <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
