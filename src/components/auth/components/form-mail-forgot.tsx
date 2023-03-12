@@ -23,6 +23,8 @@ import styles from '../pass.module.css';
 
 export const FormMailForgot = () => {
   const dispatch = useDispatch();
+  const [focusMail, setFocusMail] = useState(false);
+  const toggleFocusMail = () => setFocusMail(!focusMail);
   const [stateRequest, setStateRequest] = useState(2);
   const {
     register,
@@ -53,8 +55,8 @@ export const FormMailForgot = () => {
           <div className={styles.wrapper}>
             <h2 className={styles.title}>{TITLE_RECOVER}</h2>
             <div className={styles['wrapper-input']}>
-              <InputForgotMail reg={register} error={errors} />
-              {errors.email && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>{errors.email.message}</p>}
+              <InputForgotMail reg={register} error={errors} func={toggleFocusMail} />
+              {(errors.email || !focusMail) && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>{errors.email?.message}</p>}
               {stateRequest === REG_ERROR && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>error</p>}
               <p className={styles.helps}>{PLACEHOLDER_RECOVER_MAIL}</p>
             </div>

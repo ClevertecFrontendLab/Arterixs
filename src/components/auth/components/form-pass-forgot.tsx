@@ -63,7 +63,7 @@ export const FormPassForgot = (props: { code: string }) => {
     dispatch(actionResponse(true));
   };
   const clickButtonResponse = () => reset();
-
+  console.log(errors)
   return (
     <div style={{ width: '100%' }}>
       {isResponse ? (
@@ -88,6 +88,7 @@ export const FormPassForgot = (props: { code: string }) => {
               />
               <Eye func={toggleEyeUp} flag={eyeUp} />
               {dirtyFields.password && !errors.password ? <Check /> : null}
+              {(errors.password?.types?.required || focusPassword) && <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>{errors.password?.message}</p>}
               {validPassword(errors.password?.types, focusPassword)}
             </div>
             <div className={styles['wrapper-input']}>

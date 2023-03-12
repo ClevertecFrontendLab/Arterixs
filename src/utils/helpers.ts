@@ -166,7 +166,10 @@ export const switchStep = (step: number) => {
           },
         },
         rulesDown: {
-          required: true,
+          required: {
+            value: true,
+            message: 'Поле не может быть пустым'
+          },
           minLength: 8,
           validate: {
             isNumber: (value: string) => /[0-9]+/gi.test(value),
