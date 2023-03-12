@@ -13,7 +13,16 @@ import { InputForm } from './input/input-form';
 import { RegisterLink } from './register-link/register-link';
 import styles from './register.module.css';
 
-export const validPassword = (errors: MultipleFieldErrors | undefined, focus: boolean) => (
+export const validPassword = (errors: MultipleFieldErrors | undefined, focus: boolean) => {
+  const obj = Object.keys(getValidObj(errors)).length;
+  if (obj && focus) {
+    return (
+      <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+        Пароль не менее 8 символов, с заглавной буквой и цифрой
+      </p>
+    );
+  }
+  return (
     <p data-test-id='hint' className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
       Пароль
       <span className={errors?.minLength && styles['helps-error']}> не менее 8 символов</span>, с
@@ -21,15 +30,25 @@ export const validPassword = (errors: MultipleFieldErrors | undefined, focus: bo
       <span className={errors?.isNumber && styles['helps-error']}> цифрой</span>
     </p>
   );
+};
 
-
-const validUserName = (errors: MultipleFieldErrors | undefined, focus: boolean) => (
+const validUserName = (errors: MultipleFieldErrors | undefined, focus: boolean) => {
+  const obj = Object.keys(getValidObj(errors)).length;
+  if (obj && focus) {
+    return (
+      <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+        Используйте для логина латинский алфавит и цифры
+      </p>
+    );
+  }
+  return (
     <p data-test-id='hint' className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
       Используйте для логина
       <span className={errors?.isLetter && styles['helps-error']}> латинский алфавит </span>и
       <span className={errors?.isNumber && styles['helps-error']}> цифры </span>
     </p>
   );
+};
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
