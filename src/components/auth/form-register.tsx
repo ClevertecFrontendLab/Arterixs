@@ -17,20 +17,17 @@ export const validPassword = (errors: MultipleFieldErrors | undefined, focus: bo
   const obj = Object.keys(getValidObj(errors)).length;
   if (obj && focus) {
     return (
-      <p data-test-id='hint' className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
-      Пароль
-      <span className={errors?.minLength && styles['helps-error']}> не менее 8 символов</span>, с
-      <span className={errors?.isLetter && styles['helps-error']}> заглавной буквой </span>и
-      <span className={errors?.isNumber && styles['helps-error']}> цифрой</span>
-    </p>
+      <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
+        Пароль <span>не менее 8 символов</span>, с <span>заглавной буквой</span> и <span>цифрой</span>
+      </p>
     );
   }
   return (
     <p data-test-id='hint' className={errors?.required ? `${styles.helps} ${styles['helps-error']}` : styles.helps}>
       Пароль
-      <span className={errors?.minLength && styles['helps-error']}> не менее 8 символов</span>, с
-      <span className={errors?.isLetter && styles['helps-error']}> заглавной буквой </span>и
-      <span className={errors?.isNumber && styles['helps-error']}> цифрой</span>
+      <span className={errors?.minLength ? ` ${styles['helps-error']}` : styles.helps}> не менее 8 символов</span>, с
+      <span className={errors?.isLetter ? ` ${styles['helps-error']}` : styles.helps}> заглавной буквой </span>и
+      <span className={errors?.isNumber ? ` ${styles['helps-error']}` : styles.helps}> цифрой</span>
     </p>
   );
 };
@@ -40,7 +37,7 @@ const validUserName = (errors: MultipleFieldErrors | undefined, focus: boolean) 
   if (obj && focus) {
     return (
       <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
-        Используйте для логина латинский алфавит и цифры
+        Используйте для логина <span>латинский алфавит</span> и <span>цифры</span>
       </p>
     );
   }
