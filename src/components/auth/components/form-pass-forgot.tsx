@@ -27,6 +27,7 @@ export const FormPassForgot = (props: { code: string }) => {
   const [eyeUp, setEyeUp] = useState(false);
   const [eyeDown, setEyeDown] = useState(false);
   const [focusPassword, setFocusPassword] = useState(true);
+  const [focusPasswordCon, setFocusPasswordCon] = useState(false);
   const toggleFocusPassword = () => setFocusPassword(!focusPassword);
   const toggleEyeUp = () => setEyeUp(!eyeUp);
   const toggleEyeDown = () => setEyeDown(!eyeDown);
@@ -37,9 +38,11 @@ export const FormPassForgot = (props: { code: string }) => {
     handleSubmit,
     watch,
     reset,
+    trigger,
+    clearErrors,
     formState: { errors, dirtyFields },
   } = useForm({
-    mode: 'all',
+    mode: 'onBlur',
     criteriaMode: 'all',
     defaultValues: {
       password: '',
@@ -48,8 +51,18 @@ export const FormPassForgot = (props: { code: string }) => {
     },
   });
 
+  const toggleFocusPasswordCon = () => {
+    if (!focusPasswordCon) {
+      clearErrors('passwordConfirmation')
+    }
+    setFocusPasswordCon(!focusPasswordCon)
+  }
+
   const validationRepeatPassword = {
-    required: true,
+    required: {
+      value: true,
+      message: 'Поле не может быть пустым'
+    },
     validate: {
       isCoinsedense: (value: string) => watch('password') === value,
     },
@@ -63,7 +76,8 @@ export const FormPassForgot = (props: { code: string }) => {
     dispatch(actionResponse(true));
   };
   const clickButtonResponse = () => reset();
-  console.log(errors)
+  const onChangePassword = () => trigger('password')
+
   return (
     <div style={{ width: '100%' }}>
       {isResponse ? (
@@ -77,7 +91,6 @@ export const FormPassForgot = (props: { code: string }) => {
             <h2 className={styles.title}>{TITLE_RECOVER}</h2>
             <div className={styles['wrapper-input']}>
               <InputForgotPass
-                type='password'
                 placeholder='Новый пароль'
                 reg={register}
                 name='password'
@@ -85,6 +98,7 @@ export const FormPassForgot = (props: { code: string }) => {
                 error={errors}
                 toggleFocus={toggleFocusPassword}
                 stateType={eyeUp}
+                onChange={onChangePassword}
               />
               <Eye func={toggleEyeUp} flag={eyeUp} />
               {dirtyFields.password && !errors.password ? <Check /> : null}
@@ -93,18 +107,18 @@ export const FormPassForgot = (props: { code: string }) => {
             </div>
             <div className={styles['wrapper-input']}>
               <InputForgotPass
-                type='password'
                 placeholder='Повторите пароль'
                 reg={register}
                 name='passwordConfirmation'
                 rules={validationRepeatPassword}
                 error={errors}
                 stateType={eyeDown}
+                toggleFocus={toggleFocusPasswordCon}
               />
               <Eye func={toggleEyeDown} flag={eyeDown} />
-              {errors.passwordConfirmation?.types && (
+              {(errors.passwordConfirmation?.types && !focusPasswordCon) && (
                 <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
-                  {ERROR_COINCEDENSE_PASSWTORD}
+                  {errors.passwordConfirmation?.types?.required ? errors.passwordConfirmation.message :ERROR_COINCEDENSE_PASSWTORD}
                 </p>
               )}
             </div>

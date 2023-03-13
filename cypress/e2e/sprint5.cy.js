@@ -63,7 +63,7 @@ describe('authorization and registartion', () => {
             cy.get('[data-test-id=auth-form] input[name=identifier]').type('TestUser1');
             cy.get('[data-test-id=auth-form] input[name=password]').type('Qwerty123');
             cy.get('button').contains('вход', { matchCase: false }).should('be.enabled').click();
-            cy.wait('@authorize');  
+            cy.wait('@authorize');
             cy.visit('http://localhost:3000/#/auth');
             cy.url().should('contain', '/books/all');
             cy.visit('http://localhost:3000/#/registration');
@@ -99,7 +99,7 @@ describe('authorization and registartion', () => {
                 .and('have.css', 'color', 'rgb(244, 44, 79)');
             cy.get('[data-test-id=auth]').screenshot('incorrect logit or password error');
         });
-        it('validation', () => {
+        it.only('validation', () => {
             cy.get('[data-test-id=auth-form] input[name=identifier]').focus();
             cy.get('[data-test-id=auth-form] input[name=identifier]').blur();
             cy.get('[data-test-id=hint]:contains("Поле не может быть пустым")')

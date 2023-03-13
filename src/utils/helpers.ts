@@ -165,7 +165,7 @@ export const switchStep = (step: number) => {
           },
           validate: {
             isNumber: (value: string) => /[0-9]+/gi.test(value),
-            isLetter: (value: string) => /[A-Za-z]+$/g.test(value),
+            isLetter: (value: string) => /[A-Za-z]+/g.test(value),
           },
         },
         rulesDown: {

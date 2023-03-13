@@ -11,10 +11,11 @@ interface IInputAuth {
   reg: UseFormRegister<IFormAuthSubmit>;
   error: FieldErrors<IFormAuthSubmit>;
   state: boolean;
+  toggle: () => void
 }
 
 export const InputAuth = (props: IInputAuth) => {
-  const { placeholder, name, reg, type, error, state } = props;
+  const { placeholder, name, reg, type, error, state, toggle } = props;
   const isError = Object.keys(error).includes(name);
   return (
     <>
@@ -22,7 +23,8 @@ export const InputAuth = (props: IInputAuth) => {
         className={isError || !state ? `${styles.input} ${styles.error}` : styles.input}
         type={type}
         placeholder=' '
-        {...reg(name, { required: { value: true, message: 'Поле не может быть пустым' } })}
+        onFocus={toggle}
+        {...reg(name, { required: { value: true, message: 'Поле не может быть пустым' }, onBlur: toggle })}
         autoComplete='off'
       />
       <label className={styles.placeholder}>{placeholder}</label>

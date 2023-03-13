@@ -32,6 +32,10 @@ export const AuthForm = () => {
   const dispatch = useDispatch();
   const [stateResponse, setStateFalseResponse] = useState(true);
   const [isResponse, setDrawModalResponse] = useState(false);
+  const [focusLogin, setFocusLogin] = useState(false);
+  const [focusPassword, setFocusPassword] = useState(false);
+  const toggleFocusPassword = () => setFocusPassword(!focusPassword)
+  const toggleFocusLogin = () => setFocusLogin(!focusLogin)
   const [eye, setEye] = useState(false);
   const toggleEye = () => setEye(!eye);
   const {
@@ -99,8 +103,9 @@ export const AuthForm = () => {
                 name='identifier'
                 error={errors}
                 state={stateResponse}
+                toggle={toggleFocusLogin}
               />
-              {errors.identifier && (
+              {(errors.identifier && !focusLogin) && (
                 <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
                   {errors.identifier?.message}
                 </p>
@@ -114,9 +119,10 @@ export const AuthForm = () => {
                 name='password'
                 error={errors}
                 state={stateResponse}
+                toggle={toggleFocusPassword}
               />
               {dirtyFields.password ? <Eye func={toggleEye} flag={eye} /> : false}
-              {errors.password && (
+              {(errors.password && !focusPassword) && (
                 <p data-test-id='hint' className={`${styles.helps} ${styles['helps-error']}`}>
                   {errors.password?.message}
                 </p>

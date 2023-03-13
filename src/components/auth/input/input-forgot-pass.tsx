@@ -3,19 +3,18 @@ import { IFormForgotMail, IFormForgotPass } from '../../../types/interface';
 import styles from './input-form.module.css';
 
 interface IInputForgot {
-  type: string;
   placeholder: string;
   name: 'password' | 'passwordConfirmation';
   reg: UseFormRegister<IFormForgotPass>;
   error: FieldErrors<IFormForgotPass>;
-  state?: boolean;
   rules?: any;
-  toggleFocus?: () => void;
+  toggleFocus: () => void;
   stateType: boolean;
+  onChange?: () => void
 }
 
 export const InputForgotPass = (props: IInputForgot) => {
-  const { placeholder, name, reg, type, error, state, rules, stateType } = props;
+  const { placeholder, name, reg, error, rules, stateType, toggleFocus } = props;
   const isError = Object.keys(error).includes(name);
   return (
     <>
@@ -23,8 +22,8 @@ export const InputForgotPass = (props: IInputForgot) => {
         className={isError ? `${styles.input} ${styles.error}` : styles.input}
         type={stateType ? 'text' : 'password'}
         placeholder=' '
-        onFocus={props.toggleFocus}
-        {...reg(name, { ...rules, onBlur: props.toggleFocus })}
+        onFocus={toggleFocus}
+        {...reg(name, { ...rules, onBlur: props.toggleFocus, onChange: props.onChange })}
         autoComplete='off'
       />
       <label className={styles.placeholder}>{placeholder}</label>
