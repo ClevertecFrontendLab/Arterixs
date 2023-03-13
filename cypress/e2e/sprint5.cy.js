@@ -99,7 +99,7 @@ describe('authorization and registartion', () => {
                 .and('have.css', 'color', 'rgb(244, 44, 79)');
             cy.get('[data-test-id=auth]').screenshot('incorrect logit or password error');
         });
-        it.only('validation', () => {
+        it('validation', () => {
             cy.get('[data-test-id=auth-form] input[name=identifier]').focus();
             cy.get('[data-test-id=auth-form] input[name=identifier]').blur();
             cy.get('[data-test-id=hint]:contains("Поле не может быть пустым")')
