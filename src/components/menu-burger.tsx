@@ -1,17 +1,24 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { actionAuth } from '../store/actions/action-creaters';
 import { useTypedSelector } from '../store/hooks/use-typed-selector';
 import { IBurgerState } from '../types/interface';
 import { ButtonArrow } from './main-page/button-arrow';
 import { Genres } from './main-page/genres';
 
 export const MenuBurger = (props: IBurgerState) => {
+  const dispatch = useDispatch();
   const isError = useTypedSelector((state) => state.categoryBooks.error || state.listBooks.error);
   const genresState = useTypedSelector((state) => state.categoryBooks.category);
   const { burgerState, toggleBurgerMenu } = props;
   const [stateAccordeon, setStateAccordeon] = useState(true);
   const toggleAccordeon = () => setStateAccordeon(!stateAccordeon);
   const closedAccordeon = () => setStateAccordeon(false);
+  const clickLogOut = () => {
+    localStorage.removeItem('token');
+    dispatch(actionAuth(false));
+  };
   const clickDocs = () => {
     toggleBurgerMenu();
     closedAccordeon();
@@ -100,7 +107,9 @@ export const MenuBurger = (props: IBurgerState) => {
         <div className='burger-menu__control'>
           <section className='burger-menu-nav'>
             <a href='#'>Профиль</a>
-            <a href='#'>Выход</a>
+            <NavLink to='/auth' onClick={clickLogOut} data-test-id='exit-button'>
+              Выход
+            </NavLink>
           </section>
         </div>
       </div>
